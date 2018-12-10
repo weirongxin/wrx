@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-2.1.1.js" ></script>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script type="text/javascript" src="js/axios.min.js" ></script>
+		<script>
+			$(function(){
+				new Vue({
+					el:"#div1",
+					data:{
+						username:"",
+						password:""
+					},methods:{
+						login(){
+							axios({
+                            	method:'post',
+                            	url:'login.user',
+                            	data:"name="+this.username+"&pass="+this.password
+                        	}).then(function(resp){
+                            	console.log(resp.data);
+                        	}).catch(resp => {
+                            	console.log('请求失败：'+resp.status+','+resp.statusText);
+                        	});
+						}
+					}
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div id="div1">
+			用户名：<input type="text" v-model="username"/><br/>
+			密码：<input type="password" v-model="password"/><br/>
+			<input type="button" value="登录" @click="login"/>
+		</div>
+	</body>
+</html>

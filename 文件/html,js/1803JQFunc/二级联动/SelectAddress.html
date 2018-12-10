@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>省市选择 二级联动</title>
+		<script src="../js/jquery-2.1.1.js"></script>
+		<script>
+			var addressData = [
+				{
+					"province":"辽宁省",
+					"city":["沈阳市","大连市","鞍山市"]
+				},
+				{
+					"province":"山东省",
+					"city":["济南市","烟台市","泰安市"]
+				}
+			];
+			$(function(){
+				//取所有省份加入select
+				var proSelect = $("#provinceSelect");
+				for(var i in addressData){
+					//获取数据数组中的元素
+					var tempdata = addressData[i];
+					//取每个元素的省份数据
+					var proData = tempdata["province"];
+					//根据省份数据 创建option标签
+					var proption = $("<option>"+proData+"</option>");
+					//将省份标签添加到select中
+					proSelect.append(proption);
+				}
+				//给省份select添加事件（值改变时 触发）
+				proSelect.change(function(){
+					//将select当前选中的数据取出
+					var selProValue = this.value;
+				 	var selectCity = $("#citySelect");
+				 	//将下拉列表中的元素清空
+				 	selectCity.empty();
+				 	//追加初始提示元素
+				 	var title = $("<option>请选择城市</option>");
+				 	selectCity.append(title);
+				 	//遍历数组中的数据  如果省份相同则取出城市，追加到城市下拉列表中
+				 	for(var i in addressData){
+				 		var cell = addressData[i];
+				 		var proData = cell["province"];
+				 		if(proData == selProValue){
+				 			var cityData = cell["city"];
+				 			for(var index in cityData){
+				 				var city = cityData[index];
+				 				var cityOption = $("<option>"+city+"</option>");
+				 				selectCity.append(cityOption);
+				 			}
+				 		}
+				 	}
+					
+					
+				});
+			});
+		</script>
+	</head>
+	<body>
+		省<select id="provinceSelect">
+			<option>请选择省份</option>
+		</select>
+		市<select id="citySelect">
+			<option>请选择城市</option>
+		</select>
+	</body>
+</html>

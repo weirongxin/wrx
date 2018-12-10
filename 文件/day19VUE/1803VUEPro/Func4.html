@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Vue事件绑定</title>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script>
+			window.onload = function(){
+				new Vue({
+					el:"#bgDiv",
+					data:{
+						names:["小明","小红","小王"]
+					},
+					methods:{
+						add(){
+							this.names.push("小黑");
+						}
+					}
+				});
+			}
+		</script>
+	</head>
+	<body>
+		<!--点击按钮 数组中添加元素-->
+		<div id="bgDiv">
+			<!--指令 v-on绑定事件  事件如果没有参数可以省略小括号-->
+			<input type="button" value="增加" v-on:click="add()"/><br/>
+			<ul>
+				<li v-for="name in names">
+					{{name}}
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>

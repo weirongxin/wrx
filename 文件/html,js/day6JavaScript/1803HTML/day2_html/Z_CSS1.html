@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!--
+	CSS 
+	cascade style sheet层叠样式表
+	css的实现方式三种：
+	1）行内、行间样式 在标签后添加style属性，属性中设置样式
+	2)文件内样式表 在head标签中添加style标签，找到标签后添加样式属性值 
+	3)外部样式表 创建css为后缀的样式文件，添加样式设定后 可在html文件中引入
+-->
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<!--查找标签的方式-->
+		<style>
+		/*--2)文件内样式 通过标签的id属性值，查找标签 */
+			#div1{
+				width: 100px;
+				height: 100px;
+				background-color: red;
+			}
+			
+		</style>
+		<!--3)外部样式表 引入方式-->
+		<link rel="stylesheet" href="../css/style1.css" />
+	</head>
+	<body>
+		<!--1）行内样式 行间样式-->
+		<div style="width: 100px;
+			height: 100px;
+			background-color: lightskyblue;">今天星期三</div>
+		<!--2)文件内样式 标签设置id 通过head中的style设置样式-->	
+		<div id="div1">明天星期四</div>
+	</body>
+</html>

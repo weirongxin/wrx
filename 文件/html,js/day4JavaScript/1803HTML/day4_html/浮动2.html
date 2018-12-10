@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/reset.css" />
+		<style>
+			#bgDiv{
+				width: 900px;
+				height: 400px;
+				background-color: lightgray;
+			}
+			ol{ width: 860px;height: 360px;
+				 padding: 20px;}
+			.listyle{
+				width: 600px;
+				height: 40px;
+				background-color: dodgerblue;
+				margin: 10px;
+				/*透明度*/
+				opacity:0.1;
+			}
+			.listyle:after{
+				content:" ";
+				width: 300px;
+				height: 40px;
+				background-color: orange;
+				margin-left: 500px;
+				display: block;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<div id="bgDiv">
+			<ol>
+				<li class="listyle"></li>
+				<li class="listyle"></li>
+				<li class="listyle"></li>
+				<li class="listyle"></li>
+				<li class="listyle"></li>
+				<li class="listyle"></li>
+				<li class="listyle"></li>
+			</ol>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,24 @@
+ApplicationCOntext.xml:
+<!-- 文件分步上传 -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	  <!-- 设置文本的编码 -->
+	  <property name="defaultEncoding" value="utf-8"/>
+	  <!-- 设置缓存开辟的大小，字节byte -->
+	  <property name="maxInMemorySize" value="102400"/>
+	  <!-- 设置临时文件放的位置 -->
+	  <property name="uploadTempDir" value="/upload/" />
+	  <!-- 设置允许上传文件的最大值，-1是无限制 -->
+	  <property name="maxUploadSize" value="-1" />
+	</bean>
+
+前端页面：
+<form action="${pageContext.request.contextPath}/up.action" method="post"
+		enctype="multipart/form-data">
+		<input type="file" name="file"/>
+	</form>
+
+Controller：
+方法参数：@RequestParam("file")CommonsMultipartFile ff
+	HttpServletRequest req
+获取文件路径：req.getServletContext().getRealPath("/upload/");
+将文件写入：ff.getFileItem().write(f);

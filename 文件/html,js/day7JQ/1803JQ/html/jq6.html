@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jq创建标签</title>
+		<script type="text/javascript" src="../js/jquery-2.1.1.js" ></script>
+		<script>
+			$(function(){
+				//jq中 创建新标签，将标签对象赋值给变量newDiv
+				var newDiv =  $("<div>我是新标签！</div>");
+				newDiv.css("background-color","aliceblue");
+				//将新标签对象添加到div0中
+				$("#div0").append(newDiv);
+				$("#div0").css("background-color","yellow");
+				$("#div0").css("height","300px");
+			});
+			function del(){
+				//清空当前标签对象中的所有子标签
+				$("#div0").empty();
+			}
+			function delAll(){
+				//删除当前标签及子标签
+				$("#div0").remove();
+			}
+		</script>
+	</head>
+	<body>
+		<div id="div0">div0</div>
+		<input type="button" value="del" onclick="del()"/>
+		<input type="button" value="delAll" onclick="delAll()"/>
+	</body>
+</html>

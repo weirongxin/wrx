@@ -1,0 +1,66 @@
+		jQuery
+1.jQuery是什么？
+  是对JavaScript的一个封装，轻量级js库。
+  功能：
+	动态页面效果
+	数据解析封装
+2.jQuery的使用
+  将jquery文件导入web工程，在需要使用jq的文件中引入即可。
+  
+3.jQuery语法：
+  js中数据为弱类型的。非oop编程，没有类，通过function模拟类。
+  js中获取标签的方式:
+   getElementById getElementsByName 
+   getElementsByClassName getElementsByTagName
+  jq语法：
+   $("selector").action(); 
+   selector:根据id、class、类型获取的数据
+4.页面加载完成后自动调用方法
+  js ：window.onload = function(){}
+  jq : $("document").ready(function(){});
+      升级版： $(function(){});
+  问题：window.onload  和 ready有什么区别？
+  --练习：
+       表格 10行，将奇数行设置为红色、偶数行设置为蓝色
+
+5.js和jq对象的切换
+  js对象-->jq对象:
+   var div0 = document.getElementById("div0");
+   $(div0).css("","");
+  jq对象-->js对象：
+   var div1 =  $(".div1")[0];
+   div1.style.backgroundColor = "red";
+6.标签的文本操作
+  js中标签的文本：innerHTML、innerText
+  jq：
+  文本操作
+   text() 读解释、写不解释
+   html() 写解释、读不解释
+   val()   操作value属性值
+  样式操作
+    css("属性名",“属性值”);
+  属性操作1:(包含自定义属性)
+    attr("属性名","属性值");
+  属性操作2:(标签自带属性)
+    $(":checkbox").prop("checked",true);
+ 练习1：
+      爱好: 游泳、跑步、爬山
+      按钮：全选、全不选
+7.创建标签：
+   js中创建标签、节点：
+	createElement("类型")
+	createTextNode("文本数据")
+	cloneNode(标签对象)
+   jq中创建标签：
+    $("标签")：
+     var newDiv =  $("<div>我是新标签！</div>");
+   jq中标签的追加： 				            $("#div0").append(newDiv);
+   jq中标签的删除：
+     remove() 删除被选及子元素 自己的标签也删除
+     empty() 从被选元素中删除所有子元素 不删自己
+	
+作业:
+1)购物车 jq实现
+2)省市的二级联动
+   第一级 值改变时 change事件触发
+   

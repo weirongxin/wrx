@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>时间显示 广告牌</title>
+		<style>
+			#time{
+				width: 400px;height: 50px;background-color: burlywood;
+				color: black;line-height: 50px;font-size: 20px;
+				text-align: center;margin: 50px auto;
+			}
+		</style>
+		<script>
+			function getTime(){
+				//实例化时间对象  从time中获取时间
+				var time = new Date();
+				var year = time.getFullYear();
+				var month = time.getMonth()+1;
+				var date = time.getDate();
+				
+				var hour = time.getHours();
+				var min = time.getMinutes();
+				var sec = time.getSeconds();
+				
+				var getTimeStr = year+"年"+month+"月"+date+"日"
+							+hour+"时"+min+"分"+sec+"秒";
+				//根据id从文档流中获取标签对象
+				var timeDiv = document.getElementById("time");
+				//给标签对 中间的数据赋值
+				//form标签赋值时  给value属性赋值
+				timeDiv.innerHTML = getTimeStr;
+			}
+			//window.onload  指当页面上数据完全加载完成时 自动调用该方法
+			window.onload = function(){
+				//先调用一次获取、显示时间
+				getTime();
+				//设置每间隔1秒  调用一次时间的获取刷新
+				setInterval("getTime()",1000);
+			}
+		</script>
+	</head>
+	<body>
+		<div id="time"></div>
+	</body>
+</html>

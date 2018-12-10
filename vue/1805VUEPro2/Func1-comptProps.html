@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>组件的传参</title>
+		<script type="text/javascript" src="js/jquery-2.1.1.js" ></script>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script>
+			$(function(){
+				Vue.component("component1",{
+					//props 设定变量，通过props作为vue和当前组件传参的入口
+					//abc 是单向数据传输，只能读取，不能修改
+					//    修改：定义局部变量  ，改局部变量
+					props:["abc"],
+					data:function(){
+						return {
+							msg:"hi",
+							saveVueData:this.abc
+						}
+					},
+					template:"<div><h1>{{msg}}{{saveVueData}}</h1><input type='text' v-model='saveVueData'></div>"
+				});
+				new Vue({
+					el:"#div1",
+					data:{
+						name:"xiaoming"
+					}
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div id="div1">
+			<!--在vue绑定的标签div1内 ，使用组件，
+			使用组件时通过  :变量名=属性名  -->
+			<component1 :abc="name"></component1>
+		</div>
+	</body>
+</html>

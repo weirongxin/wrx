@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body,h1,ul,li{margin: 0px;padding: 0px;}
+			ul{list-style: none;}
+			#bgDiv{width: 500px;margin: 20px auto;border: 1px solid black;}
+			#funcDiv{width: 500px;margin: 20px auto;}
+			li{background-color: pink;margin: 10px;}
+		</style>
+		<script type="text/javascript" src="jquery-2.1.1.js" ></script>
+		<script> 
+			function addPre(){
+				var textV =  $("#addText").val();
+				var newLi = $("<li></li>").text(textV);
+				newLi.css("background-color","blue");
+				$("#poem").prepend(newLi);
+			}
+			function addLast(){
+				var textV =  $("#addText").val();
+				var newLi = $("<li></li>").text(textV);
+				newLi.css("background-color","yellow");
+				$("#poem").append(newLi);
+			}
+			function addClone(){
+				var lis = $("ul li"); 
+				var btn = $("<input type='button' value='克隆'/>");
+				//克隆按钮点击事件
+				btn.click(function(){
+					//克隆按钮所在的li克隆后追加到列表中
+					//this指当前按钮
+					//$(this).parent() 指当前按钮所在的li
+					//clone()方法 克隆当前标签，true连事件一起克隆，false只克隆标签
+					$("#poem").append($(this).parent().clone(true));
+				});
+				lis.append(btn);
+			}
+		</script>
+	</head>
+	<body>
+		<div id="bgDiv">
+			<ul id="poem">
+				<li>疑是地上霜</li>
+			</ul>
+		</div>
+		<div id="funcDiv">
+			<input type="text" id="addText" placeholder="录入诗词"/>
+			<input type="button" value="追加到首部" onclick="addPre()"/>
+			<input type="button" value="追加到尾部" onclick="addLast()"/>
+			<input type="button" value="追加克隆按钮" onclick="addClone()"/>
+			
+		</div>
+	</body>
+</html>

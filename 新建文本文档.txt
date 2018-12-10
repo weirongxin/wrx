@@ -1,0 +1,278 @@
+MyBatis 框架原理
+1.创建MyBatis全局配置信息文件SqlMapConfig.xml  配置数据库连接   sql配置信息
+  每个表都需要创建映射文件xml 定义sql语句
+2.根据全局配置信息文件 创建数据库工厂对象SqlSessionFactory
+3.从会话工厂对象中获取sqlsession 执行sql语句
+4.从sqlsession中获取执行器对象 Executor
+5.执行后得到结果数据 MappedStatement
+6.关闭会话sqlsession
+  
+
+1.在全局配置文件  SqlMapConfig.xml  中的配置
+<!-- dtd为当前配置文件的 规则约束 -->
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<!-- 支持懒加载  延时加载 功能 -->
+	<settings>
+	  <setting name="lazyLoadingEnabled" value="true"/>   <!-- 懒加载 开启  true -->
+	  <setting name="aggressiveLazyLoading" value="false"/>  <!-- 积极加载 关闭  false -->
+	
+	  <!-- 开启二级缓存   针对（mapper）某张表的数据缓存       一级缓存  针对sqlsession级别的  （默		认开启） -->
+	  <setting name="cacheEnabled" value="true"/>
+	</settings>
+<!--别名的配置  （一定要在environments之前配置）  
+		在pageage包下的所有文件都可以直接通过类名使用
+		配置前  pojo.User   配置后   User-->
+	<typeAliases>
+		<package name="pojo"/>
+	</typeAliases>
+
+<!-- 当前的配置为开发环境配置 -->
+<environments default="development">
+  <environment id="development">
+     
+   <transactionManager type="JDBC"></transactionManager>  <!-- 事务管理由jdbc提供 -->
+  
+   <dataSource type="POOLED">   <!-- 数据源配置 --> <!-- 数据库连接信息 -->   
+     <property name="driver" value="com.mysql.jdbc.Driver"/>
+     <property name="url"      value="jdbc:mysql://127.0.0.1:3306/1803useUnicode=true&amp;characterEncoding=utf8"/>
+     <property name="username" value="root"/>
+     <property name="password" value="admin"/>
+   </dataSource>
+  </environment>
+</environments>
+
+
+  <mappers>     配置数据库的映射文件
+     <package name="mapper"/>  <!-- 配置包的扫描  更方便 2中方式都可以 下面的每个xml就都要配置-->
+  	   <!-- <mapper resource="mapper/UserMapper.xml"/>  映射到User的xml  --> 
+  </mappers>  	
+</configuration>
+
+
+
+
+
+
+
+
+2.在mapper中没个表都要由对应的  User.xml 和 User.java(接口) 的对应配置（用于映射方法）
+   在xml中每个查询语句的  入参，出参，id 和 接口中方法的   入参，出参，方法名要一致
+
+
+在每个表的xml文件中
+添加 mapper.dtd  约束
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper>
+   查询语句
+   id:为当前sql的唯一标识
+   parameterType:入参类型
+    (可以是基本数据类型 也可以是引用类型  java.lang.Integer或int
+    当是引用类型时 要写全名pojo.User 或在全局配置信息中配置typeAliases标签中配置package可以直接写User)
+   resultType:返回值类型
+     (返回值类型为引用类型  当返回值是User集合时也写User)
+	<select id="queryNameById" parameterType="java.lang.Integer"
+	        resultType="java.lang.String">
+		select name from user where id=#{value}
+	</select>
+
+
+   模糊查询sql时用''把查关键字包含，使用${}作为sql的占位符
+    ${}  和    #{}  的区别
+    ${} 用于占位符，用于模糊查询和 普通查询
+    #{} 相当于?注入参数数据
+    场景: ${}用于模糊查询       #{}用于普通查询  
+	<select id="queryUserByNameAndGender" parameterType="pojo.User"
+			resultType="pojo.User">
+		select id,name,gender,age,pass,createTime from user
+		where name like '%${name}%' and gender=#{gender}
+	</select>
+
+	
+	
+  当类和数据库中字段名不一样时的 调用方法 结果集为resultMap  不是resultType 
+	<select id="queryUserFlagById" parameterType="java.lang.Integer"
+			resultMap="userFlagData">
+		select id,name,gender,age,pass,createTime from user
+		where id=#{value}
+	</select>
+	创建数据映射 type:java类   id:当前数据的唯一标识 
+		id标签  记录中的主键  
+		    column 为查询语句中的字段名 javaType为数据类型 property为自定类中的数据名称 
+		result  记录中的字段
+	<resultMap type="UserFlag" id="userFlagData">
+		<id column="id" javaType="java.lang.Integer" property="id_"/>
+		<result column="name" javaType="java.lang.String" property="name_"/>
+		<result column="gender" javaType="java.lang.String" property="gender_"/>
+		<result column="age" javaType="java.lang.Integer" property="age_"/>
+		<result column="pass" javaType="java.lang.String" property="pass_"/>
+		<result column="createTime" javaType="java.util.Date" property="createTime_"/>
+	</resultMap>
+	
+
+
+  插入新数据  (自增主键)  当插入数据完成 要获取自增的主键时
+	<insert id="addNewUser" parameterType="User">
+		<!-- 插入数据完成后  将自增主键的值获取 -->
+		<selectKey keyColumn="id" keyProperty="id" order="AFTER" resultType="int">
+			select last_insert_id()       //调用数据库方法 last_insert_id()
+		</selectKey>
+		insert into user(name,gender,age,pass,createTime) 
+		values(#{name},#{gender},#{age},#{pass},#{createTime})
+	</insert>
+	
+  插入数据 （非自增主键） 
+	<insert id="addNewUserFlag" parameterType="UserFlagId">
+		<selectKey keyColumn="id" keyProperty="id" order="BEFORE"
+					resultType="java.lang.String">
+			select uuid()        //调用数据库方法  uuid()
+		</selectKey> 
+		insert into userflag(id,name) values(#{id},#{name})
+	</insert>
+	
+  删除数据 根据id删除  
+	<delete id="deleteUserById" parameterType="int">
+		delete from user where id=#{value}
+	</delete>	
+  更新数据 
+	<update id="updateUserNameById" parameterType="User">
+		update user set name=#{name} where id=#{id}
+	</update>
+	
+
+   where标签可以将遇到的 第一个and  省略掉   
+	<select id="queryUserByNameOrSex" parameterType="User"
+			resultType="User" useCache="false" flushCache="true">
+		select id,username,password,birthday,sex,address from user 
+		<!-- where标签  标识在sql语句后拼接where条件
+			where判断可以将遇到的 第一个and  省略掉   所以每个if标签中都写and-->
+		<where>
+			<if test="username!=null">
+				and username like '%${username}%'
+			</if>
+			<if test="sex!=null">
+				and sex=#{sex}
+			</if>
+		</where>
+	</select>
+	
+
+  定义一个sql片段   类似于常量(重复使用的sql语句定义为sql片段，使用处通过include引入即可)
+  foreach动态遍历参数中的元素
+	<sql id="selectUser">
+		select id,username,password,birthday,sex,address from user 
+	</sql>
+	<select id="queryUsersByIds" parameterType="UserCustom"
+			resultType="User">
+		<!-- 引入sql片段 --> 
+		<include refid="selectUser"></include>
+		<if test="ids!=null">
+		<where>
+			<!-- foreach动态遍历参数中的元素   item遍历的元素  open拼接sql的初始部分
+			 close拼接sql的结束部分   separator拼接sql的中间部分 -->
+		  <foreach collection="ids" item="item_id" open="and (" close=")" separator="or">
+			id=#{item_id}
+		  </foreach>
+		</where>
+		</if>
+	</select>
+
+	
+   当查询结果中包含另外一个类时，可以将这个类作未一个包装类 将另外一个类作为这个类的一个属性
+
+     当查询结果是  一对多 时 用collection标签
+	<select id="queryUserDetail" resultMap="userDetailData">
+	   select u.id userid,u.username,u.password,u.birthday,u.sex,o.id orderid,o.number,o.createtime
+	   from user u,orders o
+	   where u.id=o.user_id
+	</select>
+	<resultMap type="UserCustom" id="userDetailData">
+		<id column="userid" javaType="int" property="id"/>
+		<result column="username" javaType="java.lang.String" property="username"/>
+		<result column="password" javaType="java.lang.String" property="password"/>
+		<result column="birthday" javaType="java.util.Date" property="birthday"/>
+		<result column="sex" javaType="java.lang.String" property="sex"/>
+		<!-- 配置用户中的订单集合映射 
+			 property包装类中 属性的名字
+			 ofType 集合中元素 的类型-->
+		<collection property="orders" ofType="Orders">
+			<id column="orderid" javaType="int" property="id"/>
+			<result column="number" javaType="java.lang.String" property="number"/>
+			<result column="createtime" javaType="java.util.Date" property="createtime"/>
+		</collection>
+	</resultMap>
+
+    当查询结果是  一对一 时 用association标签
+	<select id="queryOrdersDetail" resultMap="ordersDetail">
+		select o.id,o.user_id,o.number,o.createtime,u.username,u.sex
+		from orders o,user u
+		where o.user_id=u.id
+	</select>
+	<resultMap type="OrdersCustom" id="ordersDetail">
+		<id column="id" javaType="int" property="id"/>
+		<result column="number" javaType="java.lang.String" property="number"/>
+		<result column="createtime" javaType="java.util.Date" property="createtime"/>
+		<!-- 关联   包装类的 一对一 属性 -->
+		<association property="user" javaType="User">
+			<id column="user_id" javaType="int" property="id"/>
+			<result column="username" javaType="java.lang.String" property="username"/>
+			<result column="sex" javaType="java.lang.String" property="sex"/>
+		</association>
+	</resultMap>
+  包含用户信息的订单详情    （一对一） 的   延时加载 查询  用户信息在需要的时候查询
+	<select id="queryOrdersContainsUser" resultMap="orderContainsUserData">
+		select o.id,o.user_id,o.number,o.createtime
+		from orders o
+	</select>
+	<select id="queryOrderUserById" parameterType="int" resultType="User">
+		select u.id,u.username,u.sex
+		from user u
+		where u.id=#{value}
+	</select>
+	<resultMap type="OrdersCustom" id="orderContainsUserData">
+		<id column="id" javaType="int" property="id"/>
+		<result column="user_id" javaType="int" property="user_id"/>
+		<result column="number" javaType="java.lang.String" property="number"/>
+		<result column="createtime" javaType="java.util.Date" property="createtime"/>
+		<!--association一对一关联用户
+			 property：用户在订单包装类中的属性名
+			  select：查询用户sql的id
+			  column：查询用户时的筛选条件-->
+		<association property="user" select="queryOrderUserById" column="user_id" 				javaType="User">
+			<id column="id" javaType="int" property="id"/>
+			<result column="username" javaType="java.lang.String" property="username"/>
+			<result column="sex" javaType="java.lang.String" property="sex"/>
+		</association>
+	</resultMap>
+</mapper>
+	
+
+
+
+
+
+
+
+
+调用方法
+ 		1.定义全局配置文件的路径
+		String filePath = "config/SqlMapConfig.xml"; 
+		try {
+			// 2.从配置文件中获取数据 (刘对象)
+			InputStream in = Resources.getResourceAsStream(filePath);
+			// 3.根据流对象，创建会话工厂对象
+			SqlSessionFactory fac = new SqlSessionFactoryBuilder().build(in);
+			// 4.从会话工厂对象中获取会话对象
+			SqlSession session = fac.openSession();
+			// 5.根据sql映射文件xml中的id，确定sql语句
+			String username = session.selectOne("queryNameById",1);
+			System.out.println(username);
+			// 6.关闭会话对象
+			session.close();
+		}
+

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../js/jquery-2.1.1.js" ></script>
+		<script>
+		 //表格 10行，将奇数行设置为红色、偶数行设置为蓝色
+			$(function(){
+				$("tr:even").css("background-color","red");
+				$("tr:odd").css("background-color","blue");
+			});
+		</script>
+	</head>
+	<body>
+		<table>
+			<tr><td>1</td></tr>
+			<tr><td>2</td></tr>
+			<tr><td>3</td></tr>
+			<tr><td>4</td></tr>
+			<tr><td>5</td></tr>
+			<tr><td>6</td></tr>
+			<tr><td>7</td></tr>
+			<tr><td>8</td></tr>
+			<tr><td>9</td></tr>
+			<tr><td>10</td></tr>
+		</table>
+	</body>
+</html>

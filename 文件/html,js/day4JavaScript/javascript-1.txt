@@ -1,0 +1,195 @@
+	JavaScript
+html+css：
+1.标签：标签对和单标签
+2.标签的分类
+  块标签：独占一行、支持宽高设定
+	div p pre h1 h2 h3 h4 h5 h6 table ol ul dl
+  行内标签：
+	a
+  内联块标签：
+	img select input textarea
+ <br> <font>  <hr/>
+ <a> 锚点：href name
+ <input> type:text password radio checkbox 
+		file button submit hidden
+ <form> 提交 action name method
+ <frameset> 替换body标签，cols rows
+ <table> cellspacing cellpadding colspan rowspan
+3.css
+ 样式写法：
+ 行间样式、文件内样式、外部样式表
+
+ 标签选择器：
+     路径选择器>id选择器>类选择器>类型选择器>通配符选择器
+ 文字样式：
+     颜色 color 大小 font-size 字体 font-family 
+     加粗 font-weight 样式 text-decoration 缩进 text-indent
+     行高 line-height
+     水平居中：text-align:center
+     竖直居中: line-height 设置为外层标签高度
+ 背景样式：
+     background-color 单词、16进制rgb值
+     background-image url()
+     background-repeat、background-position
+     background-size、background-attachment
+ 边框：
+	border: 1px red solid
+ 盒模型：
+	宽、高 = width/height+padding*2+border*2+margin*2; 
+ 外间距：margin：auto 水平居中
+ 内间距：padding 符合 
+	padding:1px 1px 1px 1px 
+	padding:1px 
+	padding:1px 2px;
+ 定位：参照物设定位置
+	固定定位 ：浏览器
+	 position:fixed
+	相对定位：标签原本的位置
+	 position:relative
+	绝对定位：相对定位的标签、body
+	 position:absolute
+ 浮动：将标签脱离文档流 上浮半个层级
+     只能左右浮动
+     float:left\right
+ 清浮动：添加在有浮动的父级标签上
+	.clear:after{
+		content:"",
+		clear:both,
+		display:block;
+	}
+ a 标签的四个伪类顺序：
+   link visited hover active	
+  
+ 
+今日内容：
+1.什么是javascript？
+  简写js
+  js是一门脚本语言，嵌套在html文件中使用，是一门解释性语言。
+  功能：
+	页面的动态效果
+	数据的解析传递
+	页面数据的生成、交互  
+
+  原生js：纯js手写代码
+  js框架：在js基础上封装的框架  jQuery.js、vue.js
+2.javascript的组成：
+  ECMAScript:js的语法规范和格式
+  BOM：browser object model 浏览器对象模型
+  DOM：document object model 文档对象模型
+  
+3.js语言的使用方式：
+  弱类型语言、动态类型语言
+  变量声明时 不需要数据类型指定
+  变量声明：
+	var 变量名 = 值;
+  弱类型语言：变量不指定具体的数据类型、根据值确定类型
+
+  1）行内js
+     在标签后 事件属性中 添加js功能代码
+  2）内部js
+     html中添加<script>标签 在标签内添加js代码
+  3）外部js
+     新建js文件，在html中引入，再使用js代码
+     注  引入js文件的script标签内 不建议添加功能代码
+
+4.EMCAScript语法	
+  弱类型语言
+  1）数据类型：
+	字符 String
+	数字 Number
+	布尔 Boolean
+	对象 Object  数组 Array
+	未定义 undefined （var a;）
+	空值 null
+   2）在页面数据输出：
+	提示框 alert(); 	
+	在页面上写数据 document.write();
+	控制台输出  console.log();
+
+  js非oop编程，没有面向对象的概念。
+   3）变量的作用域：
+	局部变量
+		在方法内通过var声明的变量
+	全局变量
+		不使用var声明的变量
+		在方法外声明的变量
+  4）js中方法的定义：
+	function 方法名(){
+
+	}
+   特点：1）方法传入参数时，不需要数据类型指定
+	   function show(name){}
+	 2) 方法的参数数量为任意数量参数
+	 3)不需要声明返回值类型
+	   如果存在返回值 在最后一行代码处 写return关键字
+  5)js非oop编程 没有类的概念
+    通过function仿造类的定义和创建
+    a  直接实例化Object对象
+       手动添加属性，缺点:仅有当前对象存在添加的属性
+	var stu = new Object();
+	stu.name = "小明";
+	stu.gender = "F";
+    b  function创建类
+	在js文件或者html内部，通过function创建类
+	1）定义私有变量存this对象
+	2）创建私有属性
+	3）添加init构造方法的模拟
+	4）功能性方法的添加
+       function Student(name){
+	  var _this = this;
+	  _this.name = "";
+	  var init = function(){
+	     _this.name = name;
+	  }
+	  init();
+	  _this.say = function(){
+	     document.write();	
+	  }
+       }
+     c  创建json格式数据
+	json格式的数据使用：大部分时机用于数据的传输
+	var stu = {
+		name:"小明",
+		gender:"F",
+		say:function(){
+			alert(1);
+		}
+	}
+   	
+  练习：
+	创建一个类 商品（名字、价格、产地、品牌）
+	实例化5个商品对象，添加到数组中，遍历输出
+	
+5.语言规范：
+   1）js弱类型语言
+   2）区分大小写
+   3）解释型语言
+   4）建议将js代码写到一处
+	
+6.运算符：
+  算术 + - * / % ++ -- 
+  赋值 = += -= 
+  逻辑运算符 && || ！
+  比较运算符 > < >= <= !=
+  等值比较 
+	 ==判断值是否相等  
+	 ===判断值且判断数据类型是否相同
+
+  练习：
+	登录界面
+	  用户名、密码
+	判断如果存在空值  提示“不可为空”
+	判断如果为 xiaoming 123456 提示“登录成功”
+
+
+
+
+
+
+
+
+
+
+
+
+

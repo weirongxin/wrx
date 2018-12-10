@@ -1,0 +1,60 @@
+void setStatus(int sc)设置HTTP响应消息的状态码，并生成响应状态行，int为状态码默认为200
+void setStatus(int sc,Stirng msg)设置HTTP响应消息的状态码，并生成响应状态行int为状态码默认为200
+                                  String为响应消息
+void sendError(int code)发送表示错误的状态码，并清除缓冲区中的内容
+void sendError(int code,String msg)发送表示错误的状态码，发送表示错误的状态码，并清除缓冲区中的内容
+void addHeader(String name,String value)增加一个新的头字段
+void setHeader(String name,String value)用新的取值代替旧的取值（头字段）
+void addIntHeader(String name,int value)增加一个新的头字段
+void setIntHeader(String name,int value)用新的取值代替旧的取值（头字段）
+void addDataHeader(String name,long date)增加一个包含日期的响应头
+void setDataHeader(String name,long date)用新的日期取值代替旧的日期取值（日期头字段）
+void setContentLength(int len)设置响应消息的实体内容的大小，单位为字节
+void setContentType(Stirng type)设置servlet输出内容的MIME类型，在MIME类型后面也可以加上响应内容所使用的字符集
+													 例如：response.setContentType("text/html; charset=GB2312");如果不设置字符集，
+													 Tomcat5.x就会在其后面自动加上字符集"ISO8859-1"
+													 可以指定浏览器读取数据所用的字符集和服务器上输出流的字符集
+													 常见的MIME类型:
+																超文本标记语言文本 .html,.html text/html 
+																普通文本 .txt text/plain
+																RTF文本 .rtf application/rtf
+																GIF图形 .gif image/gif
+																JPEG图形 .ipeg,.jpg image/jpeg
+																au声音文件 .au audio/basic
+																MIDI音乐文件 mid,.midi audio/midi,audio/x-midi
+																RealAudio音乐文件 .ra, .ram audio/x-pn-realaudio
+																MPEG文件 .mpg,.mpeg video/mpeg
+																AVI文件 .avi video/x-msvideo
+																GZIP文件 .gz application/x-gzip
+																TAR文件 .tar application/x-tar
+void setCharacterEncoding(String charaate)用于设置输出内容的MIME声明中的字符集编码，就是设置Content-Type头字段中的
+                                     字符集编码部分，如果没有设置Content-Type头字段，setCharacterEncoding方法
+                                     设置的字符集编码不会出现在HTTP消息的响应头中，但他的设置仍然决定
+                                     ServletResponse.getWriter方法返回的Writer对象输出文本内容时所采用的字符集
+                                     编码。setCharacterEncoding方法要比setContentType和setLocale的优先极高，他
+                                     的设置会覆盖前面所有对字符集的设置。
+void setLocale(java.util.Locale loc)用于设置相应消息的本地化信息，他将设置Content-Language响应头字段和Content-Type
+                               头字段中的字符集编码部分。如果没有设置COntent-Type头字段，setLocale方法设置的字
+                               符集编码不会出现在HTTP消息的响应头中，但是他的设置仍然会影响
+                               ServletResponse.getWriter方法返回的Writer对象输出文本内容时所采用的字符集编码。
+                               setLocale的优先级要低于setContentType和setCharacterEncoding。
+                               其参数java.util.Locale对象中只包含了语言和国家地区的信息，并没有包含字符集编码信
+                               息，所以Locale信息必须和字符集编码之间有一种映射关系。在web.xml文件中可以通过设置
+                               <locale-encoding-mapping-list>
+                               		<locale-encoding-mapping>
+                               				<locale>zh_CN</locale>
+                               				<encoding>GB2312</encoding>
+                               		</locale-encoding-mapping>
+                               </locale-encoding-mapping-list>
+boolean containsHeader(String name)参数：头字段的名称
+                                   该方法用于检查某个头字段名称是否已经被设置
+ServletOutputStream getOutputStream()返回字节输出流对象（OutputStream的子类）
+PrintWriter getWriter() 返回字符缓存输出流
+void setBufferSize(int size)用于设置期望的输出缓存区的大小（并不是真实分配的大小，仅是期望值），servlet容器实际
+                            使用的缓冲区的大小不一定等于该设置值，但绝对不会小于该设置值
+int getBufferSize()返回servlet容器实际使用的缓冲区的大小
+void flushBuffer()用于将输出缓冲区的内容强制输出到客户端，如果当前是响应的第一次向客户端实际输出数据，响应状态行
+                  和各个响应头也会被输出到客户端(将缓冲区的内容提交给客户端后腾出缓冲空间)
+void reset()该方法用于清空输出缓冲区中的内容，以及设置的相应状态码和各个响应头，如果当前响应已经向客户端输出过部
+            分内容，这个方法将会抛出IllegalStateException异常（将缓冲区的内容作废后腾出缓冲区）
+boolean isCommitted()判断是否已经提交了部分响应内容到客户端，如果提交了返回true，否则返回false

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#bgDiv{width:800px;height: 200px;
+				margin: 140px auto;
+				text-align: center;}
+			.msgTitle{
+				width:100px;height: 20px;
+				background-color: lightblue;
+				display: inline-block;
+				font-size: 10px;
+			}
+		</style>
+		<script>
+			function nameCheck(){
+				var nameInput = document.getElementsByName("userName")[0];
+				var nameData = nameInput.value;
+				var showMsg = document.getElementById("nameMsg");
+				if(nameData.length==0){
+					showMsg.innerHTML = "用户名不能为空";
+				}else{
+					showMsg.innerHTML = "";
+				}
+			}
+			function passCheck(){
+				var passInput = document.getElementsByName("pass")[0];
+				var rePassInput = document.getElementsByName("repass")[0];
+				
+				var pass = passInput.value;
+				var repass = rePassInput.value;
+				
+				var msg = document.getElementById("rePass");
+				if(pass.length>0&&pass==repass){
+					msg.innerHTML = "";
+				}else{
+					msg.innerHTML = "密码一致且不能为空";
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<form>
+			<div id="bgDiv">
+				用户名:<input type="text" name="userName" onblur="nameCheck()"/>
+				<div id="nameMsg" class="msgTitle"></div>
+				<br/>
+				密码：<input type="password" name="pass"/>
+				<div id="passMsg" class="msgTitle"></div>
+				<br/>
+				确认密码:<input type="password" name="repass" onblur="passCheck()"/>
+				<div id="rePass" class="msgTitle"></div>
+				<br/>
+				手机号:<input type="text" name="phone" onblur="phoneCheck()"/>
+				<div id="phone" class="msgTitle"></div>
+				<br/>
+				<input type="button" value="注册" onclick="login()"/>
+			</div>
+		</form>
+		
+		
+	</body>
+</html>

@@ -1,0 +1,180 @@
+	JavaScript
+
+今日内容：
+
+1.时间间隔函数
+  var 定时器对象 =  setInterval("方法名()",毫秒值);
+  clearInterval(定时器对象);
+  设置时间间隔、取消时间间隔
+
+  js中的类定义：
+  a new Object(); 
+  b var data = {name:"",}
+  c function定义类 
+    定义person类 name、age属性 run方法
+    function Person(name,age){
+	var _this = this;
+	_this.name = "";
+	_this.age = 18;
+	var init = function(){
+	    _this.name = name;
+	    _this.age = age;
+	}
+	init();
+	_this.run = function(){
+	
+	}
+    }
+   全局变量、局部变量：
+	全局 不用var、或者在方法外
+	局部 方法内var声明
+   == 、===
+
+2.DOM编程
+  document object model 文档对象模型
+  将web页面看成是文档，从文档中获取获取标签对象
+
+3.节点的种类
+  文档是一个树形结构，由节点组成。
+  根节点：<html> 文档中最外层节点
+  父子节点：节点存在嵌套关系时称为父子节点<html>和<head>
+  兄弟节点：存在共同父节点的节点互称为兄弟节点 <head>和<body>
+
+  web页面上节点的分类：
+  标签节点： 标签本身
+  属性节点：标签中包含的属性
+  文本节点：标签中的文本值
+
+4.如何获取节点
+  1）通过id查找节点
+     document.getElementById("节点的id");   
+  2)通过name
+     document.getElementsByName();
+  3)通过class
+     document.getElementsByClassName();
+  4)通过类型
+     document.getElementsByTagName();
+ 
+  得到节点对象后，通过点语法，访问节点中的属性或者修改。
+
+练习：
+  爱好选择时，增加全选按钮，点击全选按钮为全部选中状态
+  
+   
+5.正则表达式 表单验证
+/^[1]\d{10}$/  手机号验证
+
+  使用：1）定义一个正则串
+	2）使用该正则串调用test方法
+	3）test传入验证的数据得到布尔类型的结果
+
+6.添加事件
+   onclick	当用户点击某个对象时调用的事件句柄。
+   onblur	元素失去焦点
+   onchange	域的内容被改变。
+   ondblclick	当用户双击某个对象时调用的事件句柄。
+   onfocus	元素获得焦点。
+   onkeydown	某个键盘按键被按下。
+   onkeypress	某个键盘按键被按下并松开。
+   onkeyup	某个键盘按键被松开。
+   onload	一张页面或一幅图像完成加载。
+   onmousedown	鼠标按钮被按下。
+   onmousemove	鼠标被移动。
+   onmouseout	鼠标从某元素移开。
+   onmouseover	鼠标移到某元素之上。
+   onmouseup	鼠标按键被松开。
+   onsubmit	确认按钮被点击。
+
+注册功能的校验：
+用户名、密码、确认密码、手机号 注册按钮
+
+用户名失去焦点时  提示用户名不能为空
+确认密码失去焦点时 提示密码需要一致
+手机号失去焦点时 提示手机号格式不正确
+
+页面元素：
+用户名：|    | *用户名不能为空
+
+7.获取子节点、文本节点、属性节点
+  节点的类型：
+	标签节点、文本节点、属性节点
+  <p style="width:100px">段落文字</p>
+  标签节点：<p></p>
+  文本节点：段落文字
+  属性节点：style="width:100px"
+
+  每个子节点都存在三个数据
+  element.nodeName	返回元素的名称。
+  element.nodeType	返回元素的节点类型。
+  element.nodeValue	设置或返回元素值。
+
+  节点的类型：
+	标签节点 1  属性节点 2 文本节点 3
+  节点的名字：
+	标签节点 标签的类型名  
+	属性节点 属性的名字
+	文本节点 #text
+  节点的值：
+	标签节点 null
+	属性节点 属性值
+	文本节点 文本数据
+
+  1）获取：
+  element.childNodes	返回元素子节点的 NodeList。
+  nodelist.length	返回 NodeList 中的节点数。
+  element.attributes	返回元素属性的 NamedNodeMap。
+  element.firstChild	返回元素的首个子。
+  element.getAttribute()	返回元素节点的指定属性值。
+  element.getAttributeNode()	返回指定的属性节点。
+  element.getElementsByTagName()	返回拥有指定标签名的所有子元素的集合。
+  element.lastChild	返回元素的最后一个子元素。
+  element.nextSibling	返回位于相同节点树层级的下一个节点。
+  element.parentNode	返回元素的父节点。
+  element.previousSibling	返回位于相同节点树层级的前一个元素。
+  
+  2）节点元素值：
+  element.innerHTML	设置或返回元素的内容。
+  innerHTML ---可以将字符串中的标签解释显示
+  innerText---字符串中的标签当成文本显示（不能解释）
+
+  3）判断：
+  element.isEqualNode()	检查两个元素是否相等。
+  4）赋值：
+  element.setAttribute()	把指定属性设置或更改为指定值。
+  element.setAttributeNode()	设置或更改指定属性节点。
+
+8.创建节点
+
+9.加入节点、移除节点
+  element.cloneNode()	克隆元素。
+  element.appendChild()	向元素添加新的子节点，作为最后一个子节点。
+  element.insertBefore()	在指定的已有的子节点之前插入新节点。
+  element.removeAttribute()	从元素中移除指定属性。
+  element.removeAttributeNode()	移除指定的属性节点，并返回被移除的节点。
+  element.removeChild()	从元素中移除子节点。
+  element.replaceChild()	替换元素中的子节点。
+
+练习：
+1.主页页面的校验
+  用户名 不为空
+  密码 不为空
+  手机号
+ 
+  如果用户名为空 、密码为空、手机号不对 
+   则在标签后显示红色的提示文字且输入框红色边框
+  如果输入正确 则 标签后显示绿色的对勾
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

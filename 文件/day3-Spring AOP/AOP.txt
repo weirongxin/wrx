@@ -1,0 +1,61 @@
+Spring AOP
+1.AOP的实际例子：
+  AOP面向切面编程
+  需求：
+	算数运算功能：和、差、乘积、商
+	在算术运算之前 进行日志信息的打印
+	在算术运算之后 日志信息打印
+  实现：在算术功能的方法内，核心功能同级进行附加方法的添加
+          （在add求和方法前，添加日志打印、添加数字校验）
+  代理模式：
+       生活中的场景：经理和秘书（经理发出指令，秘书执行）
+		 饭店和送餐员(饭店发出送餐指令，送餐员执行)
+		赵丽颖和经纪人(艺人的宣传操作，经纪人执行)
+  java提供的代理接口Proxy
+  
+
+2.Spring中AOP的应用
+  切面Aspect：横切关注点，被模块化的特殊对象
+  通知Advice：切面必须完成的工作
+  目标Target：被通知的对象
+  代理Proxy：向目标对象应用通知之后创建的对象
+  连接点 JoinPoint：程序执行的某个特定位置 方法执行前、后、异常时..
+  切点 pointcut：每个类都拥有多个连接点(每个方法都是连接点)
+
+
+3.AspectJ是aop框架
+<aop:aspectj-autoproxy/>
+
+4.通知的种类：
+  @Before @After @AfterReturning  @AfterThrowing @Around
+  @Before：在调用的功能前 执行
+  @After：在调用的功能后 执行
+  @AfterReturning：在调用方法返回值 后
+  @AfterThrowing：当方法抛出异常时
+  @Around：环绕通知 对前四种的综合时机调用
+
+  	@Before("execution(int aspect.aop.MathFunImpl.sum(int,int))")
+	@After("execution(* aspect.aop.*.*(..))")
+	@AfterReturning(value="execution(* aspect.aop.*.*(..))",returning="result")
+	@AfterThrowing(value="execution(* aspect.aop.*.*(..))",throwing="ex")
+
+5.通知的优先级@Order(1)
+ 
+  
+
+
+数据库：
+  用户表Book_User：id、name、pass、money、author（权限）
+  书籍表Book_Books：id、name、price、num（库存）
+  订单表Book_Order：id、user_id、orderNum(订单号)
+  订单详情表Book_OrderDetail：id、order_id、book_id、book_name
+
+功能：登录、注册、查看所有图书、图书购买、查看个人订单详情
+界面：登录页面、注册页面
+      主页：可以查看所有图书、可以购买图书(检测余额是否足够)
+      个人订单信息页面：查看个人订单信息
+      个人信息页面：查看个人信息(包含余额)
+	
+      
+     
+   

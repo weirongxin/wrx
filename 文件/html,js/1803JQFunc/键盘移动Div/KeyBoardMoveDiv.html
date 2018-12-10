@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#div1{width: 100px;height: 100px;background-color: red;border:1px solid black;
+					position: absolute;top: 0px;left: 0px;}
+		</style>
+		<script type="text/javascript" src="../js/jquery-2.1.1.js" ></script>
+		<script>
+			document.onkeydown = function(event){
+				var div1 = $("#div1");
+				//键值：左 37上 38右 39下 40
+				switch(event.keyCode){
+					case 37:{
+						//当前标签距离左侧的间距
+						var leftDis = parseInt(div1.prop("offsetLeft"));
+						//计算键位点击后 最终距离左侧的间距（点击一次减10像素）
+						var dis = leftDis-10;
+						//将距离样式更改
+						div1.css("left",dis+"px");
+						break;
+					}
+					case 38:{
+						//当前标签距离左侧的间距
+						var topDis = parseInt(div1.prop("offsetTop"));
+						//计算键位点击后 最终距离左侧的间距（点击一次减10像素）
+						var dis = topDis-10;
+						//将距离样式更改
+						div1.css("top",dis+"px");
+						break;
+					}
+					case 39:{
+						//当前标签距离左侧的间距
+						var rightDis = parseInt(div1.prop("offsetLeft"));
+						//计算键位点击后 最终距离左侧的间距（点击一次减10像素）
+						var dis = rightDis+10;
+						//将距离样式更改
+						div1.css("left",dis+"px");
+						break;
+					}
+					case 40:{
+						//当前标签距离左侧的间距
+						var bottomDis = parseInt(div1.prop("offsetTop"));
+						//计算键位点击后 最终距离左侧的间距（点击一次减10像素）
+						var dis = bottomDis+10;
+						//将距离样式更改
+						div1.css("top",dis+"px");
+						break;
+					}
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<div id="div1">div1</div>
+	</body>
+</html>

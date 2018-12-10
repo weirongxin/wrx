@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<!--
+        	添加用户名：
+     		输入框输入用户名，点击添加按钮后，下方列表显示用户名
+     		每行用户名后可以使用删除按钮，点击删除该行
+     		实现：
+     			输入框、添加按钮 --组件1
+     			用户名列表--组件2
+     			用户名集合数据--vue中存储
+        -->
+        <script type="text/javascript" src="js/jquery-2.1.1.js" ></script>
+        <script type="text/javascript" src="js/vue.js" ></script>
+        <script>
+        	$(function(){
+        		Vue.component("name-compt",{
+        			//传入组件数据的入口
+        			template:"#compt1",
+        			data:function(){
+        				return {
+        					inputName:""	
+        				}
+        			},methods:{
+        				add(){
+        					this.$emit("add-name",this.inputName);
+        				}
+        			}
+        		});
+        		Vue.component("list-compt",{
+        			//传入组件数据的入口
+        			props:["names"],
+        			template:"#compt2",
+        			methods:{
+        				del(index){
+        					//发射到vue中
+        					this.$emit("del-name",index);
+        				}
+        			}
+        		});
+        		new Vue({
+        			el:"#div1",
+        			data:{
+        				names:["小明"]
+        			},
+        			methods:{
+        				addName(newName){
+        					this.names.push(newName);
+        				},delName(index){
+        					this.names.splice(index,1);
+        				}
+        			}
+        		});
+        	});
+        </script>
+	</head>
+	<body>
+		<template id="compt1">
+			<div>
+				<input  type="text" v-model="inputName"/>
+				<input type="button" value="增加用户名" @click="add"/>
+			</div>
+		</template>
+		<template id="compt2">
+			<ol>
+				<li v-for="(value,index) in names">
+					{{value}}
+					<input type="button" value="删除" @click="del(index)"/>
+				</li>
+			</ol>
+		</template>
+		<!--页面上的标签显示  由两个组件组成-->
+		<div id="div1">
+			<!--使用组件    @发射方法名=关联方法    :传递参数名=传递参数 -->
+			<name-compt @add-name="addName"></name-compt>
+			<list-compt :names="names" @del-name="delName"></list-compt>
+		</div>
+	</body>
+</html>

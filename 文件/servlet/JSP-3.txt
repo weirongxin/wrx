@@ -1,0 +1,100 @@
+	JSP
+JSP内容复习：
+ java server page本质为servlet
+     语法：<%%>
+     声明: <%!  %> 变量、方法
+     表达式：<%=  %>
+九大内置对象：
+     response request page out pageContext config
+     exception application session
+   错误页面：
+	1)每个页面单独配置异常响应页面
+	errorPage = “”
+	错误页面 isErrorPage = "true"
+	2)在web.xml中配置整个web应用的错误响应
+	errorCode
+	errorException
+Cookie和session：
+   都是用于存储 客户端和服务器端会话状态的。
+   cookie 是在客户端用于存储用户信息的数据。
+	创建过程:第一次请求时 服务器端创建session，将sessionid存入cookie中，响应回浏览器。
+		后续的请求，都会在http头中将cookie数据一起请求到服务器端。
+	种类：会话期(会话结束cookie消失)
+	       设定时长(setMaxAge(秒数))
+   session 用于在服务器端存储，每个用户创建一个
+	创建过程：如果用户没有sessionid，则服务器自动创建一个session，将sessionid存入cookie中，用户保存。
+	session 在服务器端默认保存30min，也可设置时间
+	
+   cookie应用场景：用户名、书籍浏览记录
+   session应用场景：用户的登录信息、购物车
+
+三个指令：
+ <%@ page %>    页面信息配置
+ <%@ include %>   jsp页面的引入(多个页面的头尾一致)
+ <%@ taglib  %>   库的引入(jstl库)
+
+EL表达式：
+   对jsp语法的简写 ${域.属性名}
+   域：requestScope、pageScope、sessionScope、applicationScope
+   ${域.属性名}  其中域可以省略，省略后的查找顺序为：page request session application。
+
+JSTL表达式：
+   <c:set> <c:out> <c:if test>
+   <c:foreach begin end items var>
+   <c:redirect> <c:url>
+
+1.7大动作:
+ <jsp:useBean>  
+	在jsp页面使用java中的数据模型
+  <jsp:setProperty>
+  <jsp:getProperty>
+  <jsp:forward>
+  <jsp:param>
+  <jsp:plugin> 插件的导入
+  <jsp:include> 将其他jsp文件引入
+  include指令和动作的区别：
+	指令和动作对页面的引入时机不同：
+	 指令页面加载时引入
+	  （在A页面引入B，打开A时B加载）
+	 动作页面跳转时引入
+	  （在A页面引入B，执行到引入B处时引入）
+2.javaBean
+   指代存在无参构造、属性由访问器方法访问的类都称为bean。
+   javaBean的分类：
+	do：数据相关的数据模型  data Object  （根据数据库表  进行创建）
+	bo: 业务相关的数据模型 bussiness Object  
+	vo：视图相关的数据模型 view Object
+    eg: do ( User  Student Person Cat)
+        bo: 存在订单信息DingDanInfo
+	 （订单名 DingDan、货物名 Good）	
+        vo：分页用户信息（用户列表、当前页数、共几页）   
+	
+3.分页查询
+   rownum伪列在oracle中实现行号范围查询，从而实现分页效果
+
+   效果：
+	数据列表
+
+	共120条记录，12页	
+	首页 上一页  1 2 3 4 5 下一页 尾页
+
+当前为第一页：
+首页  1 2 3 4 5 下一页 尾页
+当前为第5页：
+首页 上一页  3 4 5 6 7 下一页 尾页
+当前为最后一页：
+首页 上一页  8 9 10 11 12 尾页
+
+     分析：bean中需要的数据：
+	 totalCount 总记录数
+	 totalPage  总页数
+	 pageSize  一页的记录数
+	 startPage 起始页数
+	 endPage 结束页数
+	 currentPage 当前查询页数
+	 List<T> list 数据列表
+     操作步骤：
+	根据vo属性创建PageBean类
+	将业务关联后 pageBean对象传入视图层显示
+
+反射

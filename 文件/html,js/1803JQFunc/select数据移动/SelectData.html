@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/jquery-2.1.1.js"></script>
+		<script>
+			var data1 = new Array("swimming","running","climbing");
+			var data2 = new Array();
+			$(function(){
+				for(var i in data1){
+					$("#like").append($("<option>"+data1[i]+"</option>"));
+				}
+			});
+			function selectData(){
+				//取出选中的select值
+				var selValue =  $("#like :checked").html();
+				//定义变量是否存在相同的数据
+				var status = false;
+				//遍历 select2中的已有数据，如果已经存在则status为true
+				for(var i in data2){
+					if(selValue == data2[i]){
+						status = true;
+					}
+				}
+				//根据状态判断，如果不存在，则新建option加入select中
+				if(!status){
+					$("#selLike").append($("<option>"+selValue+"</option>"));
+					data2[data2.length] = selValue;
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<select id = "like" multiple="multiple"></select>
+		<input  type="button" value=">>" onclick="selectData()"/>
+		<select id = "selLike" multiple="multiple"></select>
+	</body>
+</html>

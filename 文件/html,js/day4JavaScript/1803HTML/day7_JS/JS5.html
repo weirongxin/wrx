@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<!--将外部js文件导入，js文件中定义了Studnet类-->
+		<script src="../js/test2.js"></script>
+	</head>
+	<body>
+		<script>
+			//对象的使用1：直接实例化Object对象
+			//手动添加三个属性，缺点:仅有当前对象存在三个添加的属性
+			var stu = new Object();
+			stu.name = "小明";
+			stu.gender = "F";
+			stu.age = 18;
+			
+			document.write(stu.name);
+			document.write(stu.gender);
+			document.write(stu.age);
+		</script>
+		<script>
+//			对象的使用2：实例化js外部文件中定义的Student类
+			var s1 = new Student("xiaoming1","F",7);
+			s1.say();
+			var s2 = new Student("xiaoming2","F",17);
+			s2.say();
+		</script>
+		<script>
+		//对象的使用3：json格式的数据使用：大部分时机用于数据的传输
+			var stu = {
+				name:"小明",
+				gender:"F",
+				say:function(){
+					alert(1);
+				}
+			}
+			stu.say();
+			alert(stu.name);
+		</script>
+	</body>
+</html>

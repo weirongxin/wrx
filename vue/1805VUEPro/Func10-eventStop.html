@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-2.1.1.js" ></script>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script>
+			$(function(){
+				new Vue({
+					el:"#div1",
+					data:{
+						
+					},methods:{
+						click1(){
+							alert("click1");
+						},click2(){
+							alert("click2");
+						}
+					}
+				});
+			});
+		</script>
+		<style>
+			#div2{
+				width: 100px;height: 100px;
+				background-color: yellow;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1">
+			<div id="div2" @click="click1">
+				<!--.stop 阻止事件冒泡时 传递到上层响应-->
+				<input type="button" value="点我" @click.stop="click2"/>
+			</div>
+		</div>
+	</body>
+</html>

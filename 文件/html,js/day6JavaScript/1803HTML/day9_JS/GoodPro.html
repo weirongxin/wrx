@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#bgDiv{position: relative;}
+			#goodsDiv{width: 600px;height: 600px;background-color: yellow;
+				position: absolute;z-index: 1;}
+			#carDiv{width: 600px;height: 600px;background-color: blue;
+				position: absolute;z-index: 2;top: 0px;display: none;}
+			.floatRight{float: right;}
+			.borderCss{border: 1px solid black;text-align: center;}
+		</style>
+		<script src="../js/GoodCustom.js"></script>
+		<script>
+			var goodArray;
+			var goodCar = new Array();
+			//添加商品初始数据
+			function initData(){
+				var good1 = new Good(1,"名字1",1.1,10,"","产地1");
+				var good2 = new Good(2,"名字2",2.1,20,"","产地2");
+				var good3 = new Good(3,"名字3",3.1,220,"","产地3");
+				goodArray = new Array(good1,good2,good3);
+			}
+			//页面加载完成时，先加载商品数据
+			window.onload = function(){
+				initData();
+				createGoodTable();
+			}
+			//创建商品列表
+			function createGoodTable(){
+				//存放商品信息的父标签
+				var goodsDiv = document.getElementById("goodsDiv");
+				if(goodArray.length==0){
+					return;
+				}
+				//新建表格标签
+				var table = document.createElement("table");
+				table.className = "borderCss";
+				table.cellSpacing = "0px";
+				table.borderSpacing = "0px";
+				for(var i=0;i<goodArray.length+1;i++){
+					var good = goodArray[i-1];
+					var tr = document.createElement("tr");
+					
+					var td = document.createElement("td");
+					td.className = "borderCss";
+					if(i==0){
+						td.innerHTML = "编号";
+					}else{
+						td.innerHTML = good.id;
+					}
+					tr.appendChild(td);
+					
+					var td = document.createElement("td");
+					td.className = "borderCss";
+					if(i==0){
+						td.innerHTML = "名字";
+					}else{
+						td.innerHTML = good.name;
+					}
+					tr.appendChild(td);
+					
+					var td = document.createElement("td");
+					td.className = "borderCss";
+					if(i==0){
+						td.innerHTML = "单价";
+					}else{
+						td.innerHTML = good.price;
+					}
+					tr.appendChild(td);
+					
+					var td = document.createElement("td");
+					td.className = "borderCss";
+					if(i==0){
+						td.innerHTML = "库存";
+					}else{
+						td.innerHTML = good.count;
+					}
+					tr.appendChild(td);
+					var td = document.createElement("td");
+					td.className = "borderCss";
+					if(i==0){
+						td.innerHTML = "图片";
+					}else{
+						td.innerHTML = good.pic;
+					}
+					tr.appendChild(td);
+					var td = document.createElement("td");
+					td.className = "borderCss";
+					if(i==0){
+						td.innerHTML = "产地";
+					}else{
+						td.innerHTML = good.loc;
+					}
+					tr.appendChild(td);
+					var td = document.createElement("td");
+					td.className = "borderCss";
+					if(i==0){
+						td.innerHTML = "加入购物车";
+					}else{
+						var add = document.createElement("input");
+						add.type = "button";
+						add.value = "加入购物车";
+						td.appendChild(add);
+					}
+					tr.appendChild(td);
+					var td = document.createElement("td");
+					td.className = "borderCss";
+					if(i==0){
+						td.innerHTML = "功能";
+					}else{
+						var del = document.createElement("input");
+						del.type = "button";
+						del.value = "删除";
+						td.appendChild(del);
+						//删除按钮  添加点击事件
+						//未使用闭包时  不准确的写法
+//						del.onclick = function(){
+//							//从页面上删除标签
+////							this.parentNode.parentNode.remove();
+//							alert(good.id);
+//						}
+						
+						//闭包（如果不使用闭包 ，则代码自上而下执行，先给标签添加事件。
+						//	事件响应时取到的数据为循环结束的最后一个数据,不准确）
+						(function(i){
+							del.onclick = function(){
+								//页面上标签的删除  当前按钮的父标签td 的父标签tr删除
+								this.parentNode.parentNode.remove();
+								//根据需要删除元素的位置  从数组中将元素删除
+								goodArray.splice(i-1,1);
+							}
+						})(i);
+						
+					}
+					tr.appendChild(td);
+					table.appendChild(tr);
+				}
+				goodsDiv.appendChild(table);
+			}
+			
+			//显示购物车标签
+			function showCar(){
+				var carDiv = document.getElementById("carDiv");
+				carDiv.style.display = "block";
+			}
+			//隐藏购物车标签
+			function hiddenCar(){
+				var carDiv = document.getElementById("carDiv");
+				carDiv.style.display = "none";
+			}
+		</script>
+	</head>
+	<body>
+		<div id="bgDiv"> 
+			<div id="goodsDiv">
+				<input type="button" value="显示购物车" onclick="showCar()"/>
+			</div>
+		
+			<div id="carDiv">
+				<input class="floatRight" type="button" value="隐藏购物车" onclick="hiddenCar()"/>
+			</div>
+		</div>
+		
+	</body>
+</html>

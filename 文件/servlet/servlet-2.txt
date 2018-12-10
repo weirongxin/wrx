@@ -1,0 +1,99 @@
+	servlet
+昨日内容：
+servlet、servlet容器 是什么？
+tomcat默认端口号：8080
+dynamic web project 创建动态的web工程
+前端：webContent 服务器端：Java Resources
+servlet生命周期：
+        构造、init 、service、destory
+servlet调用过程：
+        1)请求servlet容器2）web.xml查找配置
+        3）请求对应的servlet 4)第一次访问构造，后调用service  5）服务停止时destory
+web.xml:
+servlet配置：
+ <servlet>
+      <servlet-name>自定义servlet名字</servlet-name>
+      <servlet-class>定义servlet类所在位置</servlet-class>
+      <!--servlet初始参数的配置-->
+      <init-param>
+	<param-name></param-name>
+	<param-value></param-value>
+      </init-param>
+      //服务启动完成后 加载
+      <load-on-startup>0</load-on-startup>
+ </servlet>
+ <servlet-mapping>
+      <servlet-name>servlet名字</servlet-name>
+      <url-pattern>访问url</url-pattern>
+ </servlet-mapping>
+
+
+1.http请求：
+  http：超文本传输协议
+  http属于短连接：请求一次连接到服务器端响应后断开连接
+  静态页面数据提交方式：
+	通过form表单提交(name action method)
+	method:get\post
+	get:将传递的参数和请求url拼接到一个串中，
+	    通过地址访问servlet容器。
+	post:在地址栏请求url到servlet容器。
+	      参数通过表单的形式进行的提交
+	特点：1）get请求参数暴露在地址栏
+	           post更安全
+	       2）get请求的参数长度有限制1kb
+		post数据没有大小限制
+	       3）get请求的效率高
+		post效率相较get低
+
+1.servlet映射的细节
+   url-pattern：配置信息中配置servlet在web端的请求入口
+	1）精确配置 （配置的数据即为访问的数据）
+	   "/custom"  访问时 拼接 /custom
+	2) /*    (任意请求都响应)
+	3)  *.html  (任意的后缀请求都响应)
+	   配置：“*.user"  调用时 “login.user” "register.user"  
+   servlet类结构：
+	java中servlet为父类接口
+	     ---子类GenericServlet
+	     ---子类HttpServlet
+	    （将service中的get、post请求封装了两个方法：分别是doGet、doPost）
+
+2.servletContext对象
+   可以获取到web应用的信息
+   1）.根据参数名 获取当前web应用的配置数据
+     context.getInitParameter("username");
+   2)获取文件的真实路径（web应用发布后的路径）
+     context.getRealPath("test.txt");
+   3)获取文件中的数据流
+     //根据web应用对象，获取加载类对象
+     ClassLoader loader = context.getClassLoader();
+    InputStream in = loader.getResourceAsStream("db.properties");
+    //创建properties文件对象
+    Properties pro = new Properties();
+    //使文件对象加载流
+    pro.load(in);
+    //从properties中获取数据：
+    String getNameData = pro.getProperty("username");
+3. 解决乱码问题：
+   乱码问题的根本原因：
+	传输数据和接受数据端编码格式不一致导致
+   浏览器端编码格式"ISO-8859-1"
+   服务器端编码格式“UTF-8”
+   解决乱码：
+	1）服务器端到页面的输出 response
+	  //输出数据前，对response设定编码格式
+	  //1)设置响应的文本类型
+	     resp.setContentType("text/html");
+	  //2)设置响应的数据为UTF-8编码
+	     resp.setCharacterEncoding("UTF-8");
+	2）页面到服务器端的请求 request
+	   解决方案1：先以ISO-8859-1解码  再以UTF-8编码
+	    编码、解码 需要两个类 ,分别解码、编码
+	     URLEncoder.encode(userName, "ISO-8859-1");
+	     URLDecoder.decode(userName, "UTF-8");
+	   解决方案2：将数据使用String的构造方法再次编解码
+ 	     new String(userName.getBytes("ISO-8859-1"), "UTF-8");		 
+	   解决方案3：请求request对象设置编码格式
+	     req.setCharacterEncoding("UTF-8");
+   
+ 

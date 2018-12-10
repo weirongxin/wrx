@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>页面3</title>
+		<script>
+			function prePage(){
+				history.back();
+				history.go(-1);
+			}
+			function pre2Page(){
+				history.go(-2);
+			}
+		</script>
+	</head>
+	<body>
+		<input type="button" value="上一页" onclick="prePage()"/>
+		<input type="button" value="上2页" onclick="pre2Page()"/>
+	</body>
+</html>

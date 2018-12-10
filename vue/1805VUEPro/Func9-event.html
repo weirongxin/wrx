@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-2.1.1.js" ></script>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script>
+			$(function(){
+				new Vue({
+					el:"#div1",
+					data:{
+						
+					},methods:{
+						showtitle(e){
+							alert(e.target.value);
+						}
+					}
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div id="div1">
+			<!---$event传参  传递事件对象，
+				e.target能够获取触发事件的标签对象-->
+			<input type="button" value="我是一个按钮"
+				@click="showtitle($event)" />
+		</div>
+	</body>
+</html>

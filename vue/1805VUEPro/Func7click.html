@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-2.1.1.js" ></script>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script>
+			$(function(){
+				new Vue({
+					el:"#div1",
+					data:{
+						flag:true
+					},
+					methods:{
+						show(){
+							this.flag = !this.flag;
+						}
+					}
+				});
+			});
+		</script>
+		<style>
+			#div2{
+				width: 100px;
+				height: 100px;
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1">
+			<!--将绑定事件简写： v-on:click =>  @click-->
+			<input type="button" 
+				value="切换标签显示" @click="show"/>
+			<div id="div2" v-show="flag"></div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js"></script>
+		<script>
+			window.onload = function(){
+				new Vue({
+					el:"#bgDiv",
+					data:{},
+					methods:{
+						show(){
+							alert("hello");
+						}
+					}
+				});
+			}
+		</script>
+	</head>
+	<body>
+		<!--事件冒泡
+			当前页面的结果为标签组成的文档流
+			标签为树形结构，如果里层标签响应到了点击了，默认事件冒泡处理。
+			里层标签响应后 响应到外层标签
+		-->
+		<div id="bgDiv">
+			<div>
+				<div style="width: 50px;height: 50px;background-color: red;"
+					 @click="show">
+					<input type="button" value="点击" @click.stop="show"/>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>样式</title>
+		<style>
+			.a{width: 100px;height: 100px; background-color: red;}
+			.b{width: 100px;height: 100px; background-color: yellow;}
+		</style>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script>
+			window.onload = function(){
+				new Vue({
+					el:"#bgDiv",
+					data:{
+						flag1:true,
+						flag2:false
+					},methods:{
+						change(){
+							//切换 两个布尔类型的变量值
+							this.flag1 = this.flag2;
+							this.flag2 = !this.flag2;
+						}
+					}
+				})
+			}
+		</script>
+	</head>
+	<body>
+		<div id="bgDiv">
+			<!-- 给标签绑定样式属性  :class绑定样式 
+				a、b的样式是否使用取决于flag1和flag2的布尔类型值
+			-->
+			<div :class="{a:flag1,b:flag2}"></div>
+			<input type="button" value="切换样式" @click="change"/>
+		</div>
+	</body>
+</html>

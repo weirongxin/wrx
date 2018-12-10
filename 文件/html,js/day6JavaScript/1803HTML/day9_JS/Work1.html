@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#bgDiv{width:800px;height: 200px;
+				margin: 140px auto;
+				text-align: center;}
+			.msgTitle{
+				width:100px;height: 20px;
+				display: inline-block;
+				font-size: 10px;
+			}
+		</style>
+		<script src="../js/checkPhone.js"></script>
+		<script>
+			function nameCheck(){
+				var nameInput = document.getElementsByName("userName")[0];
+				var nameData = nameInput.value;
+				var showMsg = document.getElementById("nameMsg");
+				if(nameData.length==0){
+					showMsg.innerHTML = "用户名不能为空";
+					showMsg.style.color="red";
+					nameInput.style.border="solid 1px red";
+				}else{
+					showMsg.innerHTML = "√";
+					showMsg.style.color="green";
+					nameInput.style.border="solid 1px black";
+				}
+			}
+			function passCheck(){
+				var passInput = document.getElementsByName("pass")[0];
+				var rePassInput = document.getElementsByName("repass")[0];
+				
+				var pass = passInput.value;
+				var repass = rePassInput.value;
+				
+				var msg = document.getElementById("rePass");
+				if(pass.length>0&&pass==repass){
+					msg.innerHTML = "√";
+					msg.style.color="green";
+					passInput.style.border="solid 1px black";
+				}else{
+					msg.innerHTML = "密码一致且不能为空";
+					msg.style.color="red";
+					passInput.style.border="solid 1px red";
+				}
+			}
+			function phoneCheck(){
+				var phoneInput = document.getElementsByName("phone")[0];
+				var telData = phoneInput.value;
+				var result = check(telData);
+				var msg = document.getElementById("phone");
+				if(result==true){
+					alert("111");
+					msg.innerHTML = "√";
+					msg.style.color="green";
+					phoneInput.style.border="solid 1px black";
+				}else{
+					msg.innerHTML = "输入手机号有误";
+					msg.style.color="red"
+					phoneInput.style.border="solid 1px red";
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<form>
+			<div id="bgDiv">
+				用户名:<input type="text" name="userName" onblur="nameCheck()" />
+				<div id="nameMsg" class="msgTitle"></div>
+				<br/>
+				密码：<input type="password" name="pass"/>
+				<div id="passMsg" class="msgTitle"></div>
+				<br/>
+				确认密码:<input type="password" name="repass" onblur="passCheck()"/>
+				<div id="rePass" class="msgTitle"></div>
+				<br/>
+				手机号:<input type="text" name="phone" onblur="phoneCheck()"/>
+				<div id="phone" class="msgTitle"></div>
+				<br/>
+				<input type="button" value="注册" onclick="login()"/>
+			</div>
+		</form>
+		
+	</body>
+</html>

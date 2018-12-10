@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<!--
+    商品列表：
+    用组件的方法实现点击加或减按钮时数量、加减、总计也随之加减
+
+             商品编号              商品名                    商品数量           单价          总价
+        0           java           - 1 +       2       2
+        1           c++            - 2 +       3       6
+        2            c             - 3 +       4      12
+     			            总价：20
+     			            
+     	思路：1.根据需求数据  创建商品类
+     		2.列表使用组件实现  
+     			props传入商品集合
+     			$emit 发射商品数量的加减
+        -->
+        <script type="text/javascript" src="js/jquery-2.1.1.js" ></script>
+        <script type="text/javascript" src="js/vue.js" ></script>
+        <script type="text/javascript" src="js/Good.js" ></script>
+        <script>
+        	$(function(){
+        		Vue.component("good-compt",{
+        			props:["goods","tprice"],
+        			template:"#goodTemp",
+        			methods:{
+        				add(index){
+        					this.$emit("good-add",index);
+        				},reduce(index){
+        					this.$emit("good-reduce",index);
+        				}
+        			}
+        		});
+        		new Vue({
+        			el:"#div1",
+        			data:{
+        				goods:[new Good("1","巧克力",10,5),
+        				new Good("2","烤串",20,3),
+        				new Good("3","火锅",1,50)],
+        				totalPrice:160.0
+        			},methods:{
+        				addCount(index){
+        					this.goods[index].count++;
+        					this.goods[index].sumPrice 
+        						= this.goods[index].count*this.goods[index].price;
+        					//修改总价
+        					this.totalPrice = this.totalPrice + this.goods[index].price;
+        				},reduceCount(index){
+        					this.goods[index].count--;
+        					this.goods[index].sumPrice 
+        						= this.goods[index].count*this.goods[index].price;
+        					//修改总价
+        					this.totalPrice = this.totalPrice - this.goods[index].price;
+        				}
+        			}
+        		})
+        	});
+        </script>
+	</head>
+	<body>
+		<template id="goodTemp">
+			<div>
+				<table border="1px solid black">
+					<tr>
+						<td>商品序号</td>
+						<td>名字</td>
+						<td>数量</td>
+						<td>单价</td>
+						<td>总价</td>
+					</tr>
+					<tr v-for="(good,index) in goods">
+						<td>{{index}}</td>
+						<td>{{good.name}}</td>
+						<td>
+							<input type="button" value="-" @click="reduce(index)"/>
+							{{good.count}}
+							<input type="button" value="+" @click="add(index)"/>
+						</td>
+						<td>{{good.price}}</td>
+						<td>{{good.sumPrice}}</td>
+					</tr>	
+					<tr>
+						<td colspan="5">
+							总价：{{tprice}}
+						</td>
+					</tr>
+				</table>
+			</div>
+		</template>
+		
+		<div id="div1">
+			<!--使用组件的同时  绑定传入数据、发射的方法-->
+			<good-compt :goods="goods" 
+					:tprice = "totalPrice"
+					@good-add="addCount" 
+					@good-reduce="reduceCount">
+			</good-compt>
+		</div>
+	</body>
+</html>

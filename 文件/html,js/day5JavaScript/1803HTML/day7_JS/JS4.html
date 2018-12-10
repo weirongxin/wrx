@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>局部变量、全局变量</title>
+		<script>
+			function method1(){
+				//局部变量  在方法内通过var声明变量
+				var a = 1;
+				alert(a);
+			}
+			//在方法外声明 变量为全局变量
+			var a = 4;
+			//方法 不使用var声明的变量 也为全局变量
+			b = 5;
+			function method2(){
+				alert(a);
+				alert(b);
+			}
+		</script>
+	</head>
+	<body>
+		<script>
+			method1();
+			method2();
+		</script>
+	</body>
+</html>

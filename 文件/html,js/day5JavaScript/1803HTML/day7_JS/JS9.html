@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>登录校验</title>
+		<script>
+			function check(){
+				var name1 = document.getElementById("name");
+				var pass1 = document.getElementById("pass");
+				var userName = name1.value;
+				var userPass = pass1.value;
+				 
+				if(userName.length==0||userPass.length==0){
+					alert("不可为空");
+				}else if(userName=="xiaoming"&&userPass=="123456"){
+					alert("登录成功");
+				}
+			}
+		</script>
+	</head>
+<body>
+	<form>
+		用户名:<input id="name" type="text" /><br/> 密码：
+		<input id="pass" type="password" /><br/>
+		<input type="button" value="登录" onclick="check();" />
+	</form>
+</body>
+</html>

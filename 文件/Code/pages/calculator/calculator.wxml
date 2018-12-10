@@ -1,0 +1,32 @@
+<view class='content'>
+  <view class='showView'>{{showValue}}</view>
+  <view class='numView'>
+    <button class="btn_style orange" bindtap='back'>退格</button>
+    <button class="btn_style orange" bindtap='clear'>清空</button>
+    <button class="btn_style orange" bindtap='funcClick' id='{{id_mod}}'>%</button>
+    <button class="btn_style orange" bindtap='funcClick' id='{{id_add}}'>+</button>
+  </view>
+  <view class='numView'>
+    <button class="btn_style gray" bindtap='numclick' id='{{id_num9}}'>9</button>
+    <button class="btn_style gray" bindtap='numclick' id='{{id_num8}}'>8</button>
+    <button class="btn_style gray" bindtap='numclick' id='{{id_num7}}'>7</button>
+    <button class="btn_style orange" bindtap='funcClick' id='{{id_reduce}}'>-</button>
+  </view>
+  <view class='numView'>
+    <button class="btn_style gray" bindtap='numclick' id='{{id_num6}}'>6</button>
+    <button class="btn_style gray" bindtap='numclick' id='{{id_num5}}'>5</button>
+    <button class="btn_style gray" bindtap='numclick' id='{{id_num4}}'>4</button>
+    <button class="btn_style orange" bindtap='funcClick' id='{{id_mul}}'>*</button>
+  </view>
+  <view class='numView'>
+    <button class="btn_style gray" bindtap='numclick' id='{{id_num3}}'>3</button>
+    <button class="btn_style gray" bindtap='numclick' id='{{id_num2}}'>2</button>
+    <button class="btn_style gray" bindtap='numclick' id='{{id_num1}}'>1</button>
+    <button class="btn_style orange" bindtap='funcClick' id='{{id_division}}'>/</button>
+  </view>
+  <view class='numView'>
+    <button class="btn_style zero gray" bindtap='numclick' id='{{id_num0}}'>0</button>
+    <button class="btn_style gray" bindtap='numclick' id='{{id_num00}}'>.</button>
+    <button class="btn_style orange" bindtap='result'>=</button>
+  </view>
+</view>

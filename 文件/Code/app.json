@@ -1,0 +1,42 @@
+{
+  "pages": [
+    "pages/calculator/calculator",
+    "pages/audioplay/audioplay",
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#BBE0EE",
+    "navigationBarTitleText": "前程小苹果",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/mark.png",
+        "selectedIconPath": "images/markHL.png"
+      },
+      {
+        "pagePath": "pages/audioplay/audioplay",
+        "text": "音乐",
+        "iconPath": "images/mine.png",
+        "selectedIconPath": "images/mineHL.png"
+      },
+      {
+        "pagePath": "pages/calculator/calculator",
+        "text": "计算",
+        "iconPath": "images/mine.png",
+        "selectedIconPath": "images/mineHL.png"
+      },
+      {
+        "pagePath": "pages/logs/logs",
+        "text": "我的",
+        "iconPath": "images/mine.png",
+        "selectedIconPath": "images/mineHL.png"
+      }
+    ]
+  }
+}

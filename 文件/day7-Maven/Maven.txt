@@ -1,0 +1,41 @@
+1.使用Maven核心概念介绍( 坐标、依赖、仓库、插件、生命周期等)
+	坐标就是groupId+ artifactId+version组合
+	
+	依赖元素
+<dependency>
+  	<groupId>mysql</groupId>
+   <artifactId>mysql-connector-java</artifactId>
+   <version>5.0.3</version>
+</dependency>
+
+<dependency>  
+    <groupId>org.springframework</groupId>  
+    <artifactId>spring-core</artifactId>  
+    <version>${springframework.version}</version>  
+    <type>jar</type>  
+    <scope>compile</scope>  
+</dependency>  
+	groupId,必选，实际隶属项目
+artifactId,必选，其中的模块
+version必选，版本号
+type可选，依赖类型，默认jar
+scope可选，依赖范围，默认compile
+optional可选，标记依赖是否可选，默认false
+exclusion可选，排除传递依赖性，默认空
+依赖范围
+maven项目又三种classpath（编译，测试，运行）
+scope用来表示与classpath的关系，总共有五种
+compile:编译，测试，运行
+test:测试
+provided:编译，测试
+runtime:运行
+system:编译，测试，同provided，但必须指定systemPath，慎用
+2.操作步骤
+ 1）将安装文件压缩到d盘根目录下
+ 2）环境变量的配置
+    java_home  指定jdk安装目录
+    path下添加
+	%JAVA_HOME%\bin;
+	%JAVA_HOME%\jre\bin;
+	D:\apache-maven-3.0.5\bin;
+ 3）测试 mvn -v

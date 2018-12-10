@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+	body,p,h1,h2,h3,h4,h5,h6,dl,dt{margin:0;font-size:0px;}
+	ol,ul{list-style:none;margin:0;padding:0;}
+	a{text-decoration:none;}
+	img{border:none;}
+
+	.clear:after{content:"";display:block;clear:all;}
+	.box{background:#FFFFCC;border:1px black solid;width:302px;zoom:1;margin:100px auto;}
+	.box div,p{display:inline-block;}
+	.box1{width:100px;height:100px;background:red;}
+	.line1{background:black;width:1px;height:100px;}
+	.line2{background:black;width:302px;height:1px;}
+  </style>
+ </head>
+ <body>
+	<div class="box">
+		<div class="box1">
+		</div>
+		<p class="line1">
+		</p>
+		<div class="box1">
+		</div>
+		<p class="line1">
+		</p>
+		<div class="box1">
+		</div>
+
+		<p class="line2">
+		</p>
+		<div class="box1">
+		</div>
+		<p class="line1">
+		</p>
+		<div class="box1">
+		</div>
+		<p class="line1">
+		</p>
+		<div class="box1">
+		</div>
+
+		<p class="line2">
+		</p>
+		<div class="box1">
+		</div>
+		<p class="line1">
+		</p>
+		<div class="box1">
+		</div>
+		<p class="line1">
+		</p>
+		<div class="box1">
+		</div>
+	</div>
+ </body>
+</html>

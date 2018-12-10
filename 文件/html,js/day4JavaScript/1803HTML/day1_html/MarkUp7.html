@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>用户交互标签</title>
+	</head>
+	<body>
+		<!--form 表单标签
+			用户看不到的标签
+			作用：用于提交数据（该标签内的数据可以通过属性设定提交到服务器）
+			属性:name 定义表单标签的名字
+			    action 提交到的位置
+			    method 提交的方式（get、post） 
+		-->
+		<form name="form1" action="" method="get">
+			<!--隐藏标签、隐藏域：用于存储数据，用户不可见（开发人员使用）-->
+			<input type="hidden" />
+			
+			<!--input 用户操作标签-->
+			姓名:<input type="text" name="username"/><br/>
+			<!--密码-->
+			密码:<input type="password" name="pass"/><br/>
+			
+			性别: <!--radio 单选按钮  name值必须相同才能为一组-->
+			<input type="radio" name="gender" value="女"/>F
+			<input type="radio" name="gender" value="男"/>M
+			<br />
+			爱好：<!--checkbox 多选按钮-->
+			<input type="checkbox" name="like" value="running"/>跑步
+			<input type="checkbox" name="like" value="swimming"/>游泳
+			<input type="checkbox" name="like" value="shopping"/>逛街
+			<br />
+			
+			<!--按钮的类型 button：普通按钮  需要自己添加点击事件
+						submit：提交按钮  点击后自动将form表单提交-->
+			<input type="button" value="提交" onclick="alert('AAA')"/>
+			<input type="submit" value="登录"/>
+			
+			<!--reset 将form表单中的标签数据清空-->
+			<input type="reset" value="清空"/>
+			<br />
+		</form>
+		
+		
+	</body>
+</html>

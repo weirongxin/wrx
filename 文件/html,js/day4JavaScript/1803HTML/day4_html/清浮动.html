@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<!--清浮动的目的：
+			浮动的作用：使标签快速浮动起来进行定位
+			Div本身的特点：由内容撑开高度
+			如果浮动则，父子标签不在同一个文档流，子标签不能撑开父标签的高度
+			清浮动：先设置浮动属性 让标签定位、在清浮动使用标签回到文档流撑开父级标签的高度
+        -->
+        <!--清浮动的解决方案：
+        	1）父标签浮动
+        	2）父标签设置height属性（不由子标签撑开）
+        	3）通过clear属性清除左右浮动样式 clear:both
+        	
+        -->
+        <style>
+        	#bgDiv{
+        		width: 100px;
+        		border: 10px orange solid;
+        	}
+        	#div1{
+        		width: 100px;
+        		height: 100px;
+        		background-color: paleturquoise;
+        		float: left;
+        	}
+        	#div0{
+        		width: 100px;
+        		height:0px;
+        		clear: both;
+        	}
+        	#div2{
+        		width:100px;
+        		height: 100px;
+        		background-color: red;
+        		color: white;
+        	}
+        	/*after伪类 在标签后追加内容,content为内容数据,可在该处添加追加内容样式设置*/
+        	#div2:after{
+        		content: "helloworld";
+        		color: blueviolet;
+        		width:10px;
+        		height: 20px;
+        		background-color: white;
+        		color: black;
+        	}
+        	
+        	#bg{
+        		width:100px;
+        		border:5px solid black;
+        	}
+        	#d1{
+        		width:50px;height:50px;
+        		background-color:pink;
+        		float:left;
+        	}
+        	#d2{
+        		width:50px;height:50px;
+        		background-color:blue;
+        		float:right;
+        	}
+        	/*定义一个clear样式 追加after伪类,伪类中增加空字符串内容,使左右两侧浮动清除*/
+        	.clear:after{
+        		content: "";
+        		clear:both;
+        		display: block;
+        	}
+        </style>
+	</head>
+	<body>
+		<div id="bgDiv"">
+			<div id="div1"></div>
+			<div id="div0"></div>
+		</div>
+		
+		<div id="div2">111</div>
+		
+		
+		<div id="bg" class="clear">
+			<div id="d1"></div>
+			<div id="d2"></div>
+		</div>
+		
+	</body>
+</html>

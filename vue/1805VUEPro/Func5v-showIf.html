@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-2.1.1.js" ></script>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script>
+			$(function(){
+				new Vue({
+					el:"#div1",
+					data:{
+						show:true
+					},methods:{
+						divFunc(){
+							this.show = !this.show;
+						}
+					}
+				});
+			})
+		</script>
+		<style>
+			#flagDiv{
+				width: 100px;
+				height: 100px;
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1">
+			<input type="button" 
+					v-on:click="divFunc()" value="切换div显示"/>
+			<!--v-show根据绑定的数据 true设置display显示
+							     false设置display:none
+				v-if 将标签整个注释调用 
+            -->
+			<div id="flagDiv" v-if="show"></div>
+		</div>
+	</body>
+</html>

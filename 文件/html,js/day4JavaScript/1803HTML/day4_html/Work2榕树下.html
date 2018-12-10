@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{font-size: 0px;}
+			#bgDiv{
+				width: 200px;
+				height: 340px;
+				background-color:#F8FDA3;
+				padding: 10px;
+			}
+			#titleDiv{
+				width: 196px;
+				height: 12px;
+				background-color: #83FEC6;	
+				padding: 4px;
+			}
+			#titleLeft{
+				width: 41px;
+				height: 12px;
+				background-color: #84BBF8; 
+				display: inline-block;
+			}
+			#titleRight{
+				width: 22px;
+				height: 12px;
+				background-color: #F783FE;
+				display: inline-block;
+				/*margin-left: 170px;*/
+			}
+			#middle{
+				width: 130px;
+				height: 12px;
+				background-color: #83FEC6;
+				display: inline-block;
+			}
+			#contentDiv{
+				width: 200px;
+				height: 300px;
+				background-color: #FECE83;
+				margin-top: 10px;
+			}
+			#cell{
+				width: 180px;
+				height: 52px;
+				background-color: black;
+				margin: 6px;
+				padding: 2px;
+				position: relative;
+			}
+			#num{
+				width: 20px;
+				height: 15px;
+				background-color: red;
+				position: relative;
+				margin: 10px;
+			}
+			#imgDiv{
+				width: 30px;
+				height: 40px;
+				background-color: yellow;
+				position: absolute;
+				top: 10px;
+				left: 40px;
+			}
+			#content{
+				width: 96px;
+				height: 40px;
+				background-color: purple;
+				position: absolute;
+				right: 10px;
+				bottom: 6px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="bgDiv">
+			<div id="titleDiv">
+				<div id="titleLeft"></div>
+				<div id="middle"></div>
+				<div id="titleRight"></div>
+			</div>
+			<div id="contentDiv">
+				<table>
+					<tr>
+						<td>
+							<div id="cell">
+								<div id="num">1</div>
+								<div id="imgDiv"></div>
+								<div id="content">
+									<div id="title"></div>
+									<div id="con"></div>
+								</div>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</body>
+</html>

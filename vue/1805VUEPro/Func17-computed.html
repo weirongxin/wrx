@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-2.1.1.js" ></script>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script>
+			$(function(){
+				new Vue({
+					el:"#div1",
+					data:{
+						numData:1.2,
+						timeData: Date.now()
+					},computed:{
+						changeNum:function(){
+							console.log(Date.now())
+							return Number(this.numData).toFixed(3);
+						},changeTime:function(){
+							return new Date(this.timeData).getFullYear()+"年";
+						}
+					}
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div id="div1">
+			<input type="text" v-model="numData"/>
+			<h2>{{changeNum}}</h2>
+			<h2>{{changeNum}}</h2>
+			<h2>{{changeNum}}</h2>
+			<h2>{{changeNum}}</h2>
+			
+			<h2>{{changeTime}}</h2>
+		</div>
+	</body>
+</html>

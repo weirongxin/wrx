@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<!--编写一个JavaScript程序，根据输入的三个数，求出其算术平均值并输出。-->
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			function avg(){
+				var num1 = document.getElementById("n1");
+				var num2 = document.getElementById("n2");
+				var num3 = document.getElementById("n3");
+
+				var avgResult = (parseInt(num1.value) +parseInt(num2.value)+parseInt(num3.value))/3;
+				alert(avgResult);
+			}
+			
+		</script>
+	</head>
+	<body>
+		数字1：<input id="n1" type="text" name="num1" /><br/>
+		数字2：<input id="n2" type="text" name="num2" /><br/>
+		数字3：<input id="n3" type="text" name="num3" /><br/>
+		<input type="button" onclick="avg();"/>
+	</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div>
+			<form>
+				<input type="text" id="n1" name="n1" />
+				<select id="test">
+					<option value="1">加</option>
+					<option value="2">减</option>
+					<option value="3">乘</option>
+					<option value="4">除</option>
+				</select>
+				<input type="text" id="n2" name="n2" />
+				<input type="button" value="=" onclick="colum()"  />
+			</form>
+		</div>
+		<script>
+			function colum(){
+				var n1=document.getElementById("n1").value-0;
+				var n2=document.getElementById("n2").value-0;
+				var myselect=document.getElementById("test");
+				var index=myselect.selectedIndex;
+				var s1=myselect.options[index].value-0;
+				if(s1==1){
+					document.write(n1+n2);
+				}else if(s1==2){
+					document.write(n1-n2);
+				}else if(s1==3){
+					document.write(n1*n2);
+				}else if(s1==4){
+					document.write(n1/n2);
+				}
+			}
+		</script>
+
+	</body>
+</html>

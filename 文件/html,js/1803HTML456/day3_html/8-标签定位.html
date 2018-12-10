@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>标签定位</title>
+		<!--定位都是相对于某个参照物进行的
+			  使用步骤：给添加定位的标签添加position属性
+			  	    position:fixed
+			  	         设置相对间距
+			  	    top\right\bottom\left
+			1)固定定位  fixed
+			     参照物为浏览器窗口
+			   
+			2)相对定位  relative
+			     参照物 标签原本的位置
+			  !!原来标签所在的位置仍然是占用状态
+			  
+			3)绝对定位  absolute
+			     参照物 为设定了相对定位的元素 ，如果没有则参照物为body
+			
+		!!定位元素 如果需要调整上下遮盖顺序 需要设置z-index属性
+		-->
+		<link rel="stylesheet" href="../css/reset.css" />
+		<style>
+			#div0{
+				width: 50px;height: 50px;
+				background-color: yellow;
+				position: fixed;
+				bottom:10px;
+				right: 10px;
+			}
+			#div1{
+				width: 100px;height: 100px;
+				background-color: red;
+				color: white;
+				position: relative;
+				top: 100px;
+				display: inline-block;
+				z-index: 1;
+			}
+			#div2{
+				width: 70px;height: 70px;
+				background-color: aliceblue;
+				color: black;
+				display: inline-block;
+			}
+			#div3{
+				width: 70px;height: 70px;
+				background-color: orange;
+				color: white;
+				position: absolute;
+				margin: 30px;
+			}
+			#div4{
+				width: 200px;
+				height: 200px;
+				background-color: gray;
+				position: relative;
+				top: 10px;
+				z-index: 3;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div0">div0</div>
+		<div id="div1">div1</div>
+		<div id="div2">div2</div>
+		<div id="div4">div4
+			<div id="div3">div3</div>
+		</div>
+	</body>
+</html>

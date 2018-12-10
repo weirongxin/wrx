@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<!--Vue框架的helloWorld-->
+		<!--1.引入Vue.js文件-->
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script type="text/javascript" src="js/jquery-2.1.1.js" ></script>
+		<script>
+			$(function(){
+				//2.实例化vue对象
+				//在实例化时传参  
+				//  el : vue需要和标签进行双向绑定，el数据为标签器(通常用id)
+				//  data : 绑定标签时使用  数据部分
+				new Vue({
+					el:"#div1",
+					data:{
+						msg:"hello world  Vue"
+					}
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<!--3 通过id和vue对象绑定，当前标签以及子标签内 都可以使用vue中的数据、方法-->
+		<div id="div1">
+			{{msg}}
+		</div>
+	</body>
+</html>

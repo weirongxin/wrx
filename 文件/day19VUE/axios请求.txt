@@ -1,0 +1,10 @@
+send(){
+	axios({	method:"post",	data:"username=xiaoming", url:"../UserServlet"}).then((response)=>{
+		this.msg = response.data;
+	});
+}
+
+send(){
+	axios({	method:"get",	url:"../UserServlet?username=xiaoming"	}).then((response)=>{					this.msg = response.data;
+	});
+}

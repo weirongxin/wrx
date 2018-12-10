@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>节点的获取方式</title>
+		<script>
+			window.onload = function(){
+				//1.以id查找标签得到的是标签对象
+				var div1 = document.getElementById("div1");
+				div1.innerHTML = "找到div1了";
+				//2.以name查找标签时得到的是数组
+				var div2 = document.getElementsByName("div2");
+//				document.write(typeof(div2));
+				div2[0].innerHTML = "找到div2了";
+				
+				//3.以class查找标签时得到的是数组
+				var div3 = document.getElementsByClassName("div3");
+				div3[0].innerHTML = "找到div3了";
+				//4.以标签的类型获取标签 得到的是数组
+				var divs = document.getElementsByTagName("div");
+				divs[0].innerHTML = "第一个div";
+				divs[1].innerHTML = "第二个div";
+				divs[2].innerHTML = "第三个div";
+			}
+			function back(){
+				history.back();
+			}
+		</script>
+	</head>
+	<body>
+		<div id = "div1">div1</div>
+		<div name="div2">div2</div>
+		<div class="div3">div3</div>
+		<input type="button" onclick="back()" />
+	</body>
+</html>

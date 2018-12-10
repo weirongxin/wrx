@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jq中的文本操作</title>
+		<script type="text/javascript" src="../js/jquery-2.1.1.js" ></script>
+		<script>
+			$(function(){
+				//1.text 读文本时 读取会解释文本中的标签
+				//       设定文本时 不解释
+				//通过text方法获取指定标签的文本
+//				var div0Text = $("#div0").text();
+//				alert(div0Text);
+//				//通过text方法传参写入文本数据
+//				$("#div0").text("我是新的<h1>div0<h2>标题文本");
+				//通过test读数据过程 解释
+//				var div1Test = $("#div1").text();
+//				alert(div1Test);
+
+				//2.html()
+				//读取数据不解释
+				//修改数据时 解释
+//				var div2 = $("#div3").html();
+//				alert(div2);
+//				$("#div3").html("<h1>aaa</h1>");
+				
+				//3.val()
+				//只能获取value属性的值
+				var inputV = $("#input1").val();
+				alert(inputV);
+				$("#input1").val("111");
+			});
+		</script>
+	</head>
+	<body>
+		<div id="div0">div0</div>
+		<div id="div1"><p>div1中的p标签</p></div>
+		<div id="div2">div2</div>
+		<div id="div3"><p>div3中的p标签</p></div>
+		<input id="input1" type="button" value="我是一个按钮"/>
+	</body>
+</html>

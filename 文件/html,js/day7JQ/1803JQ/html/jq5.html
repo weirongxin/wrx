@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>爱好: 游泳、跑步、爬山
+      		按钮：全选、全不选</title>
+      	<script type="text/javascript" src="../js/jquery-2.1.1.js" ></script>
+      	<script>
+      		 function selectAll(){
+      		 	//prop 设置属性的值
+      		 	$(":checkbox").prop("checked",true);
+//    		 	$(":checkbox").attr("checked",true);
+      		 }
+      		 function notselectAll(){
+      		 	//prop 更改checked属性的值
+//    		 	$(":checkbox").removeAttr("checked");
+      		 	$(":checkbox").prop("checked",false);
+//    		 	$(":checkbox").attr("checked",false);
+      		 }
+      	</script>
+	</head>
+	<body>
+		游泳<input type="checkbox" value="swimming"/>
+		跑步<input type="checkbox" value="running"/>
+		爬山<input type="checkbox" value="climb"/>
+		<br />
+		
+		<input type="button" value="全选" onclick="selectAll()"/>
+		<input type="button" value="全不选" onclick="notselectAll()"/>
+	</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-2.1.1.js" ></script>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script>
+			$(function(){
+				Vue.component("phone",{
+					template:"<h3>手机注册</h3>"
+				});
+				Vue.component("mail",{
+					template:"<h3>邮箱注册</h3>"
+				});
+				new Vue({
+					el:"#div1",
+					data:{
+						showcom:"phone"
+					},methods:{
+						showPhone(){
+							this.showcom = "phone";
+						},showMail(){
+							this.showcom = "mail";
+						}
+					}
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div id="div1">
+			注册页面
+			<input type="button" value="手机注册" @click="showPhone"/>
+			<input type="button" value="邮箱注册" @click="showMail"/>
+			
+			<!--给组件 添加:is动态显示功能，显示showcom内容指定的组件-->
+			<component :is="showcom"></component>
+		</div>
+	</body>
+</html>

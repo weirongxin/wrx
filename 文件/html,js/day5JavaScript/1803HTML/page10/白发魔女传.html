@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body,h1,h2,h3,h4,h5,h6,p,ul,table,dl,ol,dt,dd,td{margin:0px;padding:0px;}
+			ol,ul,dl{list-style: none;}
+			a{text-decoration: none;color: gray;margin: 0px;}
+			img{border: none;vertical-align: middle;}
+			table{border-spacing: 0px;}
+			.clear:after{content: "";display: block;clear: both;}
+		
+			.title1Font{font-size: 15px;font-weight: bold;}
+			.title2Font{font-size: 13px;font-weight: none;}
+			.iconsize{width: 15px;height: 15px;}
+			.floatleft{float: left;}
+			
+			#bgDiv{width:600px;height: 440px;border: 1px black solid;margin:20px;}
+			#title{width: 600px;height: 27px;background-color: lightcyan;}
+			#title1{float: left;height: 27px;line-height: 27px;margin-left: 10px;}
+			.subtitle{float: right;height: 27px;line-height: 27px;margin-right: 10px;}
+		
+			#content{width: 600px;height: 400px;margin-top: 13px;}
+			#left{width: 290px;height: 400px;margin-right: 10px;float: left;}
+			#right{width: 285px;height: 400px; float: right;}
+			
+			#videoImge{width: 290px;height: 230px;}
+			#newTitle{width: 274px;height: 13px;margin: 8px;}
+			#func{width: 274px;height: 15px;margin: 13px 8px 8px 8px;}
+			.funcConMargin{margin-right: 5px;color: lightslategray;}
+			#newlist{width: 290px;height: 74px;margin-top: 18px;}
+			#newlist li{font-size: 11px;line-height: 11px;margin:8px 0px 8px 8px;}
+			 
+			#leftbottom{font-size: 12px;color: gray;margin: 8px;}
+			
+			.cell{width: 130px;height: 120px;margin: 10px 15px 0px 5px;float: left;}
+			.cellImgDic{width:130px;height: 80px;position: relative;}
+			.cellimg{width:130px;height: 80px;}
+			.graynav{width:130px;height: 20px;opacity: 0.2;background-color: black;
+					position: absolute;bottom: 0px;z-index: 1;}
+			.celltitle{position: absolute;bottom: 0px;color:white;font-size: 13px;z-index: 2;}
+			.celltitle2{margin-top: 3px;}
+			#cellfunc{width: 274px;height: 15px;margin:3px 0px 0px 0px;}
+			
+			table{width: 320px;}
+			table tr{display: inline-block;}
+			
+			.detailcell{width: 290px;height: 200px;position: absolute;left:130px;}
+			.detailContent{width: 280px;height: 190px;background-color:white; border: 1px gray solid; 
+					position: absolute;z-index: 2;}
+			.shadow{width: 280px;height: 190px;background-color: gray;opacity: 0.5;
+					z-index: 1;position: absolute;bottom: 0px;right: 0px;}
+			
+			.detailcelltitle{font-size: 15px;color: blue;}
+			.detailcell p{font-size: 14px;color: gray;}
+			.detailcell div{font-size: 12px; color: darkgray;}
+			.detailmarg{margin: 10px;}
+			
+			td{position: relative;}
+			td:hover .detail{display: block;z-index: 2;}
+			.hidden{display: none;}
+		</style>
+	</head>
+	<body>					
+		<div id="bgDiv">
+			<div id="title" class="clear">
+				<div id="title1" class="title1Font">今日头条</div>
+				<div class="subtitle title3Font">青春季</div>
+				<div class="subtitle title3Font">深度</div>
+				<div class="subtitle title3Font">热点</div>
+			</div>
+			<div id="content" class="clear">
+				<div id="left">
+					<a href="#">
+						<img id="videoImge" src="../img/video.png" />
+					</a>
+					<h2 id="newTitle" class="title2Font">实拍二炮跨区联合演习 千里机动发射导弹</h2>
+					<div id="func" class="clear">
+						<img class="iconsize floatleft" src="../img/icon1.png"/>
+						<h5 class="floatleft funcConMargin">安徽卫视</h5>
+						<img class="iconsize floatleft funcConMargin" src="../img/icon2.png"/>
+						<h5 class="floatleft funcConMargin">2,974,128</h5>
+						<img class="iconsize floatleft funcConMargin" src="../img/icon3.png"/>
+						<h5 class="floatleft funcConMargin">1,804</h5>
+					</div>
+					<ul id="newlist">
+						<li>
+							<a href="#">.[热点]中国将提东海划界案 大陆架延伸到东海还剩</a>
+						</li>
+						<li>
+							<a href="#">.[热点]中国将提东海划界案 大陆架延伸到东海还剩</a>
+						</li>
+						<li>
+							<a href="#">.[热点]中国将提东海划界案 大陆架延伸到东海还剩</a>
+						</li>
+						<li>
+							<a href="#">.[热点]中国将提东海划界案 大陆架延伸到东海还剩</a>
+						</li>
+					</ul>
+					<div id="leftbottom">深度阅读：军演</div>
+				</div>
+				<div id="right" >
+					<table class="clear">
+						<tr>
+							<td>
+								<div class="cell">
+									<div class="cellImgDic">
+										<img class="cellimg" src="../img/news1.png"/>
+										<div class="graynav"></div>
+										<p class="celltitle">更新至4集</p>
+									</div>
+									<h4 class="title2Font celltitle2">新白发魔女谷底重逢</h4>
+									<div id="cellfunc" class="clear">
+										<img class="iconsize floatleft" src="../img/icon2.png"/>
+										<h5 class="floatleft funcConMargin">2,974</h5>
+										<img class="iconsize floatleft" src="../img/icon3.png"/>
+										<h5 class="floatleft funcConMargin">1,804</h5>
+									</div>
+								</div>
+								<div class="detail detailcell clear hidden">
+									<div class="detailContent">
+										<a href="#"><h2 class="detailcelltitle"><新白发魔>故地重逢</h2></a>
+										<p class="detailmarg">《新白发魔女》根据两声武侠小说改变，明朝天启四年，两声武侠小说改变，明朝天启四年，两声武侠小说改变，明朝天启四年</p>
+										<div class="detailmarg">
+											<div>播放:123</div>
+											<div>评论:123</div>
+											<div>顶踩:123</div>
+										</div>
+										<div class="detailmarg">节目:新白发魔女 分类:电视剧</div>
+									</div>
+									<div class="shadow"></div>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="cell">
+									<div class="cellImgDic">
+										<img class="cellimg" src="../img/news1.png"/>
+										<div class="graynav"></div>
+										<p class="celltitle">更新至4集</p>
+									</div>
+									<h4 class="title2Font celltitle2">新白发魔女谷底重逢</h4>
+									<div id="cellfunc" class="clear">
+										<img class="iconsize floatleft" src="../img/icon2.png"/>
+										<h5 class="floatleft funcConMargin">2,974</h5>
+										<img class="iconsize floatleft" src="../img/icon3.png"/>
+										<h5 class="floatleft funcConMargin">1,804</h5>
+									</div>
+								</div>
+								<div class="detail detailcell clear hidden">
+									<div class="detailContent">
+										<a href="#"><h2 class="detailcelltitle"><新白发魔>故地重逢</h2></a>
+										<p class="detailmarg">《新白发魔女》根据两声武侠小说改变，明朝天启四年，两声武侠小说改变，明朝天启四年，两声武侠小说改变，明朝天启四年</p>
+										<div class="detailmarg">
+											<div>播放:123</div>
+											<div>评论:123</div>
+											<div>顶踩:123</div>
+										</div>
+										<div class="detailmarg">节目:新白发魔女 分类:电视剧</div>
+									</div>
+									<div class="shadow"></div>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="cell">
+									<div class="cellImgDic">
+										<img class="cellimg" src="../img/news1.png"/>
+										<div class="graynav"></div>
+										<p class="celltitle">更新至4集</p>
+									</div>
+									<h4 class="title2Font celltitle2">新白发魔女谷底重逢</h4>
+									<div id="cellfunc" class="clear">
+										<img class="iconsize floatleft" src="../img/icon2.png"/>
+										<h5 class="floatleft funcConMargin">2,974</h5>
+										<img class="iconsize floatleft" src="../img/icon3.png"/>
+										<h5 class="floatleft funcConMargin">1,804</h5>
+									</div>
+								</div>
+								<div class="detail detailcell clear hidden">
+									<div class="detailContent">
+										<a href="#"><h2 class="detailcelltitle"><新白发魔>故地重逢</h2></a>
+										<p class="detailmarg">《新白发魔女》根据两声武侠小说改变，明朝天启四年，两声武侠小说改变，明朝天启四年，两声武侠小说改变，明朝天启四年</p>
+										<div class="detailmarg">
+											<div>播放:123</div>
+											<div>评论:123</div>
+											<div>顶踩:123</div>
+										</div>
+										<div class="detailmarg">节目:新白发魔女 分类:电视剧</div>
+									</div>
+									<div class="shadow"></div>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="cell">
+									<div class="cellImgDic">
+										<img class="cellimg" src="../img/news1.png"/>
+										<div class="graynav"></div>
+										<p class="celltitle">更新至4集</p>
+									</div>
+									<h4 class="title2Font celltitle2">新白发魔女谷底重逢</h4>
+									<div id="cellfunc" class="clear">
+										<img class="iconsize floatleft" src="../img/icon2.png"/>
+										<h5 class="floatleft funcConMargin">2,974</h5>
+										<img class="iconsize floatleft" src="../img/icon3.png"/>
+										<h5 class="floatleft funcConMargin">1,804</h5>
+									</div>
+								</div>
+								<div class="detail detailcell clear hidden">
+									<div class="detailContent">
+										<a href="#"><h2 class="detailcelltitle"><新白发魔>故地重逢</h2></a>
+										<p class="detailmarg">《新白发魔女》根据两声武侠小说改变，明朝天启四年，两声武侠小说改变，明朝天启四年，两声武侠小说改变，明朝天启四年</p>
+										<div class="detailmarg">
+											<div>播放:123</div>
+											<div>评论:123</div>
+											<div>顶踩:123</div>
+										</div>
+										<div class="detailmarg">节目:新白发魔女 分类:电视剧</div>
+									</div>
+									<div class="shadow"></div>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="cell">
+									<div class="cellImgDic">
+										<img class="cellimg" src="../img/news1.png"/>
+										<div class="graynav"></div>
+										<p class="celltitle">更新至4集</p>
+									</div>
+									<h4 class="title2Font celltitle2">新白发魔女谷底重逢</h4>
+									<div id="cellfunc" class="clear">
+										<img class="iconsize floatleft" src="../img/icon2.png"/>
+										<h5 class="floatleft funcConMargin">2,974</h5>
+										<img class="iconsize floatleft" src="../img/icon3.png"/>
+										<h5 class="floatleft funcConMargin">1,804</h5>
+									</div>
+								</div>
+								<div class="detail detailcell clear hidden">
+									<div class="detailContent">
+										<a href="#"><h2 class="detailcelltitle"><新白发魔>故地重逢</h2></a>
+										<p class="detailmarg">《新白发魔女》根据两声武侠小说改变，明朝天启四年，两声武侠小说改变，明朝天启四年，两声武侠小说改变，明朝天启四年</p>
+										<div class="detailmarg">
+											<div>播放:123</div>
+											<div>评论:123</div>
+											<div>顶踩:123</div>
+										</div>
+										<div class="detailmarg">节目:新白发魔女 分类:电视剧</div>
+									</div>
+									<div class="shadow"></div>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="cell">
+									<div class="cellImgDic">
+										<img class="cellimg" src="../img/news1.png"/>
+										<div class="graynav"></div>
+										<p class="celltitle">更新至4集</p>
+									</div>
+									<h4 class="title2Font celltitle2">新白发魔女谷底重逢</h4>
+									<div id="cellfunc" class="clear">
+										<img class="iconsize floatleft" src="../img/icon2.png"/>
+										<h5 class="floatleft funcConMargin">2,974</h5>
+										<img class="iconsize floatleft" src="../img/icon3.png"/>
+										<h5 class="floatleft funcConMargin">1,804</h5>
+									</div>
+								</div>
+								<div class="detail detailcell clear hidden">
+									<div class="detailContent">
+										<a href="#"><h2 class="detailcelltitle"><新白发魔>故地重逢</h2></a>
+										<p class="detailmarg">《新白发魔女》根据两声武侠小说改变，明朝天启四年，两声武侠小说改变，明朝天启四年，两声武侠小说改变，明朝天启四年</p>
+										<div class="detailmarg">
+											<div>播放:123</div>
+											<div>评论:123</div>
+											<div>顶踩:123</div>
+										</div>
+										<div class="detailmarg">节目:新白发魔女 分类:电视剧</div>
+									</div>
+									<div class="shadow"></div>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-2.1.1.js" ></script>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script>
+			$(function(){
+				new Vue({
+					el:"#div1",
+					data:{
+						title1:"把鼠标移上",
+						title2:"谢谢",
+						title:""
+					},methods:{
+						over(){
+							this.title = this.title2;
+						},out(){
+							this.title = this.title1;
+						}
+					}
+				})
+			});
+		</script>
+		<style>
+			#div2{
+				width: 100px;
+				height: 100px;
+				background-color: green;
+				color:white;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1">
+			<div id="div2" @mouseover="over" 
+				@mouseout="out">
+				{{title}}
+			</div>
+		</div>
+	</body>
+</html>

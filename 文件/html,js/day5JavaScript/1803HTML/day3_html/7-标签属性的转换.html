@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>标签属性转换</title>
+		<!-- 使块 block、行内 inline、内联块标签 inline-block
+			能够相互使用独特的属性类型
+			通过样式中的display属性更改标签的属性值
+			 display：block 转换为块标签显示
+			 display：inline 转换为行内标签显示
+			 display：inline-block 转换为内联块标签显示
+        -->
+        <style>
+        	div{
+        		width: 40px;height: 40px;
+        		background-color: yellowgreen;
+        		border: 1px solid black;
+        		display: inline-block;
+        	}
+        </style>
+	</head>
+	<body>
+		<div>div1</div>
+		<div>div2</div>
+		<div>div3</div>
+	</body>
+</html>

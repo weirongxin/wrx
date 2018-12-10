@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-2.1.1.js" ></script>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script>
+			$(function(){
+				new Vue({
+					el:"#div1",
+					data:{
+						msg:"jin tian tian qi you wu",
+						changeMsg:""
+					},computed:{
+						changemsg:function(){
+							return this.msg.split(" ").reverse().join(" ");
+						}
+					},methods:{
+						changeData(){
+							this.changeMsg = this.msg.split(" ").reverse().join(" ");
+						}
+					},filters:{
+						"filterchange":function(data){
+							return data.split(" ").reverse().join(" ");
+						}
+					}
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div id="div1">
+			属性直接显示
+			<h3>{{msg}}</h3>
+			计算属性
+			<h3>{{changemsg}}</h3>
+			<h3>{{changemsg}}</h3>
+			<h3>{{changemsg}}</h3>
+			<h3>{{changemsg}}</h3>
+			<input type="button" @click="changeData" value="转换"/>
+			方法转换
+			<h3>{{changeMsg}}</h3>
+			过滤器转换数据
+			<h3>{{msg|filterchange}}</h3>
+		</div>
+	</body>
+</html>

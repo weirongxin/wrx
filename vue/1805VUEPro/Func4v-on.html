@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-2.1.1.js" ></script>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script>
+			$(function(){
+				new Vue({
+					el:"#div1",
+					data:{
+						names:[],
+						name:""
+					},methods:{
+						addName(){
+							//this.names.push("小明");
+							this.names.push(this.name);
+							this.name = "";
+						}
+					}
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div id="div1">
+			<input type="text" v-model="name"/>
+			<!--通过v-on:click 将点击事件进行绑定-->
+			<input type="button" 
+					value="增加用户名" v-on:click="addName()" />
+			
+			<ol>
+				<li v-for="value in names">{{value}}</li>
+			</ol>
+		</div>
+	</body>
+</html>

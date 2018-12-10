@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			function selAll(){
+				//根据name获取 标签数组
+				var likes = document.getElementsByName("like");
+				//遍历数组中的标签   更改选中状态值
+				for(var i=0;i<likes.length;i++){
+					var like = likes[i];
+					like.checked = "checked";
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<form>
+		<!--//			练习：
+//爱好选择时，增加全选按钮，点击全选按钮为全部选中状态-->
+			<input type="checkbox" name="like" value="游泳" />游泳<br/>
+			<input type="checkbox" name="like" value="跑步" />跑步<br/>
+			<input type="checkbox" name="like" value="爬山" />爬山<br/>
+			<input type="button" value="全选" onclick="selAll()"/>
+			<input type="reset" value="取消"/>
+		</form>
+	</body>
+</html>

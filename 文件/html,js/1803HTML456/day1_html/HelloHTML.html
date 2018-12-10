@@ -1,0 +1,32 @@
+<!--注释-->
+<!DOCTYPE html>
+<!-- 声明标签 doctype 声明当前文件的类型为html文件-->
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<!-- meta 为标签名   
+			 charset为标签的属性（设置当前文件的编码格式）
+			 UTF-8为国际通用编码格式
+			 如果中文乱码：可能是charset和文件编码不一致
+			 		      或者 charset不为utf-8编码
+		-->
+		<title>JAVA1803</title>
+		<!--标题标签 在标签对中间的内容完全显示-->
+	</head>
+	<body>
+		Hello html！<>   
+		今天天气有点热
+		           你好
+		           你好
+		<!--标签对内的内容可以直接显示，但部分特殊字符，需要进行转义
+			空格：&nbsp;
+			>:&gt;
+			<:&lt;
+			&:&amp;
+		-->
+		AAA 空格：&nbsp;&nbsp;&nbsp;BBB
+		CCC 大于号： &gt;DDD
+		EEE 小于号： &lt; FFF
+		GGG 取值符号：&amp; HHH
+	</body>
+</html>

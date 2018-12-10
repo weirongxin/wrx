@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script type="text/javascript" src="js/User.js" ></script>
+		<script>
+			window.onload = function(){
+				new Vue({
+					el:"#bgDiv",
+					data:{
+						username:"",
+						age:0,
+						gender:"F",
+						users:[]
+					},methods:{
+						add(){
+							this.users.push(new User(this.username,this.age,this.gender));
+							this.username="";
+							this.age=0;
+							this.gender="";
+						},
+						deleteUser(index){
+							//从数组中将参数传递过来的 下标对应数据删除
+							this.users.splice(index,1);
+						},
+						deleteAll(){
+							//将数组中的元素清空
+							this.users=[];
+						}
+					}
+				});
+			}
+		</script>
+	</head>
+	<body>
+		<h2 style="margin: 10px auto;width: 100px;">用户管理</h2>
+		<!--需求：用户管理(增加、删除用户)
+  			上方录入用户信息
+  			下方显示用户列表(可以添加删除操作)-->
+  			<div id="bgDiv">
+  				<div style="width: 300px; height: 100px; 
+  					text-align: center;margin: 100px auto;">
+  					用户名<input type="text" v-model="username"/><br/>
+  					年龄<input type="text" v-model="age"/><br/>
+  					性别<input type="text" v-model="gender"/><br />
+  					<input type="button" value="增加" @click="add"/><br/>
+  				</div>
+  				<div style="width: 300px;height: 500px; margin: 20px auto;
+  					text-align: center;">
+  				<table border="1px black solid" style="margin: 10px auto;">
+  					<tr>
+  						<td>序号</td><td>姓名</td><td>年龄</td><td>性别</td><td>功能</td>
+  					</tr>
+  					<tr v-for="(user,index) in users">
+  						<td>{{index}}</td>
+  						<td v-for="value in user">{{value}}</td>
+  						<td>
+  							<input type="button" value="删除" @click="deleteUser(index)"/>
+  						</td>
+  					</tr>
+  				</table>
+  				<input type="button" value="删除全部" @click="deleteAll()"/>
+  				</div>
+  			</div>
+  			
+	</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Vue 循环指令</title>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script type="text/javascript" src="js/User.js" ></script>
+		<script>
+			window.onload = function(){
+				new Vue({
+					el:"#bgDiv",
+					data:{
+						nums:[1,2,3,4,5],
+						users:[
+							new User("xiaoming",18,"F"),
+							new User("hong",18,"M"),
+							new User("hei",16,"F"),
+							new User("bai",18,"M"),
+							new User("huang",12,"F")
+						]
+					}
+				});
+			}
+		</script>
+	</head>
+	<body>
+		<div id = "bgDiv">
+			<!--遍历nums中的 数字在列表中显示-->
+			<ul>
+				<!--v-for指令 (类似增强for)  
+					格式：元素  in 数据源-->
+				<li v-for="num in nums">
+					{{num}}
+				</li>
+			</ul>
+			<!--集合信息遍历 创建表格-->
+			<table border="1px solid black"> 
+				<tr>
+					<td>序号</td>
+					<td>姓名</td>
+					<td>年龄</td>
+					<td>性别</td>
+				</tr>
+				<!--遍历users集合，user指代元素  index指代下标-->
+				<tr v-for="(user,index) in users">
+					<!--1.遍历数组后 从元素中直接获取属性
+					<td>{{user.name}}</td>
+					<td>{{user.age}}</td>
+					<td>{{user.gender}}</td>-->
+					
+					<!--2.遍历user对象中的属性 值 name、age、gender
+					<td v-for="value in user">
+						{{value}}
+					</td>-->
+					
+					<!--3.value指代对象中的属性值   key指代属性名
+						key、value变量名可变，但value处一定为属性值
+						key处一定为属性名
+					-->
+					<!--index 为当前是数组中的第几个元素-->
+					<td>{{index+1}}</td>
+					
+					<td v-for="(value,key) in user">
+						{{key}}----{{value}}
+					</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>

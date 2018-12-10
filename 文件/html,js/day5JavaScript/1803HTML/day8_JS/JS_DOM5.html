@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			window.onload = function(){
+				var div0 = document.getElementById("div0");
+				//获取子节点 数据打印
+//				var nodes = div0.childNodes;
+//				for(var i=0;i<nodes.length;i++){
+//					var node = nodes[i];
+//					document.write("节点类型"+node.nodeType+"节点名字"+node.nodeName+"节点值"+node.nodeValue);
+//					document.write("<br/>");
+//				}
+//				
+//				div0.innerHTML = "<p>123</p>";
+				div0.innerText = "<p>345</p>";
+				
+				div0.setAttribute("style","background-color: black;");
+			}
+		</script>
+	</head>
+	<body>
+		<div id="div0">
+			<div  style="width: 100px;height: 100px;background-color: blue;">今天周三了</div>
+		</div>
+	</body>
+</html>

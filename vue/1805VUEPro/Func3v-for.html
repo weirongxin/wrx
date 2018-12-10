@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script type="text/javascript" src="js/jquery-2.1.1.js" ></script>
+		<script type="text/javascript" src="js/User.js" ></script>
+		<script>
+			var user1 = new User("小红1","M",20);
+			var user2 = new User("小红2","F",24);
+			var user3 = new User("小红3","F",27);
+			var users = [user1,user2,user3];
+			$(function(){
+				new Vue({
+					el:"#div1",
+					data:{
+						msg:"helloworld",
+						names:["小王","小明","小红"],
+						userData:new User("小红1","M",20),
+						usersData:users
+					}
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div id="div1">
+			<ol>
+				<!--1.v-for指令遍历数组中的元素
+					格式:  元素变量 in 数组名
+				-->
+				<li v-for="value in names">
+					{{value}}
+				</li>
+			</ol>
+			<ul>
+				<!--2.v-for指令 遍历对象中的数据
+				 格式1)变量名 in 对象名(遍历对象中的属性值)
+				    2)（变量1，变量2） in 对象名（变量1：属性值，变量2：属性名）
+                -->
+				<li v-for="(value,key) in userData">
+					{{key}}: {{value}}
+				</li>
+			</ul>
+		
+			<table border="1px solid black">
+				<tr>
+					<td>序号</td>
+					<td>姓名</td>
+					<td>性别</td>
+					<td>年龄</td>
+				</tr>
+				<!--3.v-for 遍历集合中的引用类型
+					格式：(变量) in 集合名 ，变量为元素对象
+						(变量,index) in 集合名,index为索引下标
+				-->
+				<tr v-for="(user,index) in usersData">
+					<!--
+					<td></td>
+					<td>{{user.name}}</td>
+					<td>{{user.gender}}</td>
+					<td>{{user.age}}</td>-->
+					
+					<!--
+					<td></td>
+					<td v-for="value in user">
+						{{value}}
+					</td>-->
+					<td>{{index}}</td>
+					<td v-for="value in user">
+						{{value}}
+					</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>

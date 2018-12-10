@@ -1,0 +1,90 @@
+1.VUE中ajax请求格式：
+axios({							 	method:"post",						data:"username="+this.username+"&password="+this.password,		
+	url:"UserServlet"
+}).then((response)=>{						this.users= response.data;
+});
+2.过滤器
+  用来过滤模型数据，在显示之前进行数据处理和筛选。
+   语法:{{data | filter:(参数) | filter2(参数) }}
+     Vue.filter("名",function(data){
+   	return data;
+     });
+    1)全局 无参(数字范围的判断返回)
+    2)全局  有参(小数点后留3位)
+    3)处理时间
+    4)局部过滤器：
+     new Vue({
+	filter:{
+	    addZero:function(){},
+	}
+      });
+   全局Filter格式：
+	在vue实例外部声明
+	Vue.filter("checkNum",function(data){ return data;}
+   局部Filter格式：
+	在vue实例内部声明:
+	new Vue({
+	  el:"",
+	  data:{},
+	  filters:{
+	     "f1":function(data,index){},
+	     "f2":function(){}	
+	   }
+	});
+
+3.Vue的生命周期
+    1)new Vue() 实例化调用
+    2) beforeCreate --实例化前钩子函数
+    3) created--实例化完成后调用钩子函数
+    4) beforeMount--挂载前调用钩子函数（el 挂载标签）
+    5) mounted--挂载完成后调用钩子函数
+    6) beforeUpdate --数据变更前
+    7) updated--数据变更后
+    8) beforeDestory--vue实例销毁前
+    9) destoryed--vue实例销毁后
+
+钩子函数的调用方式：
+    new Vue({
+	el:"",
+	钩子函数名:function(){
+	}
+    });
+   
+4.Vue计算属性
+   自定义属性存储
+   特点：数据也可以进行逻辑处理操作
+           监视属性值的变化
+   格式：
+    new Vue({ 
+	computed:{
+	   msg2:function(){
+		return this.msg.split(" ").reverse.join(' ');
+	   }
+	} 
+    });
+   计算属性和方法、过滤器的区别 :
+	方法：需要出发事件调用方法
+	        方法内处理完数据后，进行赋值、显示
+	过滤器：显示前过滤器数据处理，数据本身没变
+	计算属性：属性的值根据处理值变化
+		存在缓存机制，如果处理值没有变化，则取值时直接从缓存中获取数据。
+  练习：
+	数据规则：小数点后存3位
+	当前时间：显示“**年**月**日”
+
+5.组件
+   组件需求：
+   1)商品列表：
+    用组件的方法实现点击加或减按钮时数量、加减、总计也随之加减
+    商品编号   商品名  商品数量   单价   总价
+        1         java      - 1 +      2      2
+        2         c++       - 2 +     3      6
+        3         c          - 3 +     4      12
+   2)添加用户名：
+     输入框输入用户名，点击添加按钮后，下方列表显示用户名
+     每行用户名后可以使用删除按钮，点击删除该行
+
+
+
+
+

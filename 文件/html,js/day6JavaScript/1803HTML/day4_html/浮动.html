@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>浮动</title>
+		<!--文档流：静态页面上的标签 像瀑布流一样自上而下逐一排列
+		浮动：将原标签脱离文档流 上浮半个层级
+		浮动过程中：浮动的标签到父级边界停止、同级浮动标签停
+		特点：1）块标签支持一行显示多个元素
+			2）行内标签支持宽高设定
+		div标签本身具有的特点：由内容撑开标签高度-->
+		<style>
+			#div1{
+				width: 50px;height: 50px;
+				background-color: red;
+				float: left;
+			}
+			#div2{
+				width: 100px;height: 100px;
+				background-color: black;
+				color: white;
+				float: left;
+			}
+			a{
+				float: left;
+				width: 100px;
+				background-color: palegoldenrod;
+			}
+			#div0{
+				width: 200px;
+				border: 1px solid blue;
+			}
+			#div3{
+				width:200px;height: 100px;
+				background-color: red;
+				float: left;
+			}
+			#div4{
+				width:200px;height: 100px;
+				background-color: yellow;
+				float: right;
+			}
+		</style>
+	</head>
+	<body>
+		<!--<div id="div1"></div>
+		<div id="div2">今天星期五</div>
+		
+		<a href="#">AAAA</a><a href="#">BB</a>-->
+		
+		<div id="div0">
+			<div id="div3"></div>
+			<div id="div4"></div>
+		</div>
+	</body>
+</html>

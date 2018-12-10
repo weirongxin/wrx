@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<!--输入框 分别输入创建表格的行数、列数 点击确定 创建该表格-->
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.tableCss{border: 1px solid black;}
+			.tdcss{border: 1px solid black;}
+		</style>
+		<script>
+			function ccc(){
+				
+				var rowsNum = parseInt(document.getElementById("rows").value);
+				var colsNum = parseInt(document.getElementById("cols").value);
+				
+				var tb1 = document.createElement("table");
+				tb1.className = "tableCss";
+				tb1.style.cellSpacing = "0px";
+				tb1.style.borderSpacing = "0px";
+				for(var i = 0;i<rowsNum;i++){
+					var tr = document.createElement("tr");
+					for(var c = 0;c<colsNum+1;c++){
+						var td = document.createElement("td");
+						td.className = "tdcss";
+						
+						
+						
+						if(c==colsNum){
+							var btn = document.createElement("button");
+							(function(i){
+								btn.onclick = function(){
+									alert(i);
+								}
+							})(i);
+							
+							td.appendChild(btn);
+						}else{
+							td.innerHTML = "test"+i+"--"+c;
+						}
+						tr.appendChild(td);
+					}
+					tb1.appendChild(tr);
+				}
+				
+				tb1.insertRow();
+				 
+				
+				var tbDiv = document.getElementById("tbDiv");
+				tbDiv.appendChild(tb1);
+			}
+		</script>
+	</head>
+	<body>
+		行数：<input id="rows" type="text" /><br/>
+		列数：<input id="cols" type="text" /><br />
+		
+		<input type="button" value="创建表格" onclick="ccc();"/>
+		
+		<div id="tbDiv"></div>
+	</body>
+</html>

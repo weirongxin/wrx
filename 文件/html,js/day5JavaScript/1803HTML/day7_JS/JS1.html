@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--1.在标签后 事件属性中添加js代码-->
+		点击:<input type="button" value="点击" 
+				onclick="alert('我是一个提示框')"/>
+		<!--2.文件中添加script标签对  增加script代码 顺序执行 
+			建议开发时在head标签中 添加script代码 统一位置
+		-->
+		<script>
+			alert('我又是一个提示框');
+		</script>
+		<!--3.将js新建文件，通过src引入 即可使用文件中的功能-->
+		<script src="../js/test1.js"></script>
+		<input type="button" value="再点我" onclick="show();" />
+	</body>
+</html>

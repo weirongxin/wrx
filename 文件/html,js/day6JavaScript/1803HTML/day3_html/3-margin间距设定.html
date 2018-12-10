@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>margin使用</title>
+		<!--margin外间距的设置
+			1.同级标签 设置外间距
+				1）竖直方向 margin重叠，取间距较大的数据
+				2）水平方向 margin叠加 ，外间距取两个外间距的和
+			2.嵌套标签 设置外间距
+				1)水平方向 margin不影响效果
+				2)竖直方向  里层的标签会和外层标签的外间距重叠（使用间距较大的数据）
+				     里层外层之间没有间隔距离
+		-->
+		<style>
+			#div1{
+				width: 50px;
+				height: 50px;
+				background-color: yellow;
+				margin: 50px;
+			}
+			#div2{
+				width: 50px;
+				height: 50px;
+				background-color: pink;
+				margin: 100px;
+			}
+			#input1{
+				width: 50px;
+				margin:50px;
+			}
+			#input2{
+				width: 50px;
+				margin: 50px;
+			}
+			#div3{
+				width: 50px;
+				height: 50px;
+				background-color: yellow;
+				margin: 50px;
+			}
+			#div4{
+				width: 40px;
+				height: 40px;
+				background-color: pink;
+				margin: 60px;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+		<div id="div1">div1</div>
+		<div id="div2">div2</div>
+		
+		<input id="input1" type="text"/><input id="input2" type="text"/>
+		-->
+		<div id="div3">div3<div id="div4"></div></div>
+	</body>
+</html>

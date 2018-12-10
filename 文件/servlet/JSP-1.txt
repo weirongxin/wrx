@@ -1,0 +1,148 @@
+		JSP
+1.转发、重定向：
+1）转发为一个请求对象
+    重定向为两个请求对象
+2）转发地址栏不变
+    重定向地址栏变化
+3）转发的根目录是web应用(http://localhost:8080/web应用名)
+    重定向的根目录是web站点(http://localhost:8080)
+4）转发可以通过request带参数
+    重定向由于是两个request，所以不能带参数
+2.servlet设计模式：
+编码时，将User的所有请求开发在一个servlet中响应。
+eg：User  的登录、注册、查询功能都有UserServlet处理
+     实现：1) 在web.xml文件中配置UserServlet的url-pattern
+	     配置为*.user
+	 2) 登录、注册、查询的页面form表单的action请求分别设定为：	     login.user  register.user query.user
+	 3) 在doGet方法中 根据request对象获取URI
+	     URI(/web应用名/请求名   /pro/login.user)
+	     拆分URI得到请求的字符串login
+	     拆分时需要注意：. 需要通过转义字符进行拆分
+			 str.split("\\.");
+
+1.什么是JSP？
+   Java server Page
+   目前web应用的开发模式：在html页面编写静态展示，请求通过form或者a标签请求servlet，在servlet中处理。处理完成后再次进行页面或者servlet的跳转。
+   问题：页面->servlet： 通过form表单、a传递
+          servlet->页面： 只能通过PrintWriter写到页面展示
+   解决：在html静态页面上添加java代码则可以使用web应用更灵活
+  
+   JSP:jsp页面中由java代码和静态页面内容构成。
+        jsp属于前端页面，用户可以直接请求jsp页面获取web网页交互，而且还可以使用java代码进行数据处理。
+   ！JSP文件的本质为Servlet(请求时看到的为web网页，交互时可通过java代码操作)
+   ！JSP运行过程：
+     本质是servlet，jsp首先是java文件，当加载时先编译成class
+文件，请求的操作实际是class文件的响应。
+  （用户请求时，servlet容器判断是否存在jsp对应的class文件，如果存在则请求，不存在则编译成class）
+2.第一个jsp页面
+   1）更改当前workspace下的jsp编码格式
+       工具栏window/preferences/搜索jsp
+       点击jsp Files->右侧encoding->选择ISO 10646(Unicode UTF-8)
+   2)在webContent目录下 新建jsp文件
+
+3.jsp语法：
+  1）模板元素 （静态页面数据部分 标签等）
+      jsp页面创建时，自动生成、后续添加的静态标签、xml信息等成为模板元素
+  2）声明
+      格式：
+	<%!  声明部分代码  %>
+      声明的数据：变量、方法
+      声明变量时：变量的声明位置 可以在声明代码区间，
+	         也可以在使用变量时临时声明。
+      声明方法时：方法一定需要在声明块处声明后，才可以使用。
+      <%! int a =0; %>
+      <%! public int sum(int a,int b){return a+b;} %>
+  3）功能代码
+      格式：<% 功能代码  %>
+
+      eg:   <%! int a=0;%>
+	 <%   syso(a);  %>
+
+  4) 表达式(等于号后的内容可以在页面直接输出)
+      <%=  数据 %>
+      <%= a %>（直接在页面输出a的数值）
+
+  5) 注释
+     JSP：<%-- JSP注释部分 -- %>
+     HTML:  <!-- HTML注释部分 -->
+    区别:JSP的注释能够注释掉包含的全部内容
+          HTML的注释只能注释掉HTML数据,如果包含了JSP则无法注释
+
+  练习：
+       1.for循环打印三角形的星星
+	*
+	**
+	***
+	****
+       2.创建表格 jsp定义行数，
+         根据行数创建表格，
+         用jq修改表格的奇数行背景色、偶数行背景色。
+         步骤：
+	1）在JSP页面 功能代码处定义变量存储行数
+	2)  在静态页面 添加table标签
+	3）table标签中，添加jsp功能代码区，循环遍历行数
+	4）遍历过程中，添加tr、td结构
+4.JSP 9大内置对象：
+   jsp 本质为servlet，servlet处理web请求，可以在servlet中直接获取请求、web应用相关的对象:servletConfig、request、response....
+   jsp中在<%  %>里也可以直接获取servlet中能够取得到的对象，在jsp中称为隐含对象也称为内置对象。
+
+九大内置对象：
+   request 
+   response
+   session
+   pageContext
+   application
+   page
+   config
+   out
+   exception
+
+   ①request：实质HttpServletRequest类对象
+	  存储请求信息对象，可以往该对象中存储带参数
+	   setAttribute  getAttribute
+   ②response：实质是HttpServletResponse类对象
+	  存储响应信息
+   ③pagecontext: 
+    1)是PageContext类对象，代表web应用的上下文
+	       在后面讲到的自定义标签中，不能直接使用jsp对象，能使用的只有pageContext对象，我们可以通过pageContext获取其他8种内置对象。
+    2)存数据方法：
+	<% pageContext.setAttribute("contextName", "xiaohong", PageContext.APPLICATION_SCOPE); %>
+    3)取数据方法:
+	<%=pageContext.getAttribute("contextName",	PageContext.APPLICATION_SCOPE);%>
+    4)pageContext的作用域：
+	APPLICATION_SCOPE  “web应用的区域内都可以获取”	           PAGE_SCOPE  “当前servlet可以获取”	 
+	REQUEST_SCOPE "同一个request对象作用域能够获取"
+	SESSION_SCOPE  “同一个session作用域能够获取”
+      scope：作用域的顺序 application、session、request、page
+   ④application:是servletContext对象
+   ⑤page：指代this（指代当前servlet对象）			  
+   ⑥config:是servletConfig对象
+   ⑦out：PrintWriter对象			
+   ⑧exception：处理异常的对象
+    ！！web应用交互时如果报错，状态码：
+	成功：200
+	客户端错误：404(400-499)
+	服务器端错误：500(500-599)
+     交互过程中，如果出错，则跳转到系统提示信息页面，页面显示的数据为报错信息和报错的堆栈。非专业用户不能读懂，用户体验差。
+所以我们需要通过报错，对错误页面进行自定义开发，出现错误时，跳转到指定的报错页面，提升用户体验。
+	
+      处理异常的方案：
+	1) 在webContent下新建两个页面 A.jsp\ errorPage.jsp
+	    ①A.jsp中存在错误代码
+	   <% Float f = new Float("你好"); %>
+	    在A.jsp中添加错误页面的配置，一旦出错，错误页面自动
+跳转：errorPage="ErrorPage.jsp"
+	    ②errprPage.jsp为显示错误信息的页面
+	    在其中添加配置信息说明当前为错误页面
+	    errorPage="true"
+	2) 将错误页面移动到WEB-INF目录下，设定为外部不可直接访问的页面。
+	配置需要在web.xml文件中进行：
+		两种配置方式 错误码、异常类型
+  	<error-page>
+  		①<error-code>404</error-code>
+		②<exception-type>java.lang.NumberFormatException</exception-type>
+  		<location>/WEB-INF/error.jsp</location>
+  	</error-page>
+	
+5.session：
+   

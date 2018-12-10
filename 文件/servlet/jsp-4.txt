@@ -1,0 +1,94 @@
+	过滤器、监听器
+复习：
+JSP:本质servlet
+1)调用过程：请求servlet容器时，先判断是否在容器中存在jsp对应的class文件，如果存在则执行，不存在先编译再执行。
+2)<% %> <%! %> <%= %>
+3)9大内置对象:
+   request response session  pageContext  application  
+   page out config exception
+4)3个指令:
+   <%@ page %>
+   <%@ taglib  prefix="c" uri="" %>
+   <%@ include file=""%>
+7)7个动作：
+   <jsp:useBean >
+   Bean的应用：DO BO VO
+   <jsp:include >
+   <jsp:forward>
+   <jsp:setProperty>
+   <jsp:getProperty>
+   <jsp:url>
+8)Cookie Session区别：
+   Cookie 和 Session 都是用来存储客户端和服务器之间的会话状态数据。Cookie存储在浏览器、session存在服务器端。
+   执行过程：a 用户第一次请求服务器时，通过HTTP协议的请求头部分将客户端的请求数据传递给服务器端。
+	    b 服务器端检测请求信息中，是否存在cookie、session数据。
+	    c 如果没有session数据则创建session对象，将sessionid存入cookie中(服务器自动完成)。
+	    d cookie数据存入response响应中，通过http请求响应回客户端。
+    Cookie种类：
+	会话期Cookie :浏览器关闭 cookie销毁
+	定时Cookie: setMaxAge(秒)
+    Cookie操作：取 Cookie[]  request.getCookie
+	       赋值   response.addCookie();
+    Session操作：取 HttpSession  request.getSession()
+	        session操作完成后 在服务器端生效，
+		不需要赋值到response中。
+9)EL & JSTL
+    EL:核心功能：对jsp的简写、取域中的数据
+    域：pageScope requestScope sessionScope applicationScope
+    应用：${域.属性名} 
+	简写 ${属性名}
+    JSTL：自定义标签 对数据进行逻辑判断，控制标签显示
+	a 导入jar包 standard jstl
+	b 在使用jstl的jsp页面通过taglib指令引入
+	  <%@ taglib prefix="c" uri="" %>
+	c  <c:set>
+	   <c:out>
+   	   <c:remove>
+	   <c:if test="">
+	   <c:foreach begin="" end="" items="" var=""> 
+   
+      
+
+今日内容：
+JAVA Web阶段的三大组件：
+	servlet filter listener
+过滤器:
+     Filter 用户请求服务器时，请求可以被过滤器组件先进行筛选，再被servlet响应。
+     使用步骤：
+	1)web应用统一编码
+	  a 创建Filter 
+	  b 添加注解中的属性
+	    filtername、urlPatterns
+	  c urlPatterns 设置过滤的url
+               精确匹配：/UserServlet
+	    所有文件过滤:  /*
+	    指定文件夹过滤:  /目录/*
+应用场景：
+ 1)web应用统一编码
+ 2)页面图片缓存的清除
+ resp.setDateHeader("Expires",-1);
+  resp.setHeader("cache-Control","no-cache");
+  resp.setHeader("Pragma","no-cache");
+ 3)敏感词汇过滤
+   web请求的数据中如果参数有敏感词汇 "金三胖"
+   request中参数操作时    
+       只有getParameter方法
+   解决：创建一个request的包装类，	
+	包装类中的数据从request对象中获取，
+	获取过程将敏感词汇替换
+	
+监听器：
+   监听特定对象的属性添加、移除、创建、销毁等事件时机
+   Listener 
+	监听的对象：
+		ServletContext
+		HttpSession
+		HttpServletRequest
+   不需要配置自动监听web应用下的事件触发时机。
+   典型应用：
+	网站访问量的统计
+	当前在线用户量统计
+		
+
+
+

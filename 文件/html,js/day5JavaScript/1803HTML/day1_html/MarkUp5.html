@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>表格标签</title>
+	</head>
+	<body>
+		<!--border 边框 （以像素为单位进行计算px）
+			bordercolor边框颜色
+			bgcolor 背景颜色
+			cellspacing 单元格和单元格之间的间隙
+			cellpadding 单元格边框距离内容的间隙
+		-->
+		<table border="1px" 
+			bordercolor="red" 
+			bgcolor="yellow"
+			cellspacing="0px"
+			cellpadding="10px">
+			<tr>  <!--tr为表格中的行-->
+				<td>科目</td> <!--td为一行的每个单元格-->
+				<td>Java</td>
+				<!--column span 合并左右两侧单元格-->
+				<td colspan="2">HTML</td>
+				<!--<td>C</td>-->
+			</tr>
+			<tr>
+				<td>成绩</td>
+				<td>90</td>
+				<td>99</td>
+				<td>92</td>
+			</tr>
+		</table>
+		
+	</body>
+</html>

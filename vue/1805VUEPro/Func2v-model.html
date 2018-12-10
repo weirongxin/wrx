@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script type="text/javascript" src="js/jquery-2.1.1.js" ></script>
+		<script>
+			$(function(){
+				new Vue({
+					el:"#div1",
+					data:{
+						msg:"hello vue"
+					}
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div id="div1">
+			<!--通过v-model 绑定数据-->
+			<input type="text" v-model="msg"/><br/>
+			{{msg}}
+		</div>
+	</body>
+</html>

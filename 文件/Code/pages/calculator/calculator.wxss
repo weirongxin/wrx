@@ -1,0 +1,59 @@
+/* pages/calculator/calculator.wxss */
+page{
+  height: 100%;
+}
+/*高度为屏幕高度,需要page也设置才能支持*/
+.content{
+  height: 100%;
+  width: 750rpx;
+  background-color:pink;
+  /*子标签以弹性布局方式显示*/
+  display: flex;
+  /*row为子元素 横向布局，column为子元素纵向布局*/
+  flex-direction: column;
+}
+/*标签中的元素为 横向排序
+.topView{
+  display: flex;
+  flex-direction: row;
+}
+/*标签中的元素为 横向排序 
+.bottomView{
+  display: flex;
+  flex-direction: row;
+}*/
+.numView{
+  display: flex;
+  flex-direction: row;
+  margin-left: 20rpx;
+}
+.showView{
+  margin:25rpx;
+  width: 660rpx;
+  height: 100rpx;
+  background-color: white;
+  border-radius: 20rpx;
+  line-height: 100rpx;
+  text-align: right;
+  padding: 20rpx;
+  font-size: 20px;
+}
+/*按钮样式的设定*/
+.btn_style{
+  width: 140rpx;
+  height: 140rpx;
+  margin: 20rpx;
+  line-height: 140rpx;
+  text-align: center;
+  font-size: 14px;
+}
+.zero{
+  width: 320rpx;
+  height: 140rpx;
+}
+.orange{
+  background-color: orange;
+}
+.gray{
+  background-color: gray;
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>盒模型中间距</title>
+		<style>
+			#div1{
+				width: 100px;
+				height: 100px;	
+				background-color: yellow;
+				color: black;
+				font-size: 20px;
+				/*内间距  边框距离内容的宽度*/
+				padding: 10px;
+				/*边框  在标签外层添加边框  */
+				border: 10px solid black;
+				/*外间距  标签距离同级标签的间距*/
+				margin: 100px;
+			}
+			/*
+			 * 盒模型：标签都为矩形
+			 * 设置width、height仅为两个属性值
+			 * 当需要添加 标签距离数据的内间距、标签距离其他标签的外间距、边框属性时
+			 * 		标签的实际宽高就发生变化了
+			 * 标签的实际宽高：
+			 * 宽度 = width + 2*padding +2*border + 2*margin;
+			 * 高度 = height+ 2*padding +2*border + 2*margin;
+			 * */
+		</style>
+	</head>
+	<body>
+		<div id="div1">div1</div>
+		<h1>标题</h1>
+	</body>
+</html>

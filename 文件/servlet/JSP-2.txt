@@ -1,0 +1,149 @@
+		JSP
+JSP复习：
+1.JSP java server page
+  jsp本质是servlet 
+  调用过程 ：请求servlet容器时，先判断是否在文件中 存在 class 文件，如果存在则执行，不存在先编译再执行
+2.格式：<%  %>
+  <%!  %>
+3.九大内置对象：
+   request response session application pageContext 
+   config out page exception 
+
+   exception：错误处理
+	200 请求成功 
+	300-499 客户端错误
+	500-599  服务器端错误
+   页面的错误处理方式：
+	1) webContent目录下创建 errorPage.jsp
+	   自定义错误页面 page指令处添加 isErrorPage=true
+	   在出错页面 page指令处添加 errorPage = errorPage.jsp
+	2) 将报错页面添加到WEB-INF目录下，外界不能直接访问
+	    使用报错页面两种配置方式：
+		a 根据报错码 配置
+		b 根据异常类型 配置
+	    配置信息添加在web.xml文件中：
+		<error-page>
+		    <error-code>
+		    <exception-type>
+		</error-page>
+
+今日内容：
+1.三大指令
+	page  include  taglib
+  格式：
+       <%@指令名 属性=属性值%>
+  page指令：用于配置当前jsp页面的基本信息
+    属性：
+     language="java" 
+	当前jsp编译出来的语言(只能为java)
+     contentType="text/html; charset=UTF-8"
+	当前页面内容的编码格式
+     pageEncoding="UTF-8"
+	页面的编码格式
+     errorPage
+	响应当前页面出错时的错误页面路径
+     isErrorPage
+	标识当前页面是否报错页面
+     buffer  out对象的数据缓冲
+     isELIgnored  EL表达式是否是可用状态
+     session   session在当前是否支持
+  include指令：包含、包括,可以将其他页面引用到当前页面
+     将其他页面通过file属性 指定路径引入当前页面
+	<%@ include file="路径" %>
+     场景:多个web页面 存在共通部分的时候，将共通部分单独创建jsp
+	通过include引入
+  taglib指令：引入其他的lib库  
+      <%@ taglib prefix="" uri=""%>
+      prefix：设置标签名
+      uri：引用的自定义标签路径
+
+2.EL JSTL
+1)EL：expression language 对JSP语法的一种简写
+  功能：存取数据
+  域：pageScope requestScope sessionScope applicationScope
+  格式  ${域.属性名}-->简写 ${属性名}
+  	${requestScope.name}
+  	${name}
+  如果使用简写 则查找属性值的时候，查找顺序page、request、session、application。
+2)JSTL：
+   java server page standard tag lib 自定义标签库
+   
+a 表达式操作：
+<c:out>	<c:set> <c:remove> <c:catch>
+b 分支 (只能做单分支语句 在test中添加判断条件)
+   <c:if test="">
+   </c:if>
+c 迭代
+   <c:foreach begin="开始下标" end=“结束下标” items=“被遍历的元素” var="遍历过程中集合的元素">
+	添加遍历的功能
+   </c:foreach>
+d URL\重定向
+   //定义一个变量 存储url数据
+   <c:url var="变量名" value=“url地址”></c:url>
+     
+   //直接重定向功能生效
+   <c:redirect url="重定向网址"></c:redirect>
+
+练习：
+     学生类 姓名、性别、成绩
+     集合存储4个学生对象
+     将集合存入request中，在jsp页面使用jstl表达式，根据集合中的元素创建学生信息表。（如果集合中没有元素则不创建表格）
+
+3.cookie session
+  目前从浏览器请求发送到服务器上通过http请求
+  http：超文本传输协议，短连接
+         组成：消息头+消息体
+   如果需要自动登录、记录用户信息，在静态页面不能直接实现
+ 
+  cookie session是用于保存用户和服务器端的会话状态。
+  cookie是在浏览器端保存数据
+  session是在服务器端保存数据
+
+  Cookie：在浏览器端保存用户的状态、数据
+  创建过程：1)用户第一次请求服务器没有cookie数据
+	   2)服务器检测http请求过来的数据是否有cookie
+	   3)如果没有cookie则创建cookie信息，带回用户端
+	   4)存储在浏览器
+  使用：
+        通过request对象获取cookie数组
+        cookie数据存储在浏览器上、各个浏览器的cookie数据不共享
+        
+   Cookie的分类:
+	会话期Cookie和可以设定时间的Cookie
+	会话期Cookie：浏览器关闭Cookie被删除清空
+	可以设定时间的Cookie：设置Cookie的存活时间以秒为单位
+    		setMaxAge(秒数值) 
+    Cookie存储的特点：
+	一个Cookie一般容量为4kb
+	一个应用存储20个Cook   存储200个Cookie
+	
+3.Session:
+      session存储在服务器端用于保存用户和服务器端会话状态的存储。
+      应用过程:
+	1)用户请求服务器端，第一次请求时cookie为空.
+	2)服务器端创建Cookie且创建Session对象
+    	3)将sessionid存入Cookie数据中(实例化Cookie对象 name为"JSESSIONID" value为 sessionid的值)，带回客户端。
+	4)再次请求时，cookie中就保存了sessionid数据，可以根据sessionid数据进行访问。 
+      应用场景：
+	在服务器端对session数据进行操作，
+	可以存储登录用户信息等数据。
+       注：由于sessionid在cookie中存储，所以cookie失效则sessionid也一起失效。为了保证同一个sessionid数据进行操作：
+1）浏览器不关闭 cookie有效 2）给cookie设置时间。
+
+    练习：	
+	登录页面、首页
+	先访问首页，判断是否登录过
+	如果登录过则显示"欢迎**回来了"
+	如果未登录则跳转到登录页面
+
+典型应用：
+练习1:自动登录
+练习2：
+书籍浏览记录
+A.jsp  存在多个书籍a标签链接,跳转B页面
+B.jsp  将最新书籍放到 cookie最后，最多4本书cookie
+	返回A 显示浏览记录
+
+练习1：
+     典型案例：
+	简易购物车

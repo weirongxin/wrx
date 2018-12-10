@@ -1,0 +1,28 @@
+BOM  
+ browser object model
+ Window对象整个浏览器窗体
+--history对象、navigator对象、location对象、screen对象
+ 
+处理浏览器的相关功能：
+  前进、后退、刷新、历史记录、打开、关闭窗口等.
+ 
+ window对象:
+	window.open() - 打开新窗口
+	window.close() - 关闭当前窗口
+ history对象:
+	history.back() - 与在浏览器点击后退按钮相同
+	history.forward() - 与在浏览器中点击按钮向前相同	
+ 	history.go();-取浏览器中的第几页 正数往前负数往后
+ Screen 对象：
+	screen.availWidth - 可用的屏幕宽度
+	screen.availHeight - 可用的屏幕高度
+ navigator 对象：
+	appName  应用的名字
+	appCodeName 应用的版本号
+	cookieEnabled 是否支持cookie功能
+	appVersion  支持浏览器版本号
+ location对象：
+	location.href = "网址";
+
+  setInterval();--设置每间隔多长时间执行一次方法
+  setTimeout();--设置 延时多久 执行一次方法

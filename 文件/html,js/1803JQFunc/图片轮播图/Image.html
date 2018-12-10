@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>图片轮播图</title>
+		<link rel="stylesheet" href="../css/reset.css" />
+		<style>
+			/*overflow: hidden;  超出内容的部分不显示*/
+			#bgDiv{width: 630px;height: 354px;
+					position: relative;overflow: hidden;}
+			#preA{position: absolute;left: 10px;top: 120px;z-index: 2;}
+			#aftA{position: absolute;right: 10px;top: 120px;z-index: 2;}
+			/*rgba(0,0,0,0.5)  设置rgb值和透明度*/
+			a:hover{background: rgba(0,0,0,0.5)}
+
+			#imgDiv{width: 3780px;height: 354px;position: absolute;}
+			#imgDiv img{float: left;}
+			
+			#titleFunc{
+				width: 630px;height: 50px;background: rgba(0,0,0,0.5);
+				position: absolute;bottom: 0px;
+			}
+			/*中间显示
+			 * ul{
+				margin: 10px auto;width: 200px;
+			}*/
+			ul{
+				float: right;
+			}
+			ul li{
+				width: 10px;height: 10px;border-radius: 5px;
+				background-color: white;
+				float: left;
+				margin: 20px 10px;
+			}
+		</style>
+		<script src="../js/jquery-2.1.1.js"></script>
+		<script>
+			var timer;//声明全局定时器对象
+			var index = 0;//图片的下标索引
+			$(function(){
+				//默认第一张图片对应的li显示背景红色
+				$("ul li:eq(0)").css("background-color","red");
+				//打开定时器
+				scrollImage();
+				//鼠标滑动到li上时 响应方法
+				$("ul li").on("mousemove",function(){
+					clearInterval(timer);
+					//取鼠标滑动到第几个li
+					var moveIndex = $(this).index();
+					index = moveIndex;
+					
+					$("#imgDiv").animate({left:-630*index},1000);
+					$("ul li").css("background-color","white");
+					$("ul li:eq("+index+")").css("background-color","red");
+				
+					
+				})
+				//鼠标从li上滑走时 打开定时器
+				$("ul li").on("mouseout",function(){
+					scrollImage();
+				});
+			});
+			
+			function scrollImage(){
+				timer = setInterval(function(){
+					index++;
+					if(index>=6){
+						index = 0;
+					}
+//					$("#imgDiv").css("left",-630*index+"px");
+					$("#imgDiv").animate({left:-630*index},1000);
+					$("ul li").css("background-color","white");
+					$("ul li:eq("+index+")").css("background-color","red");
+				},3000);
+			}
+			function prePage(){
+				//取消定时器
+				clearInterval(timer);
+				
+				//页数计数器 减一
+				index--;
+				if(index<0){
+					index = 5;
+				}
+				//根据当前页数计数 移动图片标签位置
+				$("#imgDiv").animate({left:-630*index},1000);
+				$("ul li").css("background-color","white");
+				$("ul li:eq("+index+")").css("background-color","red");
+				
+				//打开定时器
+				scrollImage();
+			}
+			
+			function aftPage(){
+				//取消定时器
+				clearInterval(timer);
+				
+				//页数计数器 减一
+				index++;
+				if(index>=6){
+					index = 0;
+				}
+				//根据当前页数计数 移动图片标签位置
+				$("#imgDiv").animate({left:-630*index},1000);
+				$("ul li").css("background-color","white");
+				$("ul li:eq("+index+")").css("background-color","red");
+				
+				//打开定时器
+				scrollImage();
+			}
+		</script>
+	</head>
+	<body>
+		<div id="bgDiv">
+			<a id="preA" href="javascript:void(0);" onclick="prePage()">
+				<img src="../img/prev_a.png" />
+			</a>
+			<a id="aftA" href="javascript:void(0);" onclick="aftPage()">
+				<img src="../img/next_a.png" />
+			</a>
+			<div id="imgDiv">
+				<img src="../img/1.jpg" />
+				<img src="../img/2.jpg" />
+				<img src="../img/3.jpg" />
+				<img src="../img/4.jpg" />
+				<img src="../img/5.jpg" />
+				<img src="../img/6.jpg" />
+			</div>
+			<div id="titleFunc">
+				<ul>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+			</div>
+		</div>
+	</body>
+</html>

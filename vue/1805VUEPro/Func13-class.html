@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-2.1.1.js" ></script>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script>
+			$(function(){
+				new Vue({
+					el:"#div1",
+					data:{
+						style1:"aa",
+						style2:"bb",
+						flag:true
+					},methods:{
+						changeStyle(){
+							this.style1="bb";
+						}
+					}
+				});
+			});
+		</script>
+		<style>
+			.aa{
+				width: 50px;height: 50px;
+				
+			}
+			.bb{
+				
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="div1">
+			<input type="button" value="切换样式" @click="changeStyle"/>
+			<div :class="[style1,style2]"></div>
+			<div :class="{aa:true,bb:flag}"></div>
+		</div>
+	</body>
+</html>

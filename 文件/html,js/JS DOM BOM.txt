@@ -1,0 +1,129 @@
+DOM document object model  (文档对象模型)
+		将web页面看成是文档，从标签中获取标签对象
+		
+		节点的种类
+			文档是一种树形结构，有节点组成
+			根节点：<html>文档中最外层节点
+			父子节点：节点存在嵌套关系时称为父子节点
+			兄弟节点：存在共同父节点的节点  互称为兄弟节点
+			
+		web页面上节点的分类：
+			标签节点  标签本身
+			属性节点  标签中包含的属性
+			文本节点  标签中的文本值
+		
+		如何获取节点
+			1.通过id查找节点       (得到一个标签)
+			document.getElementById("节点的id");
+			2.通过name         (得到数组)
+			document.getElementsByName();
+			3.通过class        (得到数组)
+			document.getElementsByClassName();
+			4.通过标签类型           (得到数组)
+			document.getElementsByTagName();
+			
+			得到节点后，通过点语法，  访问或修改  节点中属性
+
+
+
+
+
+添加事件
+		onclick    元素上发生鼠标点击时触发。
+		ondblclick 元素上发生鼠标双击时触发。
+		onblur     元素失去焦点时运行的脚本。
+		onchange   	在元素值被改变时运行的脚本。	
+		onfocus    当元素获得焦点时运行的脚本。
+		onkeydown  在用户按下按键时触发
+		onkeypress  在用户敲击按钮时触发。
+		onkeyup    当用户释放按键时触发
+		onload     页面结束加载之后触发。
+		onmousedown 当元素上按下鼠标按钮时触发。
+		onmousemove 当鼠标指针移动到元素上时触发。
+		onmouseout  当鼠标指针移出元素时触发。
+		ommouseover  当鼠标指针移动到元素上时触发。
+		onmouseup  当在元素上释放鼠标按钮时触发。
+		onsubmit   在提交表单时触发。
+
+
+
+节点类型   
+		                  nodetype      nodeName       nodeValue
+			标签节点    1         标签的类型名	没有值
+			属性节点    2	      属性的名字	属性值
+			文本节点    3	      #text	        文本数据			
+			
+		每个子节点 都存在3个数据   (节点类型,名字,值)
+			element.nodeName
+			element.nodeType
+			element.nodeValue
+			
+		1.获取节点
+		    element.childNodes	返回元素子节点的 NodeList。
+  		    nodelist.length	返回 NodeList 中的节点数。
+  		    element.attributes	返回元素属性的 NamedNodeMap。
+		    element.firstChild	返回元素的首个子。
+		    element.getAttribute()	返回元素节点的指定属性值。
+		    element.getAttributeNode()	返回指定的属性节点。
+		    element.getElementsByTagName()	返回拥有指定标签名的所有子元素的集合。
+		    element.lastChild	返回元素的最后一个子元素。
+		    element.nextSibling	返回位于相同节点树层级的下一个节点。
+		    element.parentNode	返回元素的父节点。
+		    element.previousSibling	返回位于相同节点树层级的前一个元素。
+		2.节点元素值
+		    element.innerHTML	设置或返回元素的内容。
+		    innerHTML ---可以将字符串中的标签解释显示
+		    innerText---字符串中的标签当成文本显示（不能解释）
+		3.判断
+			element.isEqualNode()	检查两个元素是否相等。
+		4.赋值
+			element.setAttribute()	把指定属性设置或更改为指定值。
+  			element.setAttributeNode()	设置或更改指定属性节点。
+  		
+  		加入节点、移除节点
+		    element.cloneNode()	克隆元素。
+		    element.appendChild()	向元素添加新的子节点，作为最后一个子节点。
+		    element.insertBefore()	在指定的已有的子节点之前插入新节点。
+		    element.removeAttribute()	从元素中移除指定属性。
+		    element.removeAttributeNode()	移除指定的属性节点，并返回被移除的节点。
+		    element.removeChild()	从元素中移除子节点。
+		    element.replaceChild()	替换元素中的子节点。
+
+
+		创建节点
+			createElement('节点的类型')
+			createTextNode('文本')
+
+
+BOM  browser object model   （环境信息）
+		window 对象整个浏览器窗体
+		history对象，navigator对象，location对象，screen对象
+		
+		window 对象：
+			window.open() 打开新窗口
+			window.close() 
+			
+		history 对象：
+			history.back() - 与在浏览器点击后退按钮相同
+			history.forward() - 与在浏览器中点击按钮向前相同
+			history.go(-3)  向前或向后  几页  正数往前 负数往后
+			
+		screen 对象：
+			screen.availWidth - 可用的屏幕宽度
+			screen.availHeight - 可用的屏幕高度
+			
+		navigator 对象
+			navigator.appCodeName   应用的版本号
+			navigator.appName      应用的名字
+			navigator.appVersion   浏览器的版本号
+			navigator.cookieEnabled  是否支持cookie
+			
+		location 对象
+			location.href="网址"  打开网址
+			
+		setInterval(  方法 ,  毫秒  )  设置 间隔时间  执行一次方法   （方法执行很多次）
+		setTimeout ( )     设置延时多久  执行一次方法	         （方法执行一次）
+		
+
+
+

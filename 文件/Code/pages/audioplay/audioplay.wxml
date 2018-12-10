@@ -1,0 +1,16 @@
+<view>
+  <image class='image-style' src="../../images/play/rain.gif"></image>
+  <view class='process-style' style="flex-direction:row;">
+    <!--当前时间进度-->
+    <label class='nowtime-style'>{{nowTime}}</label>  
+     <!--总时长显示-->
+    <label class='totaltime-style'>{{totalTime}}</label>
+    <!--slider标签中的value为当前值，max为最大值-->
+    <slider block-size="16" block-color="#D84C29" backgroundColor="#5D67F9" activeColor="#FFCD43" value='{{currentTime}}' max='{{duration}}' bindchange='sliderChange'></slider>
+   
+  </view>
+
+  <button class="btn-style" type="primary" bindtap='play'>播放</button> 
+  <button class="btn-style" type="warn" bindtap='stop'>停止</button> 
+  <button class="btn-style" type="default" bindtap='pause'>暂停</button> 
+</view>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script type="text/javascript" src="js/jquery-2.1.1.js" ></script>
+		<script type="text/javascript" src="js/axios.min.js" ></script>
+		<script>
+			$(function(){
+				new Vue({
+					el:"#bgDiv",
+					data:{
+						username:"",
+						password:""
+					},methods:{
+						login(){
+							axios({
+								method:"post",
+								data:"username="+this.username+"&password="+this.password,
+								url:""
+							}).then((response)=>{
+								alert(response.data);
+							});						
+						}
+					}
+				});
+			});
+		</script>
+		
+	</head>
+	<body>
+		<div id="bgDiv">
+			用户名:<input type="text" v-model="username"/><br/>
+			密码:<input type="password" v-model="password"/><br/>
+			<input type="button" value="登录" @click="login()" />
+		</div>
+	</body>
+</html>

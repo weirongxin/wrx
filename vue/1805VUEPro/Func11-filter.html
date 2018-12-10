@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-2.1.1.js" ></script>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script>
+			$(function(){
+				Vue.filter("checkNum",function(data){
+					//如果numData数字为1位数则补充0，两位数正常显示
+					if(data<10){
+						return "0"+data;
+					}else{
+						return data;
+					}
+				});
+				Vue.filter("changeNum",function(data){
+					//小数点后留3位
+					return Number(data).toFixed(3);
+				});
+				
+				Vue.filter("changeTime",function(data){
+					//时间格式的过滤  参数为当前时间的毫秒，转换为时间显示格式输出
+					var t = new Date(data);
+					var monthNum = t.getMonth()+1;
+					return t.getFullYear() +"年" +
+						monthNum+"月"+t.getDate()+"日";
+				});
+				new Vue({
+					el:"#div1",
+					data:{
+						numData:13,
+						timeData:Date.now()
+					},methods:{
+						
+					},filters:{
+						"changeNum2":function(data,count){
+								return Number(data).toFixed(count);
+							}
+						
+					}
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div id="div1">
+			<input type="text" v-model="numData"/><br/>
+			<div>{{numData | checkNum}}</div><br/>
+			<div>{{numData | changeNum}}</div>
+			<h3>{{timeData | changeTime}}</h3>
+			<h4>{{numData |changeNum2(6)}}</h4>
+		</div>
+	</body>
+</html>

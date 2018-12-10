@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-2.1.1.js" ></script>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script>
+			$(function(){
+				new Vue({
+					el:"#div1",
+					data:{
+						indexCount:0,
+						imgData:["https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1542110060848&di=ed6bc75b5de6e00423e34ed0d56c3d1b&imgtype=0&src=http%3A%2F%2Fimg4.duitang.com%2Fuploads%2Fitem%2F201406%2F05%2F20140605151601_wn22X.thumb.700_0.jpeg",
+						"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1542705052&di=7dbbd75c1ad9e48dedba8e07f170221a&imgtype=jpg&er=1&src=http%3A%2F%2Fpre00.deviantart.net%2F6152%2Fth%2Fpre%2Fi%2F2015%2F119%2Fc%2F8%2Fremember_me_by_levanatempest-d3l19gs.jpg",
+						"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1542110355972&di=d7cba612b055c69ecf82e8e1b2a7f66c&imgtype=0&src=http%3A%2F%2Fpic.downyi.com%2Fupload%2F2018-6%2F2018628154617669.png",
+						"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1542110416213&di=2e2d100c37aeee7568b5bf9f45502e17&imgtype=0&src=http%3A%2F%2Fi1.hdslb.com%2Fbfs%2Farchive%2F8ea66a3adf1341d3e91568164106e260277d0545.jpg"],
+						url:"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1542110060848&di=ed6bc75b5de6e00423e34ed0d56c3d1b&imgtype=0&src=http%3A%2F%2Fimg4.duitang.com%2Fuploads%2Fitem%2F201406%2F05%2F20140605151601_wn22X.thumb.700_0.jpeg"
+					},methods:{
+						changeImg(){
+							this.url = this.imgData[this.indexCount];
+							this.indexCount++;
+							if(this.indexCount>=this.imgData.length){
+								this.indexCount = 0;
+							}
+						}
+					}
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div id="div1">
+			<input type="button" value="切换图片" @click="changeImg"/>
+			<!--v-bind:src  通过v-bind指令绑定属性
+				简写    :src
+			-->
+			<img v-bind:src="url" />
+		</div>
+	</body>
+</html>

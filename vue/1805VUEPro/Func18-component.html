@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-2.1.1.js" ></script>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script>
+			$(function(){
+				//定义全局组件  名字为world 模板为template
+				//全局组件
+				Vue.component("world",{
+					template:"<h1>hello component</h1>"
+				});
+				//自定义组件中，添加按钮 按钮上显示点击次数
+				Vue.component("helloworld",{
+					data:function(){
+						return {count:0};
+					},
+					template:'<div>'
+					+'<a>{{count}}</a>'
+					+'<input type="button" v-model="count" @click="count++"/>'
+					+'</div> '
+				});
+				new Vue({
+					el:"#div1",
+					//局部组件
+					components:{
+						"world1":{
+							template:"<h1>hello component1</h1>"
+						}
+					}
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div id="div1">
+			<world></world>
+			<helloworld></helloworld>
+			<world1></world1>
+		</div>
+	</body>
+</html>

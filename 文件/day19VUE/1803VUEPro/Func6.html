@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>元素的显示隐藏</title>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script>
+			window.onload = function(){
+				new Vue({
+					el:"#bgDiv",
+					data:{
+						//定义变量 布尔  用于显示、隐藏标签
+						showDiv:true
+					},methods:{
+						change(){
+							//将控制显示、隐藏的标签属性取反
+							this.showDiv = !this.showDiv;
+						}
+					}
+				});
+			}
+		</script>
+		<style>
+			#div0{width: 100px;height: 100px;background-color: red;}
+			#div1{width: 100px;height: 100px;background-color: black;}
+		</style>
+	</head>
+	<body>
+		<div id="bgDiv">
+			<!--点击按钮隐藏div-->
+			<input type="button" value="点击" @click="change"/><br/>
+			<!--指令v-show绑定标签的显示隐藏性  实际绑定的是布尔变量
+				v-show:通过display:none设置的标签隐藏性
+				v-if:通过将标签移除 设置标签的不可见性
+			-->
+			<div id="div0" v-show="showDiv"></div>
+			<div id="div1" v-if="showDiv"></div>
+		</div>
+	</body>
+</html>

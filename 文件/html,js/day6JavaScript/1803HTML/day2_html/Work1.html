@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<form>
+		<table cellspacing="0px" border="0px">
+			<tr>
+				<td></td>
+				<td>用户基本信息</td>
+			</tr>
+			<tr>
+				<td>用户名:</td>
+				<td><input type="text"/></td>
+			</tr>
+			<tr>
+				<td>上传照片：</td>
+				<td>
+					<input type="file" />
+				</td>
+			</tr>
+			<tr>
+				<td>性别:</td>
+				<td>
+					<input type="radio" name="gender"/>F
+					<input type="radio" name="gender"/>M
+				</td>
+			</tr>
+			<tr>
+				<td>密码:</td>
+				<td>
+					<input type="password" />
+				</td>
+			</tr>
+			<tr>
+				<td>出生年月:</td>
+				<td>
+					<select>
+						<option>请选择年份</option>
+						<option>2018</option>
+					</select>年
+					<select>
+						<option>请选择月份</option>
+					</select>月
+				</td>
+			</tr>
+			<tr>
+				<td>角色选择</td>
+				<td>
+					<select  style="width: 100px;height: 100px;" multiple="multiple">
+						<option>role1</option>
+						<option>role2</option>
+						<option>role3</option>
+					</select>
+					<input  type="button" value=">>"/>
+					<select multiple="multiple">
+						<option>辅助</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>兴趣爱好：</td>
+				<td>
+					<input type="checkbox" name="like"/>音乐
+					<input type="checkbox" name="like"/>画画
+					<input type="checkbox" name="like"/>看报纸
+					<input type="checkbox" name="like" checked="checked"/>敲代码
+				</td>
+			</tr>
+			<tr>
+				<td>个人描述：</td>
+				<td>
+					<textarea placeholder="请输入内容" 
+						rows="5" cols="30"
+						style="resize: none"></textarea>
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>
+					<input  type="submit" value="提交"/>
+					<input type="reset" value="重置"/>
+					<input type="button" disabled="disabled" value="进入游戏" />
+				</td>
+			</tr>
+		</table>
+		</form>
+	</body>
+</html>

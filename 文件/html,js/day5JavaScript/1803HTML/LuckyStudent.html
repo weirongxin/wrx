@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>点名</title>
+		<script>
+			var stuNames = new Array('张骏','刘维峰','单堃育','卫荣鑫','王鹏','尚方剑','杨朔','丁亚楠','陈思远','刘瑞琪');
+			var index = 0;
+			var status = true;
+			var count=0;
+			
+//			获取数组中的元素\给标签赋值
+			function getName(){
+				var nameDiv = document.getElementById("name");
+				var getStuName = stuNames[index];
+				nameDiv.innerHTML = getStuName;
+				index++;
+				if(index==stuNames.length){
+					index = 0;
+				}
+			}
+			//按钮点击触发
+			function lucky(){
+				alert("lucky"+status);
+				if(status){// == "true"
+					alert("if");
+					//取消定时器  参数为设置了定时器的对象
+					clearInterval(intervalTime);
+					status = false;
+				}else{
+					alert("else");
+					intervalTime = setInterval("getName()",10);
+					status = true;
+				}
+
+//
+//				if(count%2 == 0){
+//					//取消定时器  参数为设置了定时器的对象
+//					clearInterval(intervalTime);
+//				}else{
+//					intervalTime = setInterval("getName()",10);
+//				}
+//				count++;
+			}
+			//页面加载完成时 自动调用
+			window.onload = function(){
+				getName();
+				//通过setInterval设置定时器，将定时器对象 赋值给intervalTime全局变量
+				intervalTime = setInterval("getName()",10);
+			}
+		</script>
+		<style>
+			#name{
+				width: 200px;height: 50px;
+				line-height: 50px;font-size: 20px;
+				color: palevioletred;
+				border: 1px solid black;
+				margin: 50px auto;
+				text-align: center;
+			}
+			#buttonDiv{
+				width: 50px;height: 50px;
+				margin:auto;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="name">姓名</div>
+		<div id="buttonDiv">
+			<input type="button" value="lucky" onclick="lucky()"/>
+		</div>
+	</body>
+</html>

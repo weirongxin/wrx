@@ -1,0 +1,99 @@
+	servlet
+web5周
+前端 html+css +js+jq
+后端 服务器端
+1.什么是servlet？
+   sun 公司给javaweb的定义：由html+js+java类承载的资源在servlet容器上运行的程序称为javaweb。
+   servlet本质是java中的一个接口
+   servlet容器是运行java+静态资源一系列数据的环境。
+   servlet容器：tomcat、apache、weblogic
+2.servlet与servlet容器
+   网络请求过程
+            请求		     创建Request
+   客户------------>servlet容器--------->servlet
+        <----------	    <----------
+	响应		      创建Response						       
+3.servlet容器的概念：
+   servlet容器是服务器端搭建的服务器环境。
+   被请求时根据配置信息找到相应的java处理类servlet，响应功能。
+
+4.tomcat安装、目录结构
+      安装：将tomcat文件夹存入c盘根目录下
+      环境变量：
+	JAVA_HOME
+	C:\Program Files\Java\jdk1.8.0_131
+      测试搭建成功：
+	C:\apache-tomcat-8.0.47\bin\startup.bat
+	双击运行启动服务器：提示server startup in **ms
+	测试：在浏览器的地址栏输入localhost:8080
+5.tomcat目录结构：
+   bin:二进制、执行文件
+   conf：配置信息(服务器、应用)
+   lib:类库
+   logs：日志文件
+   temp:临时文件
+   webapps:web项目发布的位置
+   work:文件、数据的存储位置
+
+6.新建web工程：
+   1)新建dynamic web project
+   2)添加工程的配置信息文件
+      web.xml
+   工程目录：
+   Java Resources--存放java代码
+   WebContent--存放前端文件、配置文件
+	--META-INF 配置信息
+	--WEB-INF 存放配置、私有信息
+
+7.第一个servlet
+  Servlet类结构()
+8.servlet生命周期、请求过程
+  ！！servlet生命周期：
+	1）初次访问调用构造方法（只调用一次），单实例
+	2）调用init方法进行初始信息的配置
+	3）如果存在访问则调用service方法
+	4）服务停止调用destory方法销毁
+  请求过程：
+       1）用户请求servlet容器
+       2）servlet容器接到请求后，查找web.xml文件中的相应配置
+       3）根据配置信息 调用servlet类
+       4）如果类为第一次访问，则先构造再init
+    	如果类不是第一次访问 直接调用service方法处理请求功能
+       5）服务停止 destory销毁释放
+9.servlet配置
+  <load-on-startup>0<load-on-startup>
+  当前servlet在服务启动后自动加载（构造 init）
+
+10.servletConfig对象
+   //1.获取servlet名字
+   arg0.getServletName();
+   //2.获取配置的参数值
+   arg0.getInitParameter("username");
+   //3.取所有的配置信息参数名，对应取参数值
+   Enumeration<String> parNames = arg0.getInitParameterNames();
+   //遍历所有参数名集合
+   while(parNames.hasMoreElements()){
+     //获取每个参数元素
+     String parCell =  parNames.nextElement();
+     //根据参数的名字获取参数对应的值
+     String parValue = arg0.getInitParameter(parCell);
+     //打印一对：参数名+参数值
+     System.out.println("name:"+parCell+" value:"+parValue);
+  }
+11.servletContext对象
+	
+12 HTTP的会话方式
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jq的使用</title>
+		<!--1.jq文件 的引入（引入文件后才可以在当前页面显示）-->
+		<script type="text/javascript" src="../js/jquery-2.1.1.js" ></script>
+		<script>
+		//2.页面加载完成后自动调用
+			//1）js中 页面加载完成后自动调用
+//			window.onload = function(){
+//				alert("hi js");
+//			}
+			//2）jq中 先获取document文档对象，添加ready方法
+			//页面加载完成时，自动调用ready中的function方法
+//			$("document").ready(function(){
+//				alert("hi jq");
+//			});
+			//3）jq中 将页面加载完成时的方法进行升级
+			$(function(){
+				//根据id查找标签对象
+				//根据标签对象的css方法，传入参数 更改样式
+				$("#div1").css("background-color","yellow");
+				$(".div2").css("background-color","blue");
+				$("#input1").attr("value","点击");
+			});
+			
+		</script>
+	</head>
+	<body>
+		<div id="div1">div1</div>
+		<div class="div2">div2</div>
+		<input id="input1" value="input" type="button"/>
+	</body>
+</html>

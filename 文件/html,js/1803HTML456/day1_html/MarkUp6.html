@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--align 对齐方式：center
+			合并：表格合并 单元格左右合并colspan（左右合并时 相应减少一行的td）
+				 上下合并 rowspan （上下合并时 相应减少下一行的td）
+		-->
+		<table border="1px" bordercolor="black" 
+			cellspacing="0px" cellpadding="10px">
+			<tr>
+				<td colspan="3" align="center">科目</td>
+			</tr>
+			<tr>
+				<td>J</td>
+				<td>C</td>
+				<td>H</td>
+			</tr>
+		</table>
+		
+		<table border="1px" bordercolor="black" 
+			cellspacing="0px" cellpadding="10px">
+			<tr>
+				<td colspan="4" align="center">成绩表</td>
+			</tr>
+			<tr>
+				<td rowspan="2">Abcde</td>
+				<td>B</td>
+				<td>C</td>
+				<td>D</td>
+			</tr>
+			<tr>
+				<td>10</td>
+				<td>20</td>
+				<td>30</td>
+			</tr>
+		</table>
+	</body>
+</html>

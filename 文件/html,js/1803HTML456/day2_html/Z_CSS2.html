@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>标签选择器</title>
+		<style>
+			/*id选择器   标签的id属性唯一， 通过： “#”+“id”访问到标签 */
+			#div1{width: 50px;height: 50px;background-color: red;}
+			/*类选择器  标签的class属性 ，通过：“.”+“class”访问到标签 */
+			/*border-style边框样式：  dashed虚线  solid实线 dotted点线*/
+			.datestyle{width: 100px;height: 30px;
+					background-color: yellow;
+					border: 1px;
+					border-color: black;
+					border-style: dashed;}
+			/*类型选择器  根据标签的类型 设定样式*/
+			h1{width: 150px;height: 130px;
+				background-color: greenyellow;}	
+			/*路径选择器：根据标签嵌套的路径 查找相应的标签 设定样式（两级）*/
+			div h2{width:150px;height: 100px;
+				background-color: black;}
+			/*通配符选择器：找到页面上的所有标签 设定同一个样式*/
+			*{background-color: black;}
+		</style>
+	</head>
+	<body>
+		<div id="div1">div1</div>
+		
+		<div class="datestyle">今天星期三</div>
+		<div class="datestyle">明天星期四</div>
+		<div class="datestyle">后天星期五</div>
+		<div class="datestyle">大后天周六</div>
+		
+		<h1>标题1</h1>
+		<h1>标题2</h1>
+		<h1>标题3</h1>
+		<h1>标题4</h1>
+		
+		<div id="div2">
+			<div>
+				<p>
+					<h2>第一个h2</h2>
+					<h3>第一个h3</h3>
+					<h4>
+						<h2>h4中的h2</h2>
+					</h4>
+				</p>
+			</div>
+		</div>
+	</body>
+</html>

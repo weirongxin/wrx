@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#bgDiv{
+				width: 400px;
+				border: 1px solid black;
+			}
+			#div1{
+				width: 298px; height: 298px;
+				background-color: purple;
+				float: left;
+				border: 1px solid white;
+			}
+			.normalDiv{
+				width: 100px;height: 100px;
+				background-color: green;
+				float: right;
+			}
+			.yellow{
+				background-color: yellow;
+			}
+			/*清浮动*/
+			.clear:after{
+				content: "";
+				clear: both;
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="bgDiv" class="clear">
+			<div id="div1">第1块</div>
+			<div class="normalDiv">第2块</div>
+			<div class="normalDiv yellow">第3块</div>
+			<div class="normalDiv">第4块</div>
+			<div class="normalDiv yellow">第5块</div>
+			<div class="normalDiv">第6块</div>
+			<div class="normalDiv yellow">第7块</div>
+			<div class="normalDiv">第8块</div>
+		</div>
+	</body>
+</html>

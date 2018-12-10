@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>指令绑定数据</title>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script>
+			window.onload = function(){
+				new Vue({
+					el:"#bgDiv",
+					data:{
+						username:""	
+					}
+				});
+			}
+		</script>
+	</head>
+	<body>
+		<!--输入框内容，即时在下面显示
+			通过v-model指令绑定标签的value属性值到vue对象的数据
+		-->
+		<div id="bgDiv">
+			用户名:<input type="text" v-model="username"/><br/>
+			{{username}}
+		</div>
+	</body>
+</html>

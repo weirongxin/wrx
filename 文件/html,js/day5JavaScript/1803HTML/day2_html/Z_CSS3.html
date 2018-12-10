@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>选择器的优先级</title>
+		<style>
+		*{width:100px;
+			height:50px;
+			background-color:blue;}
+			
+		div{background-color: cyan;}	
+		
+		.c1{
+			background-color: coral;
+		}
+		#div1{
+			width:50px;
+			height:25px;
+			background-color: red;}
+		#div0 div{
+			width:100px;
+			height:50px;
+			background-color:white;
+		}	
+		</style>
+		<!--
+		选择器的优先级：
+		路径选择器>id选择器>类选择器>类别选择器>通配符选择器-->
+	</head>
+	<body>
+		<div id="div0">
+			<div id="div1" class="c1">div1</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>去样式化 css reset</title>
+		<!--将标签自带的样式清空，开发时 根据ui效果图，添加自定义开发样式-->
+		<!--body标签 属性margin
+			h1-h6 属性margin
+			ol、ul、dl 属性margin、padding、liststyle
+			dd 属性margin
+			table、tbody 属性border-spacing
+			td 属性padding
+			p 属性margin
+			pre 属性margin
+			a 属性 text-decoration color
+			select 属性border 
+			option 属性padding
+		-->
+		<!--<style>
+			body,h1,h2,h3,h4,h5,h6,
+			ol,ul,dl,dd,td,p,pre,option{padding:0px;margin: 0px;}
+			ol,ul,dl{list-style: none;}
+			a{text-decoration: none;}
+		</style>-->
+		<link rel="stylesheet" href="../css/reset.css" />
+	</head>
+	<body>
+		<h1>h1</h1>
+		<ol>
+			<li>列表</li>
+		</ol>
+		<dl>
+			<dt>标题</dt>
+			<dd>标题内容</dd>
+		</dl>
+		<table>
+			<tr>
+				<td>ddd</td>
+			</tr>
+		</table>
+		<p>段落</p>
+		<pre>预编译</pre>
+		<div>div</div>
+		<a href="1-复习.html">复习</a>
+		<img src="../img/dog.jpg" alt="22"/>
+		<select>
+			<option>java</option>
+		</select>
+	</body>
+</html>

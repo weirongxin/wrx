@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../js/test3.js" ></script>
+	</head>
+	<body>
+		
+		<script>
+			var goods  = new Array();
+			var good1 = new Good("名字1",11.1,"产地1","品牌1");
+			var good2 = new Good("名字2",12.1,"产地2","品牌2");
+			var good3 = new Good("名字3",13.1,"产地3","品牌3");
+			var good4 = new Good("名字4",14.1,"产地4","品牌4");
+			var good5 = new Good("名字5",15.1,"产地5","品牌5");
+			
+			goods[0] = good1;
+			goods[1] = good2;
+			goods[2] = good3;
+			goods[3] = good4;
+			goods[4] = good5;
+			
+			for(var i = 0;i<goods.length;i++){
+				var g = goods[i];
+				document.write(g.say());
+				document.write("<br/>");
+			}
+		</script>
+		
+		<table cellspacing="0px" border="1px solid black">
+			<tr> 
+				<td>名字</td>
+				<td>价格</td>
+				<td>产地</td>
+				<td>品牌</td>
+			</tr>
+			<script>
+			//遍历数组中的商品  动态添加标签及内容
+				for(var i = 0;i<goods.length;i++){
+					var g = goods[i];
+					document.write("<tr><td>"+g.name+"</td><td>"+g.price+"</td><td>"+g.loc+"</td><td>"+g.brand+"</td></tr>");
+				}
+			</script>
+		</table>
+	</body>
+</html>

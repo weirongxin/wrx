@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>正则表达式</title>
+		<script src="../js/checkPhone.js"></script>
+		<script>
+			function localcheck(){
+				//1.先获取标签、取标签数据
+				var telInput = document.getElementsByName("tel")[0];
+				var telData = telInput.value;
+				//2.调用外部js方法  将数据传入校验
+//				var result = check(telData);
+				var result = checkMail(telData);
+				//3.显示 校验的结果
+				alert(result);
+			}
+		</script>
+	</head>
+	<body>
+		手机号：<input name="tel" type="text" /><br/>
+		<input type="button" value="验证" onclick="localcheck()"/>
+	</body>
+</html>

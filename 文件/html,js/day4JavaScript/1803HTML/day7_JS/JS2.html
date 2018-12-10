@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			num = 11;
+			alert(num);
+			//1.定义变量数字类型
+			var a = 1;
+			//提示框
+			alert(a);
+			//页面输出
+			document.write(a);
+			//F12 控制台输出
+			console.log(a);
+			
+			//2.定义变量字符串类型
+			var name = "小明";
+			document.write(name);
+			
+			//3.数组类型变量
+			var names = new Array();
+			names[0] = "小明";
+			names[1] = "小红";
+			names[2] = "小王";
+			
+			//for循环
+			for(var i=0;i<names.length;i++){
+				document.write(names[i]);
+			}
+			
+			//循环
+			var count=0;
+			while(count<names.length){
+				document.write(names[count]);
+				count++;
+			}
+		</script>
+	</body>
+</html>

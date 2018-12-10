@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-2.1.1.js" ></script>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script type="text/javascript" src="js/User.js" ></script>
+		<script>
+			$(function(){
+				new Vue({
+					el:"#div1",
+					data:{
+						name:"",
+						gender:"F",
+						age:18,
+						users:[]
+					},
+					methods:{
+						addUser(){
+							var user = new User(this.name,this.gender,this.age);
+							this.users.push(user);
+						},delUser(index){
+							this.users.splice(index,1);
+						},delAll(){
+							this.users = [];
+						}
+					}
+				});
+			});
+			
+		</script>
+	</head>
+	<body>
+		<h2>用户管理</h2>
+		<div id="div1">
+			新增用户：<br/>
+				姓名:<input type="text" v-model="name"/><br/>
+				性别:<input type="text" v-model="gender"/><br/>
+				年龄:<input type="text" v-model="age"/><br/>
+			<input type="button" value="添加用户" v-on:click="addUser()"/>
+			<hr />
+			<table>
+				<tr>
+					<td>序号</td>
+					<td>姓名</td>
+					<td>性别</td>
+					<td>年龄</td>
+					<td>功能</td>
+				</tr>
+				<tr v-for="(user,index) in users">
+					<td>{{index}}</td>
+					<td v-for="value in user">
+						{{value}}
+					</td>
+					<td>
+						<input type="button" value="删除"
+							 v-on:click="delUser(index)"/>
+					</td>
+				</tr>
+			</table>
+			<input type="button" value="全部删除" 
+						v-on:click="delAll()"/>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../js/jquery-2.1.1.js" ></script>
+		<script>
+			$(function(){
+				//1.同一个标签对象 连续设置多个样式
+//				$("#div1").css("width","100px").css("height","100px").css("background-color","red");
+				//2.使用json格式数据设置 设置标签的样式
+//				$("#div1").css({"width":"100px","height":"100px","background-color":"red"});
+			
+				//释放$符号（将$释放 使用jquery替代）
+				$.noConflict();
+				jQuery("#div1").css("background-color","blue");
+				
+			});
+		</script>
+	</head>
+	<body>
+		<div id="div1">div1</div>
+	</body>
+</html>

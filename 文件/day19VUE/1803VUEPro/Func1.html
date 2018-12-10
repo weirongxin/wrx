@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Vue-HelloWorld</title>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script>
+			window.onload = function(){
+				//页面加载完成时，实例化vue对象，
+				//在实例化时设定绑定的参数\数据\方法
+				//el:传入标签选择器（进行标签的绑定）
+				//data:绑定的数据
+				//methods:绑定的方法
+				new Vue({
+					el:"#bgDiv",
+					data:{
+						msg:"hello world vue"
+					},
+					methods:{}
+				});
+			}
+		</script>
+	</head>
+	<body>
+		<!--通过id进行vue和标签的绑定
+			在绑定的标签里层，可以使用vue中的数据、方法
+			使用数据格式：{{data中数据的属性名}}
+		-->
+		<div id="bgDiv">
+			{{msg}} 
+		</div>
+	</body>
+</html>

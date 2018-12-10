@@ -1,0 +1,21 @@
+/* pages/audioplay/audioplay.wxss */
+/*进度条样式*/
+.process-style{
+  margin: 10rpx;
+}
+/*歌曲当前时间样式*/
+.nowtime-style{
+  margin-left: 10rpx;
+}
+/*歌曲总时间样式*/
+.totaltime-style{
+  margin-left: 520rpx;
+}
+.image-style{
+  width: 100%;
+}
+.btn-style{
+  margin: 10rpx 20rpx;
+  height: 100rpx;
+
+}

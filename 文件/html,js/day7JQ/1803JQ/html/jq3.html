@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../js/jquery-2.1.1.js" ></script>
+		<script>
+			$(function(){
+				//1.js->jq  js中 根据id获取标签对象
+				var div0 = document.getElementById("div0");
+				//将js对象转换为jq对象调用jq中的方法
+				$(div0).css("background-color","aquamarine");
+				
+				//2.jq->js
+				//获取jq对象为一个数组，从数组中获取对象后直接使用
+				var div1 =  $(".div1")[0];
+				div1.style.backgroundColor = "red";
+				$(".div1")[0].style.backgroundColor = "red";
+				
+			});
+		</script>
+	</head>
+	<body>
+		<div id="div0">div0</div>
+		<div class="div1">div1</div>
+	</body>
+</html>

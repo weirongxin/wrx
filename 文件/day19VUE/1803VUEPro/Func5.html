@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script>
+			window.onload = function(){
+				new Vue({
+					el:"#bgDiv",
+					data:{
+						username:"",
+						names:[]
+					},methods:{
+						add(){
+							//通过this获取data中的names数组
+							//调用push方法追加元素
+							//元素：this中的username属性
+							this.names.push(this.username);
+							//将原数据清空
+							this.username = "";
+						}
+					}
+				});
+			}
+		</script>
+	</head>
+	<body>
+		<div id="bgDiv">
+			姓名:<input type="text" v-model="username"/><br>
+			<input type="button" v-on:click="add" value="增加"/>
+			<ul>
+				<li v-for="name in names">
+					{{name}}
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>

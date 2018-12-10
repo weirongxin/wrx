@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>绑定标签的属性值</title>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script>
+			window.onload = function(){
+				new Vue({
+					el:"#bgDiv",
+					data:{
+						count:1,
+						url:"http://img.111cn.net/attachment/art/165334/5b85f9bb6f747.png"
+					},methods:{
+						change(){
+							this.count++;
+							if(this.count%2==0){
+								this.url="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1537182252609&di=8f95a44ef1c587a448d633f9bee63baf&imgtype=jpg&src=http%3A%2F%2Fimg1.imgtn.bdimg.com%2Fit%2Fu%3D3374136786%2C3313594516%26fm%3D214%26gp%3D0.jpg";
+							}else{
+								this.url="img/pic.jpg";
+							}
+						}
+					}
+				});
+			}
+		</script>
+	</head>
+	<body>
+		<div id="bgDiv">
+			<!--v-bind  绑定标签的属性值 ，属性值数据来源于vue中data的数据-->
+			<img  v-bind:src="url"/>
+			<input type="button" value="切换图片" @click="change"/>
+		</div>
+	</body>
+</html>

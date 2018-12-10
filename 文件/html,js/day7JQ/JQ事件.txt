@@ -1,0 +1,78 @@
+1.非表单选择器：
+所有:  *  		   $("*")
+id:    #id	  	   $("#id")
+class: .class  		   $(".class")
+元素类型:element    	   $("p")
+同时两个样式:.class.class  $(".c1.c2")
+
+第一个p：  :first	   $("p:first")
+最后一个p: :last	   $("p:last")
+
+无子节点的所有元素 :empty   $(":empty")
+所有隐藏的p元素: :hidden    $("p:hidden")
+所有可见的表格:  :visible   $("table:visible")
+
+带匹配选择的所有元素 s1,s2,s3  $("th,td,.intro")
+  
+指定href属性的元素  $("[href]")
+href值等于#的元素   $("[href='#']")
+href值不等于#的元素 $("[href!='#']")
+href值以.jpg结尾的元素 $("[href$='jpg']")
+
+2.表单选择器
+input元素  		$(":input")
+type为text的input       $(":text")
+password的input		$(":password")
+radio的input		$(":radio")
+checkbox的input		$(":checkbox")
+submit的input		$(":submit")
+reset的input		$(":reset")
+还有 button、image、file
+
+所有激活的		$(":enabled")
+禁用的			$(":disabled")
+被选中的下拉		$(":selected") 
+被选中的		$(":checked")
+
+3.jQuery操作DOM
+ a 查询
+   text()   设置、返回文本(不包含标签)
+   html()   设置或者返回HTML(包括标签、文本)
+   val()    设置和返回value属性的值
+ b 创建
+  $("<p>jQuery</p>").appendTo("body");
+ c 插入节点
+  append()  在被选元素的结尾插入内容
+  prepend() 在被选元素的开头插入内容
+  after() 在被选元素之后插入内容
+  before() 在被选元素之前 插入内容
+ d 删除节点
+  remove() 删除被选及子元素 自己的标签也删除
+  empty() 从被选元素中删除所有子元素 不删自己
+ e 复制节点
+  clone()  克隆节点 (事件无法克隆)
+ f 样式和属性操作
+  css();
+  attr("属性名");  取属性值
+  attr("属性名","属性值") 属性赋值
+ g 遍历函数
+  .add() 将元素添加到匹配元素的集合中
+  .children()  获取所有子元素
+  each(function(){}) 为每个匹配元素执行函数
+  find() 返回被选元素的后代元素 
+  first() 第一个被选元素
+  next() 同级元素
+  nextAll() 被选之后的所有同级
+  nextUnitl() 返回介于两个给定参数之间的每个元素之后的所有同级元素
+  not() 从匹配元素集合中移除元素
+  parent() 返回被选元素的直接父元素
+  parents() 返回被选元素的所有祖先元素
+  parentsUntil() 返回介于两个给定参数之间的所有祖先元
+素
+  prev() 返回被选元素的前一个同级元素
+  preAll() 返回被选元素之前的所有同级元素
+  prevUntil()  返回介于两个给定参数之间的每个元素之前的所有同级元素
+  siblings 返回被选元素的所有同级元素
+
+
+

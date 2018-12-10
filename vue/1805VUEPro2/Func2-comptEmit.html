@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-2.1.1.js" ></script>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script>
+			$(function(){
+				Vue.component("helloworld",{
+					props:["data1"],
+					data:function(){
+						return {
+							comData1:this.data1
+						}
+					},template:"#template1",
+					methods:{
+						sendData(){
+							//通过$emit发射到指定的方法中(组件往vue传值)
+							//param1:发射方法  param2：传递的参数值
+							this.$emit("send-func",this.comData1);
+						}
+					}
+				});
+				new Vue({
+					el:"#div1",
+					data:{
+						name:"xiaoming"
+					},
+					methods:{
+						//定义方法，被组件调用 传参，修改name数据
+						changeByCom(result){
+							this.name = result;
+						}
+					}
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<!--单独创建 template模板，在组件内通过id进行引用-->
+		<template id="template1">
+			<div>
+				<input type="text" v-model="comData1" />
+				<input type="button" value="发射" @click="sendData"/>
+			</div>
+		</template>
+		
+		<div id="div1">
+			<!-- :data1  指定组件中需要vue传递的数据
+				 @sendFunc 组件中发射的方法在vue中的方法
+            -->
+			<helloworld :data1="name" @send-func="changeByCom"></helloworld>
+			{{name}}
+		</div>
+	</body>
+</html>

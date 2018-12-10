@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-2.1.1.js" ></script>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<script>
+			$(function(){
+				new Vue({
+					el:"#div1",
+					data:{},
+					created:function(){
+						console.log("created");
+					},
+					beforeCreate:function(){
+						console.log("before create");
+					},beforeMount:function(){
+						console.log("before Mount");
+					},mounted:function(){
+						console.log("mounted");
+					}
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div id="div1"></div>
+	</body>
+</html>

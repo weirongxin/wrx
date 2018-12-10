@@ -1,0 +1,116 @@
+1.VUE入门
+   前端框架
+   vue.js文件 基于javascript整个的前端框架
+   开发者：尤雨溪
+   
+2.特点：
+   vue.js采用mvvm设计模式(model-view  view-model)
+   数据的双向绑定、组件化的应用   
+
+3.第一个vue
+  操作步骤：
+     1)导入vue.js文件(官方两种使用vue的方式：导入、脚手架生成vue项目)
+     2)实例化Vue对象，同时传入json格式数据
+       el: 指定绑定的标签(id选择器)
+       data: vue中的数据
+       new Vue({
+	el:“#div1”,
+    	data:{
+	    msg:"hello world"
+	}
+       });
+     3)创建标签，绑定vue
+      <div id="div1"> {{msg}}</div>
+
+4.指令：常用
+  1).v-model 双向数据绑定，一般表单元素
+     <input v-model="msg"/>
+   示例：输入框内容，即时在下面显示
+  2)v-for 循环(数组、对象)
+   数组：
+     <li v-for="value in user">{{value}}
+   数组、对象
+     v-for="(v,k) in user"
+     v-for="user in users"
+    	{{user.id}}  {{user.name}}
+   索引和对象集合
+     v-for="(user,index) in users"
+	{{index}}  {{user.id}}
+   
+5.事件绑定
+  v-on:事件 = “函数”
+  <input type="button" v-on:click="addName()"/>
+  eg:点击按钮 数组中添加元素
+
+6.元素的显示和隐藏
+  v-show/v-if
+   v-show根据绑定的数据 true设置display, false设置display:none
+   v-if 将标签整个注释调用 
+  eg:点击按钮隐藏div
+
+7.案例
+  用户管理
+
+  上方录入用户信息
+  下方显示用户列表(可以添加删除操作,全部删除操作)
+
+8.事件
+   1)事件绑定 v-on:click=""
+   简写方式：@click=""
+   eg:点击按钮显示隐藏div
+   2)事件对象的获取$event
+     包含事件相关的信息、源、类型、坐标等
+   eg：点击按钮获取按钮上的文字
+        @click=“show($event)”
+        方法内 e.target.innerHTML
+   3)事件冒泡
+      @click.stop="show"
+      阻止当前标签的事件响应往上层冒泡
+   4)事件默认行为
+   5)键盘事件
+    @keydown=("show($event)")
+     方法内:e.keyCode
+    简化写法：
+    @keydown.13="print"
+    @keydown.enter="print"
+   6)事件修饰符
+      @click.once  该事件只触发一次
+9 属性
+1)   v-bind:属性名=“vue中属性的名字”
+   eg：在img中显示url图片
+ 简写：
+   v-bind:src="url"
+   简写:src="url"
+2)class和style属性
+    style中样式 .aa   .cc
+    data中数据 bb:"aa" dd:"cc"
+  使用时：
+  方式1：
+     <p :class="bb">
+  方式2：
+     <p :class="[bb,dd]">
+  方式3：
+     <p :class="{aa:true,cc:flag}"
+  eg:根据条件判断应用样式
+    :class="{aa:num>0}"
+  eg:在data中添加属性
+     hello:{aa:true,cc:true}
+    :class="hello "
+
+10.模板
+  1)  基于html的模板元素
+    模板就是{{}} 用来进行数据绑定
+  2)数据绑定方式
+    双向绑定 v-model
+    单向绑定
+	a {{}}
+	b v-text v-html
+   
+11.过滤器
+  1) 用来过滤模型数据，在显示之前进行数据处理和筛选。
+   语法:{{data | filter:(参数) | filter2(参数) }}
+  2) 内置过滤器
+
+
+   
+

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>方法 函数</title>
+		<script>
+		//方法定义时，可以不指定参数
+		//如果不指定参数则只能从arguments中根据下标获取数据
+			function show(name){
+//				alert(name);
+//				alert(arguments[1]);
+//				alert(arguments[2]);
+				for(var i=0;i<arguments.length;i++){
+					alert(arguments[i]);
+				}
+				return 'javascript返回值';
+			}
+			//定义求和方法 
+			function add(num){
+				var sum = 0;
+				for(var i = 1;i<=num;i++){
+					sum = sum+i;
+				}
+				return sum;
+			}
+		</script>
+	</head>
+	<body>
+		<input type="button" value="click" onclick="show('xiaoming');"/>
+		
+		<script>
+//			show('小红');
+			var data = show('小白','小黑','小花');
+			document.write(data);
+			//练习；求1-指定数字的累加和
+			
+			var sum = add(10);
+			document.write(sum);
+		</script>
+	</body>
+</html>
