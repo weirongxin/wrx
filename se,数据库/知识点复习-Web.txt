@@ -1,0 +1,41 @@
+WEB复习：
+1.HTML+CSS+JS
+  块标签：独占一行、支持宽高设定
+  行标签：一行多个标签、不支持宽高
+  内联块标签：一行多个标签、支持宽高设定
+  属性转换：display:block\inline\inline-block
+
+2.CSS 
+  写法：行内样式、文件内样式 style、外部样式表 link
+  标签选择器：
+       id：#   
+       class：. 
+       类型：p div 
+       路径选择器：p p    
+       通配符选择器：*
+  文字样式：
+       font-size color text-decoration font-family
+  文字居中：
+       text-align：center
+       line-height:行高  
+
+3.页面标签的布局
+   1)box盒模型
+      margin
+      padding
+      border
+   2)定位：固定 参照物 浏览器
+	 相对 参照物 标签原来的位置
+	 绝对 参照物 相对定位的元素
+   3)浮动: float:left、right
+     清浮动:(添加到需要清浮动的父级标签上)
+	.clear:after{
+	    content:"",
+	    display:block,
+	    clear:both
+	}
+4.JS 页面动态交互
+   
+
+  
+  

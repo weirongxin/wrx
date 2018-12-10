@@ -1,0 +1,82 @@
+		泛型和集合
+知识点回顾：
+static
+静态 修饰符
+修饰 成员变量 将变量的作用域相对类存在，所有对象共用同一个数据
+修饰 方法  静态方法，不能直接使用非静态成员
+修饰 代码块 静态代码块 类加载时自动调用
+
+final、finally、finalize
+final 最终、最后 修饰符
+      类：不可被继承
+      成员变量：不可修改值，一般和static连用修饰为常量
+      方法：不可被重写
+finally:异常捕获语句中使用
+	finally中添加资源释放
+finalize：垃圾回收机制
+	手动调用System.gc()启动垃圾回收器，找到游离内存，相应类中的finalize方法回收垃圾。
+
+String、StringBuffer、StringBuilder
+String 不可更改的字符序列 （查询）
+StringBuffer、StringBuilder：字符缓冲序列
+	StringBuffer线程安全 （编辑操作多、线程安全）
+	StringBuilder非线程安全 （效率）
+
+throw、throws
+throw：在代码行中抛出异常对象
+throws：在方法声明处 声明可能出现的异常类型
+throw和throws不是必须同时存在
+
+异常的分类：
+	编译期、运行期、严重错误
+异常的类结构：
+Throwable
+-Error Exception
+	-RuntimeException
+
+今日内容：
+1.基本数据结构
+  线性表：查询效率高、增删慢
+  链表：查询慢、增删快
+  队列：先进先出
+  栈：先进后出
+  二叉树：存入数据有序
+ 
+2.泛型  <E>
+  	
+3.集合类
+  集合类:存入多个数据，为封装功能方法的引用类型
+
+4.Collection接口
+  集合类的父接口
+  子接口:List：有序(存入顺序和底层存储顺序一致)可重复
+	 Set：无序(存入顺序和底层存储顺序不一致)不可重复
+	
+5.List接口实现类
+  ArrayList：底层线性表存储，查询快 增删慢
+  LinkedList:底层链表存储，查询慢 增删快
+  Vector：线程安全的
+  Set
+  HashSet: 底层哈希表储存
+  TreeSet: 元素需要具备可比较性
+  LinkedHashSet: 有序不可重复
+
+6.Collection接口中的共同功能
+   boolean add(E e)   
+   boolean addAll(Collection<? extends E> c) 
+   void clear() 
+   boolean contains(Object o) 
+   boolean containsAll(Collection<?> c) 
+   boolean equals(Object o) 
+   boolean remove(Object o) 
+   boolean removeAll(Collection<?> c) 
+   int size() 
+   Object[] toArray() 
+   Iterator<E> iterator()  
+
+7.iterator迭代器	
+  遍历集合中的元素
+  
+  
+8.Collections工具类
+     	

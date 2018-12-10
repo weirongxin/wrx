@@ -1,0 +1,6 @@
+
+练习：Animal  吼叫方法 setsnarl
+      Cat     继承自 Animal类
+      Dog     继承自 Animal类
+      cat 调用父类吼叫方法来实现 喵喵
+      dog 调用父类吼叫方法来实现 汪汪

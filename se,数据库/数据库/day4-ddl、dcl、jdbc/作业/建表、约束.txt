@@ -1,0 +1,48 @@
+建表练习
+1.scott下面创建一个表
+emp1
+empno number(10)
+ename varchar2(50)
+
+2.添加一个字段sal number(10,2)
+
+3.修改字段 ename varchar(100)
+
+4.删除字段sal
+
+5.把表emp1改成emp2
+
+
+
+约束练习
+1.创建一张表student
+id number
+name varchar2(10)
+age number(10)
+tel varchar2（10）
+
+给id字段添加主键约束
+给name字段添加非空约束
+给age字段添加check约束（age必须大于18岁)
+
+给tel添加唯一 非空 约束
+
+
+
+2.创建一张学员兴趣爱好表 
+hobby
+id number(10)
+hobby_name varchar2(10)
+sid number --学生id
+给sid字段添加外键约束，并且要带级联删除
+
+
+
+
+3.删除掉student表中tel字段的唯一约束（先写出查看该表约束的sql)
+
+
+4.手动添加student表中tel字段的唯一约束（约束名为：MY_CONSTRAINT_1)
+
+ 
+

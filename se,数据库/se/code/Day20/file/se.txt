@@ -1,0 +1,381 @@
+
+知识点回顾：
+1.Java环境、配置
+  DOS：cd cd.. mkdir  rmdir ping ipconfig  help  cls  ctrl+C
+  【】Java环境搭建：jdk(开发)、jre(用户)
+               jdk安装：bin、include、src、db、lib
+  	       环境变量的配置：path、ClassPath
+  Java语言特点：跨平台、简单、面向对象、分布式、半解释半编译、健壮、安全、多线程
+		跨平台：jvm（翻译）
+		安全：垃圾回收机制
+		多线程：提高cpu使用率
+
+2.Java标识符、常量、关键字、保留字
+  【】标识符：组成：字母数字下划线美元符号  开头：不能以数字开头
+  	  类 ：pascal  首字母大写后续遵循camel  eg:GetStudentName
+	  方法：camel	eg：getStudentName
+	  常量:全部大写  eg:PI
+	  包名：全部小写  eg:com.qiancheng.study
+   常量：final static 修饰的不可更改的值
+
+   内存分区：code区、常量区、栈区、堆区
+   
+
+3.基本数据类型、数据类型转换
+  Java中数据类型：基本数据类型
+			byte、short、int、long   ->long  L
+			float、double   ->float  F
+			char  ->''
+			boolean  ->truefalse
+		  引用数据类型
+			数组 对象 接口
+  【】数据类型转换：
+	隐式、自动转换：小转大
+	强制类型转换：大转小   int a = (int)1000lL;
+
+  byte、short、int、char 参与计算 先转换为int类型在计算
+  eg：byte b = 1; byte a = 2;
+      byte num = a+b;
+
+      char m = 'a'; char n = 'b';
+      syso(m+n);      
+
+4.条件判定语句、循环语句
+  条件语句：
+	if(){
+	}else if(){
+	}else{
+	}
+  if(条件表达式||boolean)
+  eg 小于60不及格  60-90合格
+	if(a<60){
+	}else if(a<90){
+	}
+	switch(表达式){
+		case 常量：
+		   break;
+		default：
+		   break;
+	}
+  循环语句：
+	for(){
+	}
+	while(){
+	}
+	do{
+	}while()
+	
+  【关键字】：continue(中断当前这一轮)、break(中断循环)、return(结束方法)
+
+5.方法
+  格式：
+  权限修饰符  返回数据类型  方法名(参数列表) {
+	代码块;	
+   }
+  方法的定义：写好方法需要注意  返回值类型、参数列表
+        调用：非静态  ，a 直接通过   对象.方法名  调用方法
+		       b  参数列表中如果需要传参数，则一定需要传值
+		       c  返回的数据 可以不使用
+	      静态方法 a 同一类中，直接 使用方法名调用
+		       b 不同类中 类名.方法名  调用
+	程序是逐语句，自上而下执行的，方法调用后，进入方法执行逐行代码。方法执行完成后，回到方法的调用处，继续执行。
+
+  public int sum(int a,int b) {
+	return 2;
+  }
+  public void sum(int a,int b) {
+	return ;  ||  不写
+  }
+  
+  方法的【重载】：同一个功能，不同参数列表实现
+	    eg：求和    
+		int sum(int a,int b)
+		int sum(int a,int b，int c)
+		int sum(float a,float b)
+	
+6.数组
+  定义：存放相同数据类型的多个元素的容器
+  	长度不变
+  int[] num = new int[3];
+  int[] num = new int[]{1,2,3,4,5};
+  
+  二维数组：
+	数组中元素是一维数组
+	数组长度固定、数组中元素长度不限
+  int[][] num = new int[数组长度][元素长度];
+  
+  冒泡算法
+   
+  系统提供排序：Arrays.sort升序排
+
+7.面向对象
+  a 类：具有相同属性和功能的一类事物的抽象
+  	对象：类中存在的一个具体实例
+  	关键字 class
+  
+  b Student stu = new Student();   
+  	stu中存放地址   对象不能直接通过==比较是否相等
+
+  c 匿名对象：  new Student();
+
+  d  this: 类中区分当前对象
+     super：当前对象的父类对象
+     static：静态  修饰类、方法、变量（相对类存在）
+  e  构造方法：实例化过程中 给类中的成员赋初始值
+  
+  f  【方法调用时机】：
+	构造方法： 类实例化对象时 手动调用
+	静态方法： 编译期加载     手动类名调用
+	静态代码块：编译期加载 调用类时 自动执行
+	非静态代码块：类实例化对象时    自动执行
+	非静态方法：对象点语法    手动调用
+  g 访问修饰符
+    public、protected、default、private
+    一般类：public  方法：public  成员：private
+
+  h 继承关系：Java中类 只能单继承
+	父类所有成员 都可以被子类继承下来
+	父类中私有的成员，需要在父类提供访问器方法 供子类使用（子类不能直接访问）
+  
+  i 【重写】：父类中存在的方法，子类需求重新定义
+	 （方法定义完全一致，功能自定义）
+
+【面向对象高级】：
+  a 多态：父类引用指向子类对象
+    类数据类型转换：向上转型 upcasting   子类转换为父类
+		    向下转型 downcasting  父类转换为子类
+    向上：Animal an = cat;
+    向下： if(an instanceof Cat){
+		Cat c = (Cat)an;	
+	  }
+
+    内部类
+	成员内部类
+	静态内部类
+	局部内部类   
+
+  b 抽象类： 没有方法体的方法
+    abstaract  相比正常类 多了抽象方法 、不能实例化
+  
+    匿名内部类
+    eg：class abstract  Animal
+        方法：需要Animal类型参数   
+	fun(new Animal(){
+		public cry(){
+			syso;
+		}
+	});
+    
+  c  接口：interface  可以多实现、多继承
+     是一种标准（usb）
+     方法 全部都是抽象方法（不写abstract修饰符也是抽象方法）
+     成员  全部都是静态值
+     【原则】 类之间 单继承
+	      接口之间 多继承
+	      类和接口之间   实现  多实现
+
+  d  面向对象的三大特性：继承、封装、多态
+
+
+8.异常
+  Throwable 类
+  Error    Exception
+
+  Exception  编译期异常：必须处理之后才能运行
+	     运行期异常：开发者原因 发生的逻辑、功能错误
+
+  格式：try{
+	  可能发生异常的代码块；	
+	}catch（异常类型 异常名）{
+	  异常处理
+	}finally{
+	  释放 异常代码块 资源;
+	}
+   //ArithmeticException
+     ArrayIndexOutOfBoundsException
+     NullPointerException
+     ClassCastException
+     IOException
+    
+    catch语句可以多个连用
+  
+  【注】1.执行顺序、执行过程中和return连用
+	2.throw   throws
+
+9.工具类
+  String
+   【注】  String、StringBuffer、StringBuilder
+	String表示不可更改的字符序列
+	StringBuffer 字符串缓冲类 线程安全、效率高
+        StringBuilder 线程不安全   
+
+  包装类(装箱、拆箱)
+        valueof  parseInt
+
+	Integer、Short、Float、Double、Character、Boolean、Byte、Long
+  System  
+	【注】gc() 垃圾回收器   类中重写finalize()	
+	【注】finally、finalize、final区别
+	exits  0：正常状态退出
+	arrayCopy 赋值数组中的元素值
+	currentMimllions 取系统时间毫秒值 (相对1970年1月1日的毫秒值)
+	
+  Date
+	精确的时间数据（将毫秒时间 转换为时间数据）
+  DateFormat
+	SimpleDateFormat
+	年 yyyy 月MM  日dd  时 HH 分mm 秒ss  毫秒 S
+  Canlendar
+	Calendar c = Calendar.getInstance()
+	根据类中的静态字段 取相应时间数据
+  Math  数学计算
+	min、max、random
+  Random 取随机数
+ 	 Random r = new Random();
+	 int num = r.nextInt();//随机取int值
+	 float num = r.nextFloat();取0.0-1.0
+	 int num = r.nextInt(10); [0,10)
+  Scanner 用户录入
+	 nextInt、next()、nextLine()
+  
+  正则表达式  
+	
+10.集合类
+   无序：存入顺序 和 底层数据存储顺序不同
+
+ 	Collection 接口
+		list 子接口 重复有序
+			ArrayList、LinkedList、Vector
+			底层数据存储结构不同  线性表形式|链表结构
+			Vector 线程安全
+		set  子接口 不重复、无序
+			HashSet、TreeSet
+			--LinkedHashSet
+			底层数据存储结构不同  哈希表|二叉树|链表
+			HashSet： hashCode、equals
+			TreeSet： 二叉树 具有可比较性
+	Collections 工具类：
+		sort()  排序
+			a sort(集合对象)
+				元素具有自然顺序的可比较性式时，能直接调用
+				不具备可比较性，实现Comparable接口 compareTo（在方法中定义排序规则）
+			b sort(集合对象，规则)
+				将comparator接口，创建实现类对象，在compare方法定义规则
+				传参数时，在参数处使用匿名内部类，在方法中定义规则
+		shuffle() 打乱顺序
+		reverse() 逆序
+		fill()    填充
+
+	Map
+		HashMap、TreeMap、Hashtable
+		LinkedHashMap
+		键值对形式存储数据
+		键唯一，值可不唯一
+		遍历：取出所有key 存入set；取出所有value 存入Collection中；取Map.Entry 存入Set中
+
+	【注】a  Collection、Collections区别
+	      b 底层数据存储结构
+	      c comparable 和 comparator 使用区别
+	      d set中存入数据 无序 （hashCode、equals方法的使用）	
+	      e map中存储数据的特点
+	      f 集合类使用场景：先分析 是否以键值对形式存储  Map
+				      是否数据可重复	   Set
+				      功能： 查询快        ArrayList、
+					     增删快	   LinkedList
+					     安全	   Vector	
+11.IO
+	文件操作File类
+	IO流：
+	输入流、输出流（内存角度区分  程序-----文件）
+	字节流、字符流
+	结点流、缓冲流
+	
+	场景：如果是文档性文件 需要字符流读写
+	      非文档性文件 字节流读写	
+	      效率高  使用缓冲流
+	【注】流打开   使用完后后 close  
+
+12.线程
+	线程、进程区别？
+	为什么使用多线程   
+	
+	线程的使用方法：2种
+	Thread类
+		继承Thread 重写run方法（实现耗时功能）
+	Runnable接口
+		创建实体类 实现Runnable接口，类中重写run方法（实现耗时功能）
+	
+     Thread类中常用功能：名字、优先级、id
+     线程操作：sleep、join、yield、interrupt stop、setDameon
+     线程的生命周期：
+		新建、就绪、运行、死亡、阻塞
+     线程同步：synchronized(对象){
+		   代码块;
+		}
+	a同步锁 锁对象
+	b同步方法 锁方法  this
+	c同步方法 锁静态方法 Class
+
+     线程通信：
+	a 线程类 实例化过程 构造方法传参数
+	b 等待唤醒机制
+	  wait()  notify()  notifyAll()
+
+
+ 【注】a.start、run 区别
+       b.Thread类实现线程和Runnable接口实现线程区别
+       c.同步方法  、 同步锁  怎么使用，锁住的内容区别
+	 同步操作 是为了解决多个线程操作同一数据异常问题
+	 	 同步锁 锁定一个对象
+			锁定 一段代码块的执行
+		 同步方法 锁定一个方法
+			锁定相对于 this 而言的一段代码的执行
+		 同步静态方法 锁定一个class
+
+       d.等待唤醒机制
+ 	 wait、sleep区别  ：sleep线程休眠固定毫秒数后回到就绪状态
+			    wait 线程运行转变为阻塞状态 如果不唤醒 不能进入就绪状态
+				 notify 唤醒阻塞线程
+				【将锁定对象解锁】
+         代码应用：
+		synchronized(obj){
+			if(条件不满足 需要等待){
+				obj.wait()  //当前线程处于等待状态 ，将obj解锁
+			}
+
+			obj.notify()    //唤醒在obj.wait 阻塞状态的线程
+		}
+
+13 泛型
+	<字母>  泛指数据类型
+	a 泛型 修饰方法 
+		public <T> void get(T t){  }
+	b 泛型 修饰类
+		class <E> Student{
+			E name;	
+		}
+	泛型通配符 ？
+	<？> 传递任意数据类型
+		Student<?> list = new Student<String>() ;
+		Student<?> list2 = new Student<Integer>() ;
+	<Object> 指定了泛型的类型就是Object类型的，只能传Object
+	<？extends E> 可以传递E和继承自E的类
+		Student<? extends Animal> stu = new Student<Animal>();
+		Student<? extends Animal> stu = new Student<Cat>();
+
+	<? super T> 可以传递T和T的父类
+		Student<? super Cat> stu = new Student<Animal>();
+		Student<? super Cat> stu = new Student<Cat>();
+
+
+线程安全：
+  String、StringBuilder、StringBuffer
+  ArrayList、LinkedList、Vector
+  HashMap、TreeMap、Hashtable
+
+
+
+
+
+
+	

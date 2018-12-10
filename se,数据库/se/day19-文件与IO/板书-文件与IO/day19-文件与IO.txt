@@ -1,0 +1,321 @@
+			文件+IO流
+
+1.SVN:
+   上传、下载、修改
+   上传：eclipse里
+	  a 选中工程 b 右键team c share project d 选择SVN e 选择上传位置
+          f 选择上传目录  g 上传(仅提交到本地) h 选中工程 team-提交
+	  i 提交过程中添加备注 格式：功能 提交者 时间 
+				    新建day7工程  add by wanghua 
+	文件管理器里
+	  a 先update更新需要上传到的文件目录
+	  b 将文件添加到该目录处
+	  c 对文件 执行add操作(添加到本地)
+	  d 文件执行 commit操作
+    冲突：
+	出现的原因：多人开发时，操作同一个文件，有人先上传，在上传时已经做了修改，此时第二个人再次上传时，由于和服务器最新版本不一致，会出现冲突现象
+	现象：增加了3个文件，分别是 历史svn版本、最新svn版本、本地最新版本
+	解决：根据冲突文件，开发人员自己分析业务逻辑和代码，更改发生冲突的位置代码
+	      更改完成后再次上传
+    SVN使用的核心：所有的修改操作前一定先update再commit
+2.java中的集合类结构
+  Collection
+	-List 有序可重复
+	  ArrayList LinkedList Vector
+	-Set 无序不可重复
+	  HashSet TreeSet LinkedHashSet
+  Map
+	HashMap Hashtable TreeMap
+3.Collections
+  sort 排序方法
+
+
+今日内容：		
+0.Collections
+ a sort
+ b static <T> void fill(List<? super T> list, T obj) 
+          使用指定元素替换指定列表中的所有元素。 
+ c static void reverse(List<?> list) 
+          反转指定列表中元素的顺序。 
+ d static void shuffle(List<?> list) 
+          使用默认随机源对指定列表进行置换。 
+
+1.File文件
+  File类中存储了对文件的描述
+  文件和目录路径名的抽象表示形式。 
+
+  构造方法；
+	File(File parent, String child) 
+          根据 parent 抽象路径名和 child 路径名字符串创建一个新 File 实例。 
+	File(String pathname) 
+          通过将给定路径名字符串转换为抽象路径名来创建一个新 File 实例。 
+	File(String parent, String child)  
+	  根据 parent 路径名字符串和 child 路径名字符串创建一个新 File 实例。
+  方法：
+	 boolean canExecute() 
+          测试应用程序是否可以执行此抽象路径名表示的文件。 
+	 boolean canRead() 
+          测试应用程序是否可以读取此抽象路径名表示的文件。 
+ 	 boolean canWrite() 
+          测试应用程序是否可以修改此抽象路径名表示的文件。
+	 boolean isHidden() 
+          测试此抽象路径名指定的文件是否是一个隐藏文件。  
+	int compareTo(File pathname) 
+          按字母顺序比较两个抽象路径名。 
+	 File getAbsoluteFile() 
+          返回此抽象路径名的绝对路径名形式。 
+ 	String getAbsolutePath() 
+          返回此抽象路径名的绝对路径名字符串。 
+	String getName() 
+          返回由此抽象路径名表示的文件或目录的名称。 
+ 	String getParent() 
+          返回此抽象路径名父目录的路径名字符串；如果此路径名没有指定父目录，则返回 null。 
+ 	File getParentFile() 
+          返回此抽象路径名父目录的抽象路径名；如果此路径名没有指定父目录，则返回 null。 
+ 	boolean exists() 
+ 	  测试此抽象路径名表示的文件或目录是否存在。
+   获取子目录文件：
+	String[] list() 
+          返回一个字符串数组，这些字符串指定此抽象路径名表示的目录中的文件和目录。 
+   文件操作：
+	 boolean renameTo(File dest) 
+          重新命名此抽象路径名表示的文件。 
+	 boolean createNewFile()  
+	  当且仅当不存在具有此抽象路径名指定名称的文件时，不可分地创建一个新的空文件。
+	 boolean delete() 
+          删除此抽象路径名表示的文件或目录。 
+
+   文件的查询：
+	 File[] listFiles() 
+          返回一个抽象路径名数组，这些路径名表示此抽象路径名表示的目录中的文件。 
+ 	File[] listFiles(FileFilter filter) 
+          返回抽象路径名数组，这些路径名表示此抽象路径名表示的目录中满足指定过滤器的文件和目录。 
+ 	File[] listFiles(FilenameFilter filter) 
+ 
+练习1.在本机的磁盘系统中，找一个文件夹，利用File类的提供方法，列出该文件夹中的所有文件的文件名和文件的路径，执行效果如下：
+路径是xxx的文件夹内的文件有：
+文件名：abc.txt
+路径名：c:\temp\abc.txt 
+--------------------------------------------
+文件名：def.txt
+路径名：c:\temp\def.txt 
+
+练习2.筛选文件：
+	d:\照片 路径下搜索 文件名字包含"小姐姐"的照片文件
+
+2.IO流结构	
+	操作文件中内容时	需要使用IO流
+	Java中流的划分：
+	流向划分：(第一人称为内存)
+	    输入流 文件->内存  (读)
+	    输出流 内存->文件  (写)
+	数据类型划分：
+	    字节流
+	    字符流
+	效率划分：
+	    节点流
+	    缓冲流（高效流）
+	         
+3.IO流
+  类结构的划分见图
+
+4.字节流操作数据
+   输入流 
+	InputStream 抽象类
+   字节输入节点流FileInputStream
+	构造方法：
+		FileInputStream(File file) 
+       		FileInputStream(String name) 
+	读数据:
+		 int read() 
+         	从此输入流中读取一个数据字节。 
+	
+	
+
+5.缓存字节流
+	
+6.字符流
+	
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

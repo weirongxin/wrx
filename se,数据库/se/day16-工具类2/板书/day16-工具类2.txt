@@ -1,0 +1,160 @@
+			Java工具类
+今日内容：
+1.String 类
+  不可更改的字符序列  
+2.StringBuffer、StringBuilder
+  StringBuffer线程安全、StringBuilder线程不安全
+  常用方法;
+  字符缓冲区追加： StringBuffer append(boolean b) 
+  删除部分字符串： StringBuffer delete(int start, int end) 
+  查找子串的位置： int indexOf(String str)  
+ 	           int indexOf(String str, int fromIndex)  
+  插入子串：	   StringBuffer insert(int offset, String str) 
+  替换：           StringBuffer replace(int start, int end, String str)  
+  字符串反转：     StringBuffer reverse()  
+  取子串：	   CharSequence subSequence(int start, int end) 
+ 		   String substring(int start) 
+
+  面试题：
+	String、StringBuffer、StringBuilder区别
+	1）String 不可能改的字符序列
+	   赋值后查询更多时使用String
+	2) StringBuffer 线程安全的，增删多操作、线程安全时使用
+	3）StringBuilder 线程不安全，效率高 
+	
+3.正则表达式
+  手机号、qq号、邮箱
+ 字符 
+	x 字符 x 
+	\\ 反斜线字符 
+	\t 制表符 ('\u0009') 
+	\n 新行（换行）符 ('\u000A') 
+	\r 回车符 ('\u000D') 
+  字符类 
+	[abc] a、b 或 c（简单类） 
+	[^abc] 任何字符，除了 a、b 或 c（否定） 
+	[a-zA-Z] a 到 z 或 A 到 Z，两头的字母包括在内（范围） 
+
+  预定义字符类 
+	. 任何字符（与行结束符可能匹配也可能不匹配） 
+	\d 数字：[0-9] 
+	\D 非数字： [^0-9] 
+	\w 单词字符：[a-zA-Z_0-9] 
+
+  边界匹配器 
+	^ 行的开头 
+	$ 行的结尾 
+	\b 单词边界 
+	\B 非单词边界 
+  Greedy 数量词 
+	X? X，一次或一次也没有 
+	X* X，零次或多次 
+	X+ X，一次或多次 
+	X{n} X，恰好 n 次 
+	X{n,} X，至少 n 次 
+	X{n,m} X，至少 n 次，但是不超过 m 次 
+
+
+4.Math类  所有成员都为静态
+  字段：static double E 
+	static double PI 
+
+  绝对值 		    static double abs(double a) 
+  两个 double 值中较大      static double max(double a, double b) 
+  两个 double 值中较小	    static double min(double a, double b) 
+               
+
+5.System类
+
+1）数组复制：	  static void arraycopy(Object src, int srcPos, Object dest, int destPos, int length) 
+2）结束程序:	  static void exit(int status) 
+3）垃圾回收器:       static void gc() 
+4）当前时间的毫秒值:  static long currentTimeMillis() 
+           
+       gc() 垃圾回收器：
+	    如果当前游离内存占用较多、则需要手动启用垃圾回收器。
+	    回收步骤;1)调用gc方法 2)查找游离内存（被置为null，不使用的）
+		     3）调用游离内存相应类的finalize方法，回收
+	    
+              
+   	注：final、finally、finalize的区别
+	              
+
+6.Date类
+	Date() 
+	Date(int year, int month, int date) 
+
+   	boolean after(Date when) 
+          测试此日期是否在指定日期之后。 
+ 	boolean before(Date when) 
+          测试此日期是否在指定日期之前。 
+
+7.DateFormate类
+！日期格式 yyyy 年份 MM 月份 dd 日期 HH 时mm分ss秒S毫秒
+	SimpleDateFormat format 
+		= new SimpleDateFormat("yyyy年MM月dd日 HH时mm分ss秒S毫秒");
+	String timeStr = format.format(date3);
+	System.out.println(timeStr);
+
+8.Calendar类
+static Calendar getInstance() 
+          使用默认时区和语言环境获得一个日历。 
+ Date getTime() 
+          返回一个表示此 Calendar 时间值（从历元至现在的毫秒偏移量）的 Date 对象。 
+ void set(int year, int month, int date) 
+          设置日历字段 YEAR、MONTH 和 DAY_OF_MONTH 的值。 
+ void set(int year, int month, int date, int hourOfDay, int minute) 
+          设置日历字段 YEAR、MONTH、DAY_OF_MONTH、HOUR_OF_DAY 和 MINUTE 的值。 
+ void set(int year, int month, int date, int hourOfDay, int minute, int second) 
+          设置字段 YEAR、MONTH、DAY_OF_MONTH、HOUR、MINUTE 和 SECOND 的值。 
+ boolean after(Object when) 
+          判断此 Calendar 表示的时间是否在指定 Object 表示的时间之后，返回判断结果。 
+ boolean before(Object when) 
+          判断此 Calendar 表示的时间是否在指定 Object 表示的时间之前，返回判断结果。 
+
+9.基本数据结构
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

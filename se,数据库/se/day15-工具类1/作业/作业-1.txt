@@ -1,0 +1,78 @@
+
+1、分析如下程序，指出哪些语句会出现错误：
+   public class WrapperDemo {
+    public static void main(String[] args) {
+        String a1="3";
+        String a2="abc";
+        String a3="10L";
+        String a4="012";
+        
+        Integer x1=new Integer(a1);  
+        Integer x2=new Integer(a2);  		 
+        Integer x3=new Integer(a3);  		 
+        Integer x4=new Integer(a4); 
+        Long x5=new Long(a3);     			 
+        
+        String b1="3.14D";
+        String b2="3.14F";
+        String b3="3.14E2D";
+        String b4="3.14E2F";
+        String b5="abc";
+        
+        Float y1=new Float(b1);
+        Float y2=new Float(b2);
+        Float y3=new Float(b3);
+        Float y4=new Float(b4);
+        Float y5=new Float(b5);      			 
+        
+        Double z1=new Double(b1);
+        Double z2=new Double(b2);
+        Double z3=new Double(b3);
+        Double z4=new Double(b4);
+        Double z5=new Double(b5);   			 
+        
+        Boolean bn1 = new Boolean("true");
+        Boolean bn2 = new Boolean("false");
+        Boolean bn3 = new Boolean("aa");	 
+        
+    }
+}
+2、分析如下程序，并写出结果。
+public class WrapperEquals{
+    public static void main(String[] args) {
+        Integer x=new Integer(10);
+        Integer y=new Integer(10);
+        System.out.println(x==y);
+        System.out.println(x.equals(y));
+    }
+}
+3、分析如下程序，并写出结果。
+	public class WrapperToString{
+    public static void main(String[] args){
+        Integer x=new Integer(100);
+        System.out.println(x);
+        System.out.println(x.toString());
+    }
+}
+4、分析如下程序是如何自动拆箱和装箱的。
+	public class BoxingDemo{
+    public static void main(String[] args) {
+        Integer x=10;		 
+        Integer y=20;		 
+		
+        int z=x+y;			 
+		
+        System.out.println(z); 
+    }
+}
+编程题：
+1 从0-9a-z之间随机出来五个字符组成新的字符串
+ 1) 该字符串不能重复  
+ 2) 求该字符串中数字的和
+2 求两个字符串中最大相同子串
+	hahahlelelds
+	hahahleldsdf
+选作题：
+1.有一种数叫回文数，正读和反读都一样，如12321便是一个回文数。编写一个程序，从命令行得到一个整数，判断该数是不是回文数。
+2.金额转换，阿拉伯数字的金额转换成中国传统的形式如：（￥1011）－>（一千零一拾一元整）输出。
+

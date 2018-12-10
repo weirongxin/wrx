@@ -1,0 +1,47 @@
+
+
+2.MAX_LENGTH是int型public成员变量, 变量值保持为常量100，用简短语句定义这个变量 ？(     )
+   A. public int MAX_LENGTH=100;  
+B. final int MAX_LENGTH=100;
+C. final public int MAX_LENGTH=100;
+D. public final int MAX_LENGTH=100.
+
+3.找出程序中的错误，并说明原因： 
+public class FinalVar{
+    final int y=100;
+    final int x1;
+    public FinalVar(){
+    	x1=1;
+    }
+    public static void main(String[] args) {
+        final int z=0;
+    }
+    public void aa(){
+    	FinalVar.add(1);
+    }                                                       
+    public static void add(final int x2) {
+        x2++;    
+    }
+ }
+4.找出程序中的错误，并说明原因：（             
+final class FinalClass{
+    public void add(int x) {
+        x++;
+    }
+}
+public class SubFinalDemo extends FinalClass {
+    public void add(int x) {
+        x+=2;
+    }
+}
+5.class FinalClass{                                
+    public final void add(int x)
+    {
+        x++;
+    }
+}
+public class SubFinalDemo extends FinalClass{
+	public void add(int x)  {
+        x+=2;
+    }
+}

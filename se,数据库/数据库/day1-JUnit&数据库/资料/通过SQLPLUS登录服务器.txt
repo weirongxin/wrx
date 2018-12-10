@@ -1,0 +1,52 @@
+1.启动sqlplus：
+开始——运行，输入“sqlplus”，回车
+也可以用sqlplus /nolog命令直接进入工具
+
+2.登陆服务器
+conn 用户名/密码[@服务命名] [as sysdba|sysoper]
+sysdba管理员身份
+sysoper操作员身份
+sys用户登陆必须指明以上两个身份之一
+
+3.conn命令示例 （连接）
+conn scott/tiger@orcl
+
+conn scott/tiger
+
+conn system/orcl
+
+conn sys/orcl as sysdba
+
+4.默认数据表
+数据表是数据库中最常用的数据库对象
+
+ 雇员表emp
+ 部门表dept
+ 工资等级表salgrade
+ 奖金表bonus
+5.常用SQL*PLUS命令
+  设置显示字符宽度
+	set linesize n
+  设置每页的记录数
+	set pagesize n
+  执行最后执行的SQL语句
+	/
+5.
+  显示某用户所有表(例如SCOTT,必须大写)
+	select TABLE_NAME from all_tables where owner = 'SCOTT';
+  显示当前的所有用户表
+	select * from user_tables
+  显示当前数据库的所有表
+	select * from tab;
+
+更改数据库用户的密码：(将sys的密码 改为test)
+alter user sys identified by test;
+
+解锁普通用户：
+alter user scott account unlock；
+
+显示当前用户 show user
+查看用户表 select table_name from user_tables;
+查看某个表 select * from 表名;
+查看表结构 desc all_tables;
+

@@ -1,0 +1,29 @@
+安装完oracle   命令行输入sqlplus    更开始   sys/orcl as sysdba   或   sys as sysdba 密码 test  先登录进入工具  然后解锁用户
+  或者  直接输入  sqlplus /nolog命令直接进入工具  然后解锁用户
+解锁格式:   alter user scott account unlock；    更改密码格式：  alter user sys identified by test;
+SCOTT   密码  tiger
+HR   密码  hr
+
+安装数据库  图形化界面  sqlplus  建立连接       主机名：localhost     端口：1521     服务名：orcl
+
+
+
+USER-20180419VY.lan        D:\oracle\product\10.2.0\db_1\NETWORK\ADMIN      启动服务  OracleOraDb10g_home1TNSListener
+
+
+
+
+
+
+Enterprise Manager Database Control URL - (orcl) :
+http://USER-20180419VY.lan:1158/em
+
+数据库配置文件已经安装到 D:\oracle\product\10.2.0,同时其他选定的安装组件也已经安装到 D:\oracle\product\10.2.0\db_1。
+iSQL*Plus URL 为:
+http://USER-20180419VY.lan:5560/isqlplus
+
+iSQL*Plus DBA URL 为:
+http://USER-20180419VY.lan:5560/isqlplus/dba
+
+
+

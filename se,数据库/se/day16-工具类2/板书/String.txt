@@ -1,0 +1,39 @@
+字符串长度
+int length()
+
+字符串比较
+boolean equals(Object anObject) 
+int compareTo(String anotherString)
+
+字符串查找
+boolean contains(CharSequence s)
+boolean startsWith(String prefix)
+boolean endsWith(String suffix)
+
+indexOf(int ch)
+int indexOf(int ch, int fromIndex)
+int indexOf(String str)
+int lastIndexOf(int ch)
+
+字符串替换
+String replace(char oldChar, char newChar)
+String replace(CharSequence target, CharSequence replacement)
+
+字符串提取
+char charAt(int index)
+String substring(int beginIndex)
+String substring(int beginIndex, int endIndex) 
+
+其他方法
+String toLowerCase() 
+String toUpperCase()
+boolean isEmpty()
+String concat(String str)
+String trim() 
+static String valueOf(int i) 
+static String format(String format, Object... args) 
+
+byte[] getBytes() -->将一个字符串转换为字节数组
+byte[] getBytes(Charset charset) --》将一个使用参数指定的字符集编号码的字符串转换为字节数组。
+char[] toCharArray()：将一个字符串转换为字符数组
+String[] split(String regex) ：使用参数指定的正则表达式将字符串分割为一个字符串数组。（分割后的数组中元素不包含分隔符）

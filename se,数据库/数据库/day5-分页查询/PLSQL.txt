@@ -1,0 +1,61 @@
+	PL\SQL
+1.什么是PL\SQL（Procedure Language/sql）
+  过程化的查询语句，对sql语句的一种扩展
+
+2.程序结构	
+  declare
+	[声明部分]	
+  begin
+	[功能代码]
+  [exception]
+  end;	
+
+3.数据类型 赋值方式
+  char、varchar2、number、float、date、boolean
+   
+  SE中的变量定义：
+	int a = 1; 
+	数据类型 变量名  = 值;
+  PLSQL中变量定义：
+	num number :=1 ;
+	变量名 数据类型 := 值;
+
+4.输出
+
+5.if语句
+  if  条件  then 功能
+  elsif 条件 then 功能
+  else  功能 
+  endif;
+
+6.循环语句(1-10)
+  loop
+	
+  exit when 条件;  
+
+  end loop;
+
+
+7.光标、游标
+语法： cursor 光标名[(参数名 数据类型,.....)] is  select 语句;
+
+8.带参数游标
+  在定义游标时定义参数
+  格式： cursor c(参数名 参数类型) is sql子查询语句
+  使用： open c(参数数据);
+
+eg: 查询并打印员工的姓名和薪水    
+涨工资  总裁1000、经理800、其他400
+
+eg:给固定的员工涨工资(给录入的员工编号涨工资1块)
+
+
+9.存储过程
+存储过程 procedure
+格式
+create [or replace] procedure 过程名(参数名 in/out 参数类型)
+as
+begin
+
+end；
+

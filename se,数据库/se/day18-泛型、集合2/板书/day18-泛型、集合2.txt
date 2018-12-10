@@ -1,0 +1,126 @@
+		泛型、集合
+昨日内容：
+1.String、StringBuffer、StringBuilder
+2.单例模式：
+  核心:1)构造方法私有化
+       2)创建静态成员
+       3)公有访问器方法获取单实例
+3.基本数据结构
+  线性表、链表、队列、栈、二叉树
+4.集合
+  Collection父接口
+   List 有序可重复
+	ArrayList LinkedList Vector
+   Set  无序不可重复
+	HashSet TreeSet LinkedHashSet 
+5.
+  Collection c = new ArrayList();
+  Iterator i = c.iterator();
+  while(i.hasNext()){
+	Object obj = c.next();
+  }
+6.Collections
+  sort 排序
+       方法1：传入一个集合对象
+	      集合中的元素 需要具备可比较性
+			   类需要实现Comparable接口，实现接口中的compareTo方法
+       方法2：传入集合对象、比较条件（自定义类实现Comparator接口，实现接口中的compare方法）
+7.内部类
+  类内部创建类:
+	1)匿名内部类
+	2)成员内部类
+	3)静态内部类
+	4)局部内部类			
+
+
+今日内容：
+1.泛型
+  泛指的数据类型
+  将数据类型再程序运行过程中，以参数的方式进行传递
+  <T> <E> 
+  泛型写法：<字母>
+  应用处：类、成员、方法
+  使用：类和成员
+	
+	class 类名 <T>{  //在类定义处声明存在泛型应用
+		T name;  //该类的成员name 被泛型定义不确定的数据类型
+	}
+	
+	方法：
+	public <E> void fun(E e){//在方法声明处，声明存在泛指的数据类型，应用在参数
+
+	}
+  泛型的通配符：？
+	addAll(Collection<? extends E> c) 
+	
+	<? extends E>   传入的数据类型应为E及子类
+	<? super E>    传入的数据类型应为E及父类
+    
+2.Set接口：无序不可重复
+  HashSet：底层哈希表存数据
+  TreeSet：二叉树为底层结构
+  LinkedHashSet：有序
+
+  Set接口中的方法：
+	boolean add(E e) 
+ 	void clear() 
+          移除此 set 中的所有元素（可选操作）。 
+	boolean contains(Object o) 
+          如果 set 包含指定的元素，则返回 true。
+	boolean equals(Object o) 
+          比较指定对象与此 set 的相等性。 
+	int hashCode() 
+          返回 set 的哈希码值。 
+ 	Iterator<E> iterator() 
+          返回在此 set 中的元素上进行迭代的迭代器。 
+ 	boolean remove(Object o) 
+          如果 set 中存在指定的元素，则将其移除（可选操作）。 
+	boolean removeAll(Collection<?> c) 
+          移除 set 中那些包含在指定 collection 中的元素（可选操作）。 
+ 	int size() 
+          返回 set 中的元素数（其容量）。 
+
+练习：
+	学生  属性：姓名、年龄
+	多个学生对象，存入集合中，如果姓名、年龄相同则为同一个对象
+
+	[注]Set中不能存入重复数据
+	    过程：1）在add添加元素的过程中，
+	             集合将添加元素和已存在的元素逐一比较。
+		     比较过程：判断参数是否和每个元素的哈希值相同
+			       如果相同 则自动调用equals方法判断
+			       如果不同 则直接存入集合中
+		  2）自定义筛选条件
+		     a 将hashcode方法设定为常量值
+		     b 重写equals方法，添加自定义比较条件
+	TreeSet中元素 底层二叉树存储，元素需要具备可比较性。
+	--元素具备可比较性：
+	  元素类需要实现Comparable接口，
+	  同时在接口的compareTo方法中添加自定义比较条件。
+
+3.Collections工具类
+4.Map集合
+  Collection和Map集合接口的区别：
+	 Collection接口中的数据为单列数据
+	 Map 双列数据(以键和值的方式匹配的键值对)
+  Map在java中的类结构：
+	Map
+	-HashMap TreeMap Hashtable
+	HashMap 底层以哈希表存储数据(key)
+	TreeMap key值以二叉树存储（具备可比较性）
+	Hashtable 线程安全
+  特点：双列数据、key唯一的、value不唯一
+  遍历方式：取所有key (Set)
+	   取所有的value(Collection)
+	   取对数据组成的set(Set)
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,27 @@
+1.使用Map集合，完成一个图书馆诗词查阅系统，程序运行效果：
+		录入查阅 诗词名称--》反馈相应诗词
+		还要继续阅读么？yes -》继续查询
+				no->"谢谢使用!"
+		分析：Map中存放的是诗词信息，模拟的是诗词数据库。
+		      诗词：Poem、名字、作者、朝代、内容
+		      诗词数据库中key：诗词名称  value：Poem对象（toString方法中 生成连接信息的字符串）
+		思路：1.准备诗词库 2.向诗词库中录入诗词信息  3.查阅提供服务
+		（while(true){ 输入为no时 break}）  
+
+  提示：Set<K> keySet()   方法 可以取出Map中所有的key值
+
+分析：操作步骤：
+	a 创建诗词类
+        b 存储诗词的集合使用双列 Map
+	c Map key-诗词名  value-诗词对象
+	d 测试类 用户操作流程
+
+
+2.创建一个User类，包含name和password两个成员变量。向ArrayList添加5个对象，name分别是1、2、3、4、5 password：a\b\c\d\e
+     1.indexof
+     2.contains
+     3.equals
+
+	1.判断是否存在name=3 pass=c的对象
+	2.覆盖equals方法判断所有成员对象是否相等
+	3.将1、2中contains换为indexOf

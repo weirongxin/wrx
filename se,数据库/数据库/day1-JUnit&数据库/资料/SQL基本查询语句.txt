@@ -1,0 +1,162 @@
+SQL语句：
+ 
+scott用户默认数据表： 
+ 雇员表emp
+ 部门表dept
+ 工资等级表salgrade
+ 奖金表bonus
+
+SQL语句规范：
+
+1.关键字不区分大小写
+  标识符区分大小写（表名、列名）
+ 	如果不加双引号，默认是大写
+
+  select * from EMP;
+
+2.书写规范：
+	所有表名、列名全部小写
+	关键字、内置函数名全部大写
+
+【注】 sql语句中 如果不加双引号 默认是大写字母，
+		如果需要使用小写字母，则加双引号 特殊标明。
+
+  
+3.基本查询语句：
+  SELECT *|{[DISTINCT] column|expression [alias],.....} FROM table;
+  查询某个表的某几列
+	SELECT 列名1,列名2,....FROM 表名;
+  查询某个表的所有列
+	SELECT * FROM 表名;
+
+eg: SELECT SAL FROM EMP;
+    SELECT SAL,JOB FROM EMP;
+    SELECT ENAME,JOB,SAL FROM EMP;
+    
+4.算数运算符(参与查询、优先级)
+  + - * /
+   优先级：先乘除 再加减  （括号优先级更高）
+eg: SELECT SAL*2 FROM EMP;
+    SELECT SAL*2-3 FROM EMP;
+    SELECT SAL*(5-3/2) FROM EMP;  
+
+5.虚表 dual
+  不存在的表 （为了实现select后面的表达式功能）
+eg： SELECT 3+5 FROM DUAL;
+   select 5+3,'hello' FROM dual;
+
+6.空值 null 
+  包含空值的数学表达式的值都为空值
+
+eg：查询时 如果该字段的值为空，也表示出来
+    SELECT COMM FROM EMP;
+    SELECT 1+2+3+NULL FROM DUAL;
+
+7.给列起别名 
+    将查询结果列重新起名
+    两种方式：AS  空格
+eg:SELECT ENAME AS 员工名字,JOB AS 职位,COMM 奖金 FROM EMP;
+
+8.双引号的作用
+    默认使用大写字母
+    如果需要使用小写字母时，需要就加“”单独设定
+ 
+9.字符串连接符
+   字符串连接 ||
+eg:SELECT 'HELLO'||'WORLD'||'JAVA'FROM EMP;
+
+10.重复行
+   DISTINCT
+   将存在重复数据的行去除，得到的数据是唯一存在的
+eg:SELECT DISTINCT SAL FROM EMP;
+
+11.常用数据类型
+   字符型 
+    变长字符 varchar()    varchar(100)
+    定长字符 char()    char(10)
+    大字符串数据 clob
+   数字型
+     整型、浮点 number
+     整数   number(最大位数)
+   日期型
+     date 精确到秒、timestamp(n) n代表秒后面的位数 精确到纳秒
+	TO_CHAR(HIREDATE,'MM')：月份转换字符
+	SYSDATE-HIREDATE：天
+
+   (创建数据表时，使用数据类型创建字段、列
+    查询过程中 需要知道查询得到的数据类型值)
+
+12.过滤数据 WHERE（查询条件）
+  使用WHERE子句，将不满足的条件行过滤掉
+   SELECT *|{[DISTINCT] column|expression [alias],.....}
+   FROM table
+   WHERE condition(s);
+
+eg：SELECT * FROM EMP WHERE SAL=1250;
+    SELECT ENAME FROM EMP WHERE SAL=1250;
+    SELECT * FROM EMP WHERE SAL>1250;
+
+
+13比较运算符
+   = <> > < >= <=
+
+   【】运算符号：  <> 不等于
+
+   空值比较、自定义比较、空值
+
+   空值判断：
+	关键字：IS    IS NOT  
+eg:SELECT * FROM EMP WHERE COMM IS NULL;
+   SELECT * FROM EMP WHERE COMM IS NOT NULL;
+   SELECT * FROM EMP WHERE SAL>1250;
+
+14.模糊查询 LIKE
+   % :字符出现0次或者多次
+   _ :字符出现一次
+
+eg:   SELECT * FROM EMP WHERE ENAME LIKE 'S%';
+      SELECT * FROM EMP WHERE ENAME LIKE '_AR_';
+
+15.逻辑运算符
+   AND
+   OR
+   NOT
+eg:
+    SELECT * FROM EMP WHERE ENAME LIKE 'A%' AND COMM>100;
+    SELECT * FROM EMP WHERE ENAME LIKE 'A%' OR COMM>100;
+
+16.排序(列表、别名、表达式、列索引) ORDER BY  
+   ASC
+   DESC
+   按照字段的数据值 排序，默认升序排序
+
+eg: SELECT * FROM EMP ORDER BY SAL DESC;
+    SELECT SAL,COMM FROM EMP ORDER BY SAL DESC,COMM DESC;
+    SELECT SAL 工资,COMM 奖金 FROM EMP ORDER BY 工资 DESC,奖金 DESC;
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

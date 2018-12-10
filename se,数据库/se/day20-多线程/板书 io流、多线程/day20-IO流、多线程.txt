@@ -1,0 +1,38 @@
+	IO流、多线程
+
+1.字符流
+   InputStreamReader
+   OutputStreamWriter 
+
+   ！！通过流往文件中写数据时，如果需要在原数据后继续追加:
+	FileOutputStream(File file, boolean append) 
+          创建一个向指定 File 对象表示的文件中写入数据的文件输出流。
+
+  流的应用场景;
+	字节流：所有文件都可使用
+	       --高效 ：高效字节流 BufferedInputStream、BufferedOutputStream
+	字符流：文档性文件(txt word excel java)
+	       --高效; BufferedWriter BufferedWriter
+	       --转换流：使用字符流一定需要转换流进行将字节流进行转换
+	
+	
+2.序列化
+  将内存中的数据持久化到文件中存储
+  操作：
+	a.类实现Serializable接口，才支持序列化到文件中
+	b.流：ObjectInputStream  ObjectOutputStream
+	c.序列化操作时 建议一次性写入 读出(不建议重复操作读写)
+	d.serialVersionUID 序列化版本号
+	  序列化数据时  如果版本号固定  则反序列化时需要相同的版本号才可读出
+
+3.线程进程
+
+4.线程的生命周期
+
+5.线程的使用
+
+6.线程的控制
+
+7.Runnable接口
+
+8.线程数据同步、通信

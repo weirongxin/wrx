@@ -1,0 +1,289 @@
+SE知识点：
+1.数据类型
+基本数据类型：
+   整数 byte short int long
+   浮点 float double
+   字符 char
+   布尔 boolean
+引用类型：
+   类 数组 接口
+2.参与运算 ++ -- 
+   运算表达式中如果数字在++ 、-- 前，则先运算
+  && || ！
+  三目：(a>b)?a:b
+  不同数值类型参与运算，数据类型转换：
+  1)整数参与运算 先自动转换为int
+  2)浮点常量值 0.1 默认double
+  3)小数据类型自动转换为大数据类型再运算  int+int+long
+  4)赋值 显示类型转换  int a = (int)l;
+           隐式类型转换 long l = a;
+  5)char类型参与运算 先自动转换为ascii码值对应的int类型再运算
+  int n =1;
+  int m = 12;
+  char c = n+m;
+  byte b = (byte)(c + 3);--强制类型转换---
+3.条件语句：if switch 
+   循环：for while do while
+  if:条件互斥
+     成绩判断 优秀90、良好70、及格60、不及格
+     if(score<0 || score>100){
+	成绩数值不合格
+     }else if(score>=90){
+	优秀
+     }else if(score>=70){
+	良好
+     }else if(score>=60){
+   	及格
+     }else{
+	不及格
+     }
+   switch 语句中 case后一定为常量值
+    break关键字：在case分支满足时结束switch语句，
+	         可能会发生穿透现象(从满足case开始到break或者最后止)
+   循环语句：
+    for(条件的初始化;条件判断;条件控制){}
+    条件的初始化：在第一次执行for时执行，后续不在执行
+    while(条件判断){}
+    do{
+    }while(条件判断);(先执行再判断)
+   关键字：
+	break   防止穿透、结束循环
+	continue 中断当前这一轮循环，继续下一轮循环
+	return  结束方法
+   练习：感冒药 一次a片 一天b次 吃c天 一共多少片？
+          int sum =0;
+          for(int day=0;day<c;day++){
+	for(int count=0;count<b;count++){
+	   sum += a;
+	}		
+          }
+4.方法
+  public static void main(String[] args){}
+  格式：访问修饰符 返回值类型 方法名(形参,){}
+  方法的三要素：方法名、返回值类型、参数  
+       返回值类型：void(return 可不写)、数据类型(return 必须存在)
+       方法名:
+	命名格式：(名字由单词组成)
+	类:每个单词首字母大写
+	常量:每个字母大写  public static final String DB_USER = "hr";
+	方法、变量:驼峰法则
+	包:全小写  com.qiancheng.bean
+5.访问修饰符
+	      同类   同包     跨包子类    跨包非子类
+   public         √       √	 √	  √ 
+   protected     √       √        √	  ×
+   default        √       √        ×           ×
+   private        √       ×        ×           ×
+       
+   (Canlendar 日历类中的构造方法被protected修饰)
+   修饰类:public default (同一个文件中只能存在一个public修饰的类)
+   方法、属性:方法建议public   属性建议private
+6.面向对象oop
+   封装、继承、多态
+   封装：将类的属性封装、私有在类内部，减少外部直接访问的入口
+           属性通过private修饰，私有化属性
+	  类内部：直接使用
+              外部：访问器方法提供访问入口(set\get方法)
+   继承：单继承(只有一个直接父类，存在一个没有父类的类：Object)
+           父类、子类之间的继承：可以继承父类中的所有成员
+			  (父类中的私有成员也可以被继承、但不能直接访问)
+   多态：类的多种形态
+           父类引用指向子类对象
+          场景：赋值   类之间的关系 Animal  Dog
+	     父类-子类(向下转型):
+		if(an instanceof Dog){
+		    Dog dog = (Dog)an;
+		}
+	     子类-父类(向上转型):Animal an = dog;
+7.static关键字
+  静态的
+  修饰符: 修饰方法、属性	
+  修饰方法：静态方法，类加载时加载
+	  方法中 不能直接使用非静态成员
+	  被调用时 可以直接调用当前静态方法
+  修饰属性：静态属性(类中的所有对象共用一个数据，"班级号")
+	  一般和final连用修饰成常量值
+8.方法的调用     
+   静态代码块：类加载时 自动调用一次
+   非静态代码块：类实例化时 自动调用(每实例化一次调用一次)
+   构造方法:实例化时 主动调用
+   静态方法：同一个类内直接调用、不同类 类名点语法调用
+   普通方法:  同一个类内普通方法内直接调用、对象点语法调用 
+9.重载、重写
+   重载：同一个类内、方法名相同、参数列表不同
+   重写：继承关系中，子类自定义实现父类中的方法
+          (子类中的修饰符 一定大于等于父类)
+10.final关键字：
+   最终、最后
+   修饰符
+   修饰 类 不能被继承 
+         方法 不能被重写
+         属性 不可更改值
+11.final、finally、finalize
+   finally：异常捕获语句中的
+	try：可能出现异常的代码、catch：可能出现的异常类型 finally：资源释放
+	常用异常类型：ArrayIndexOutOfBoundsException
+		     ClassCastException
+		     NullPointerException
+   finalize:垃圾回收机制
+	System.gc()手动调用垃圾回收机制，回收的是内存中游离的内存空间，数据被置为null(栈区数据和堆区数据没有引用关联)，找到该数据对应的类，调用finalize方法进行回收。
+12.单例模式（类只有单一实例）
+    ！！构造方法私有化
+         添加私有单实例属性
+         添加访问单实例的入口方法
+    懒汉：使用时进行单实例的实例化操作，需要添加synchronized线程安全锁
+	public class User{
+	   private User(){}
+ 	   private static User user;
+	   public static synchronized User getInstance(){
+		if(user==null){
+		   user = new User();
+		}
+		return user;
+   	   }  
+	}
+    饿汉：类加载时构造单实例
+           public class User{
+	 private User(){}
+	 private static User user = new User();
+	 public static User getInstance(){
+		return user;
+	 }
+           }
+   
+13.工具类、集合类
+    Collection
+	-List
+	   -ArrayList LinkedList Vector
+	-Set
+	   -HashSet TreeSet LinkedHashSet
+    Map
+	-HashMap TreeMap LinkedHashMap
+ 
+   1)Colleciton、Map：前者是单列数据、后者双列数据
+   2)List、Set:List有序可重复、Set无序不可重复
+   3)ArrayList 线性表，查询快
+     LinkedList  链表，增删快
+     Vector 线程安全
+   4)HashSet:底层哈希表存储 ，存入数据不可重复
+	    (默认先判断地址，可以重写equals方法添加自定义条件)
+      TreeSet:二叉树结构存储
+      LinkedHashSet：有序不可重复
+   5)HashMap：key值以哈希表存
+      TreeMap：key值具备可比较性
+      LinkedHashMap：key值链表、哈希表
+
+   Collections和Collection区别：
+    Collections是工具类，Collection是集合接口。
+    工具类中的方法：sort 排序 
+	元素具备可比较性、实现Comparable接口、传入Comparator接口的实现类对象
+    
+14.面向对象高级：
+    抽象类：被abstract修饰的类为抽象类
+    接口：interface声明接口
+    
+    抽象类、接口中的包含：
+	抽象类中可以存在abstract修饰的抽象方法、普通方法
+	          也可以存在属性
+            接口中只能存在抽象方法的声明
+	        只能存在常量值
+    继承关系中的抽象类：
+	抽象类可以存在继承关系
+	如果父类中有抽象方法，当前类全部实现则为实体类
+			    当前类存在未实现的抽象方法为抽象类
+    类和接口的关系：
+	类和类之间 单继承
+	类和接口   多实现implements
+            接口和接口  多继承
+    
+15.String
+    equals 和 == 区别：
+	equals方法用于引用类型比较，默认比较地址，String类中重写为比较字符串值
+	== 基本数据类型比较值，引用类型一定比地址
+    
+16.异常
+    种类：编译器异常 必须解决
+	严重错误   无法解决
+	运行期异常  需要解决
+    throwable 异常基类：错误error 运行期RunTimeException
+    try{
+    }catch(){
+    }finally{
+    }
+17.线程
+    实现方式：
+	1)继承自Thread类   2)实现Runnable接口
+     start、run区别：
+	start开启线程的入口
+            run 添加耗时功能的方法
+    生命周期：
+		有权限、资源	
+	就绪(start)---------->运行------------->死亡(线程中的耗时资源释放)
+     		<----------	
+	        sleep 		sleep时间结束
+            运行--------------->阻塞-------------->就绪
+       	        wait		notify唤醒
+    线程数据交互：给多个线程操作的同一个对象添加线程安全锁synchronized
+
+18.IO流
+    流向：输入、输出
+    数据类型：字节、字符
+    功能：节点、高效 缓冲
+
+    序列化、反序列化：需要实现Serilizable接口
+	ObjectInputStream、ObjectOutputStream
+
+19.值传递、引用传递
+1 public class TempTest {
+ 
+2     private void test1(int a){
+ 
+3         a = 5;
+ 
+4         System.out.println("test1方法中的a="+a);
+
+5     }
+
+6     public static void main(String[] args) {
+ 
+7         TempTest t = new TempTest();
+ 
+8         int a = 3;
+ 
+9         t.test1(a);
+10       System.out.println(”main方法中的a=”+a);
+
+11     }
+12 }
+
+1  public class TempTest {
+ 
+2      private void test1(A a){
+ 
+3          a.age = 20;
+ 
+4          System.out.println("test1方法中的age="+a.age);
+ 
+5      }
+ 
+6      public static void main(String[] args) {
+ 
+7          TempTest t = new TempTest();
+ 
+8          A a = new A();
+ 
+9          a.age = 10;
+
+10          t.test1(a);
+
+11          System.out.println(”main方法中的age=”+a.age);
+
+12      }
+
+13  }
+
+14  class A{
+
+15      public int age = 0;
+
+16  }

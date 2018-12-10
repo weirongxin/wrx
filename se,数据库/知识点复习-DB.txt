@@ -1,0 +1,56 @@
+数据库Oracle：
+1.数据类型：
+   number char varchar2 date timestamp text
+2.sql 
+  DDL:create table、alter table、drop table
+  DML:insert into 表名 values
+        delete from 表名
+        update 表名 set 字段名 = 值
+  DQL: select
+  TCL:  commit rollback savepoint 
+        事务能够控制的DML操作
+  DCL:  create user \grant\revoke
+3.DQL select
+   多表查询 n张表，条件n-1
+    select 字段 from 表名,表2 where 条件
+    select 字段 from 表名 join 表 on 条件
+   连接条件  内连接、外连接
+     oracle 左外、右外     where a.data(+) = b.data       where a.data = b.data(+)
+     sql 左外、右外、满外
+          left outer join 
+          right outer join 
+          full outer join
+4.数据库对象
+   表、视图、索引、序列 
+   表：约束 primary key、foreign key(及联约束 on delete cascade，on delete set null)
+	 not null、unique、check
+   视图：create View
+   索引：create index on
+          加快搜索效率
+          适合添加：数据多、重复字段少、查询率高、不以空做条件、dml操作少
+   序列：主键或者数据自增、唯一性字段的数据来源
+          create sequence
+5.JDBC
+   1)创建数据库连接对象Connection
+   2)创建数据库操作对象，句柄 (执行sql语句的)
+      Statement、PreparedStatement、CallableStatement
+   3)定义sql
+   4)使用statement对象执行sql
+   5)得到ResultSet查询结果 遍历
+6.分页查询
+   rownum伪列  确定查询结果集中行数范围
+   select name 
+   from (select name ,rownum r from stu)
+   where r>10 and r<20
+7.plsql  存储过程
+   create procudure as
+8.数据库中MVC细化
+   common --配置工具类
+   bean -- 实体类
+   dao  -- 数据库操作
+   service--业务
+   controller--控制层
+
+        
+	
+  

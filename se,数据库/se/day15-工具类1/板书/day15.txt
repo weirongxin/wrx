@@ -1,0 +1,104 @@
+			Java工具类
+昨日内容：
+1.异常的种类
+  编译期、运行期、重大错误
+2.try{
+    可能出现异常的代码块;
+  }catch(异常类型){
+	异常处理语句
+  }finally{
+	资源释放
+  }	
+ final和finally的区别
+3.异常语句和return关键字的连用
+  try、catch、finally语句和return关键字的连用
+  1）没有异常出现时
+     try中return：先执行return之前的代码，再执行finally中的代码
+		  最后执行try中的return
+     try、finally中都存在return操作：
+	          先执行 try中return之前的代码
+	          再执行finally中所有代码，包括return
+		  方法结束
+  2）有异常被捕获：
+	try中存在return：则在异常代码处中断try的执行，再次执行catch语句
+	try和catch都存在return：
+			则异常时执行catch中的，非异常时执行try中的
+	
+
+今日内容：
+1.Java API：
+	API:application programming interface 应用程序接口
+	java API指java中底层封装功能的帮助文档
+
+2.Object类(hashCode、equals、toString)
+  Java中的类为继承关系，只有一个类没有父类为Object，
+   所有类都为Object类的子类(或间接子类)，Object中所有成员所有类都能获取。
+
+  1）hashCode 
+     哈希算法，根据算法按照地址，计算当前对象的整数值
+     子类重写时，修改了获取的哈希值，实际对象的哈希值没有变化
+     ！一般建议 重写hashcode方法时，返回的是整数、常量的哈希值
+  2）equals 比较     
+     默认Object中比较的是地址
+     如果需要自定义比较条件 则在子类中重写equals方法，添加比较条件
+  
+  练习1： Student类
+	判断：学生名字相同、性别相同、身高、体重相同
+
+  3）toString方法
+     当直接输出对象时，如果存在toString方法，则输出的为该方法返回的字符串
+
+
+3.基本包装类
+   基本数据类型的引用类型表现
+   基本数据类型		包装类类型	 基本默认值        包装类默认值
+	byte		  Byte			0		null	
+	short		  Short			0		null
+	int		  Integer		0		null
+	long		  Long			0		null
+	float		  Float			0.0		null
+	double		  Double		0.0		null
+	char		  Character		空格		null
+	boolean		  Boolean		false		null
+		
+   包装类方法：
+	1）将基本数据类型转换为相应的包装类对象
+	   构造方法
+         2）基本数据类型和包装类之间的转换 称为自动装箱、自动拆箱
+	    Byte b = (byte)3;//自动装箱
+	    syso(b+1);//自动拆箱
+
+	    Integer in = 4;
+	    syso(in+1);
+
+4.String 类
+  不可更改的字符序列
+  赋值方式：
+	String s = "hi";
+	String s = new String("hi");
+  
+5.StringBuffer、StringBuilder
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

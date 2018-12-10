@@ -1,0 +1,45 @@
+1． 写出以下程序的运行结果。（知识点：异常处理机制）
+	Static double average(int[] a) throws NullPointerException {
+		Try {
+			Int sum = 0;
+			for (int I = 0;  I < a.length;  i++) {
+				Sum += a[i];
+			}
+			Return (((double) sum) / a.length);
+		} catch (NullPointerException e) {
+			System.out.println(“NullPointerException”);
+			throw e;
+		}
+	}
+	Public static void main(String args[]) {
+		Try {
+			Int a[] = null;
+			average(a);
+		} catch (NullPointerException e ) {
+			System.out.println(“NullPointerException”);
+		}
+		System.out.println(“OK”);
+	}
+2． 编写一个方法，比较两个字符串。假如其中一个字符串为空，会产生NullPointerException异常，在方法声明中通告该异常，并在适当时候触发异常，然后编写一个程序捕获该异常。（知识点：自定义异常）
+
+3．给定下面代码： 
+public void example(){
+  try {
+  	unsafe();
+  	System.out.println("Test 1");
+  }catch(Exception e){
+  	System.out.println("Test 2");
+  }
+  finally{
+ 	 System.out.println("Test 3");
+  }
+  System.out.println("Test 4");
+}
+如果方法unsafe()运行正常，哪个结果不会被显示出来？
+  A. Test 1 B. Test 2 C. Test3 D. Test 4
+（知识点：异常处理机制）
+4．编写应用程序，从命令行传入两个整型数作为除数和被除数。
+要求程序中捕获NumberFormatException 异常和ArithmeticException 
+异常在命令行输入不同的参数时能输出如下各种结果：  
+（知识点：异常处理机制）
+

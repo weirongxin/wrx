@@ -1,0 +1,36 @@
+1.continue、break、return
+Break 结束for循环
+Continue 用于结束这一轮循环，但仍然继续下一轮循环
+Return 结束方法，不管for循环后是否存在其他代码，整个方法结束执行
+
+2.==和equals区别   
+  数值类型只能用==
+  应用类型 String、包装类 ==、equals判断的是值
+          其他引用类型 判断地址
+	  自定义判断条件 重写equals方法
+3.重载和重写
+4.String、StringBuffer、StringBuilder
+5.ArrayList、LinkedList、Vector
+6.HashMap、TreeMap、Hashtable 
+7.HashSet、TreeSet、LinkedHashSet
+8.List和Set区别
+  set中不可重复（hashCode和equals方法）
+  TreeSet、TreeMap元素具有可比较性
+   （自然顺序、元素类实现Comparable接口、自定义比较顺序Comparator）
+9.static 关键字的使用
+10.final关键字
+11.final、finally、finalize区别
+12.throw、throws区别
+13.Collection、Collections区别
+14.Collections中sort方法的使用
+15.线程的使用方式 区别
+16.start、run区别
+17.新建、就绪、运行、死亡、阻塞
+18.sleep（时间结束自动就绪）、wait（notify唤醒）区别
+19.synchronized（对象名）{ }线程锁、同步锁  
+20.静态代码块、非静态代码块、构造方法、普通方法
+21.类之间只存在单继承关系
+   接口和接口之间存在继承关系
+   类和接口之间存在实现关系
+   单继承、多实现
+

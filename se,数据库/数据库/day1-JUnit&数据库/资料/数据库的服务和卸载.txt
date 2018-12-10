@@ -1,0 +1,36 @@
+数据库服务：
+	OracleDbConsoleorcl
+	企业管理器服务，B/S结构的管理界
+	OracleJobScheduleorcl
+	日程调度(自动化任务)
+	OracleOraDb10g_home1iSQL*Plus
+	B/S结构的SQLPLUS工具 
+	OracleOraDb10g_home1TNSListener
+	监听服务 负责监听客户端连接服务器 （必须启动）
+	OracleServiceORCL
+	基本服务（一切服务的基础，必须启动）
+
+  启动和关闭基本服务
+	net start oracleserviceorcl
+	net stop oracleserviceorcl
+  启动和关闭监听服务
+	lsnrctl  start
+	lsnrctl  stop
+ 
+
+数据库卸载：（不卸干净 装不上）
+
+卸载步骤：
+	1. 停止Oracle所有服务
+	2. 运行Oracle Universal Installer卸载Oracle
+	3. 修改注册表，删除Oracle相关信息
+	? Oracle软件有关键-值
+		HKEY_LOCAL_MACHINE\SOFTWARE\Oracle
+	? Oracle服务
+	HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services
+	? Oracle事件日志
+	HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Eventlog\Application
+	4. 删除Oracle系统目录C:\program files\oralce
+	5. 删除Oracle环境变量
+	6. 删除程序菜单项中的Oracle菜单
+	7. （重启系统后）删除Oracle工作主目录D:\oralce

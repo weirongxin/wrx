@@ -1,0 +1,73 @@
+字符串长度
+int length()
+
+字符串比较
+boolean equals(Object anObject) 
+int compareTo(String anotherString)
+逐个比较字符串中的字符 如相等 返回0 否则返回差值
+字符相同 比较长度
+
+字符串查找
+boolean contains(CharSequence s)
+查找字符串中是否有子字符串 有就返回true
+
+boolean startsWith(String prefix)
+查看字符串前缀是否和参数所表示的字符串相同 相同返回true
+
+boolean endsWith(String suffix)
+查看字符串后缀是否和参数所表示的字符串相同 相同返回true
+
+indexOf(int ch)
+从前向后找到该字符在字符串中第一次出现处的索引
+
+int indexOf(int ch, int fromIndex)
+从指定位置往后找返回字符在该字符串中第一次出现处的索引
+
+int indexOf(String str)
+返回该字符串子字符串在该字符串中第一次出现处的索引
+
+int lastIndexOf(int ch)
+从指定位置往后找返回该字符串子字符串在该字符串中第一次出现处的索引
+
+字符串替换
+String replace(char oldChar, char newChar)
+返回一个新的字符串，它是通过用 newChar 替换此字符串中出现的所有 oldChar 而生成的（字符）
+
+String replace(CharSequence target, CharSequence replacement) （字符串）
+
+
+字符串提取
+char charAt(int index)
+返回指定索引处的字符
+
+String substring(int beginIndex)
+返回一个新的字符串，它是此字符串的一个子字符串。该子字符串从指定索引处的字符开始，直到此字符串末尾。
+
+String substring(int beginIndex, int endIndex) 
+返回一个新的字符串，它是此字符串的一个子字符串。该子字符串从beginIndex处的字符开始，直到endIndex结束。
+
+其他方法
+String toLowerCase()
+将大写字符转换为小写
+
+String toUpperCase()
+将小写字符转换为大写
+
+boolean isEmpty()
+返回指定索引处的 char 值
+
+String concat(String str)
+将指定字符串连接到此字符串的结尾
+
+String trim() 
+去掉字符序列左边和右边的空格
+
+static String valueOf(int i) 
+将 int 变量 i 转换成字符串 
+
+static String format(String format, Object... args) 
+
+byte[] getBytes() -->将一个字符串转换为字节数组
+byte[] getBytes(Charset charset) --》将一个使用参数指定的字符集编号码的字符串转换为字节数组。
+char[] toCharArray()：将一个字符串转换为字符数组
+String[] split(String regex) ：使用参数指定的正则表达式将字符串分割为一个字符串数组。（分割后的数组中元素不包含分隔符）

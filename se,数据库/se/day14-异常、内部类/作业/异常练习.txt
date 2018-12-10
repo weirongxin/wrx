@@ -1,0 +1,6 @@
+一个简易的 银行取款操作，定义一个类，double的 balance属性，
+通过depost（）方法判断取出的钱，是否小于等于存入的钱。 
+通过main方法调用 depost（）类 ，传入取出的钱，并且用try-catch捕获异常并且处理，
+并且在finally块，显示余额。 
+
+需要的关键字（try-catch-finally throw throws）

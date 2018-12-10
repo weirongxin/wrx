@@ -1,0 +1,50 @@
+		数据库 
+数据库 2周 
+学习方法:难度低  反复练习
+
+1.数据库简介
+  数据库：支持数据持久化，以表格的形式存储数据的一种方式。     
+
+  DB、DBA、DBMS：
+	DB database 数据库
+	DBA database administrator 数据库管理员
+	DBMS database manager system 数据库管理系统
+ 
+  关系型数据库的简介：
+      Oracle属于大型的关系型数据库
+      在数据库中基本单位为表格，表格的设计可以采用java中类的设计方式，则表格之间默认存在关联，为关系型数据库。	
+    
+	
+  数据库的设计规则：
+	设计的三个范式：
+	第一范式：表中的列为不可拆分的单位
+		eg:可以存在列：班级号   不可以存在：班级信息
+	第二范式：表需要设计为不可拆分的类结构
+	        eg:可以设计学生表、班级表   不可以：学校表
+	第三范式：主键设计时 一定为唯一标识的字段
+	        eg:学号可以     不可以：名字
+
+2.Oracle数据库概述
+	 用户角色即为一种解决方案
+	 用户登录后 已经默认分配响应角色的用户表数据
+3.SQL
+  structed query language 结构化查询语句
+
+  DDL  data defination language 数据定义语言
+	create table、alter table 、drop table
+  DML  data manipulation language 数据操纵语言
+	insert into、update set、delete from
+  DQL  data query language 数据查询语言
+	 select
+  TCL  transition control language 事务控制语言
+	 commit、rollback、savepoint
+  DCL  data control language 数据控制语句
+	  create user、grant、revoke  
+
+4.使用SQL*PLUS
+  
+5.Oracle数据类型
+   
+6.默认数据表结构
+ 
+
